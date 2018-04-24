@@ -1,0 +1,43 @@
+    .ccolor{
+    	color: #FFFFFF;
+      margin-top: 15px;
+    }
+    nav{
+      height: 70px;
+    }
+    strong{
+      color: #0A43E9;
+    }
+
+    .log{
+  
+      margin-left:15%;
+    }
+    .log_componentes{
+      padding: 5px;
+      margin-left: 15%;
+      margin-top: -85px;    
+    }
+
+    div img { max-width: 700%; } 
+
+    #menu_gral li a:hover,
+	#menu_gral li a:focus {
+    background: #0892FC;
+    color: #fff;
+}
+
+
+
+.navbar-brand{
+  margin-top: 14px; 
+  color: #fff;
+}
+
+.navbar{
+  background-color: #0685E5;
+}
+
+.elementos_navbar{
+  position: relative; z-index: 100;
+}
