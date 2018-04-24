@@ -331,6 +331,7 @@
 
 <div class="container-fluid bg-grey">
   <div class="row">
+  
 <!--     <div class="col-sm-4">
       <span class="glyphicon glyphicon-globe logo slideanim"></span>
     </div> -->
