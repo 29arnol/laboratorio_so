@@ -12,9 +12,7 @@
       <title>Laboratorio Salud Ocupacional</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <script type="text/javascript" src="jvalidation/dist/jquery.validate.js"></script>
-
-
+      <!-- <script type="text/javascript" src="jvalidation/dist/jquery.validate.js"></script> -->
     <style type="text/css">
 
       input.error {
@@ -1151,7 +1149,7 @@ $("#btn").on("click", function()
 		<div class="text-center">
 		  <div class="col-sm-12">
 		    <br> 
-		    <input type="submit" id="btn2" name="Registrar2" value="Registrar" class="btn btn-success">
+		    <input type="submit" id="btn2" name="Registrar" value="Registrar" class="btn btn-success">
 		  </div>
 		</div>
 	</div>

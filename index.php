@@ -78,8 +78,8 @@
       margin-bottom: 10px;
   }
   .im{
-    width: 280px !important;
-    height: 280px !important;
+    width: 230px !important;
+    height: 210px !important;
   }
   .carousel-control.right, .carousel-control.left {
       background-image: none;
@@ -331,8 +331,7 @@
 
 <div class="container-fluid bg-grey">
   <div class="row">
-  
-<!--     <div class="col-sm-4">
+<!--<div class="col-sm-4">
       <span class="glyphicon glyphicon-globe logo slideanim"></span>
     </div> -->
     <div class="col-sm-12">
@@ -625,7 +624,6 @@
   </div>
 </div>
   
-
 </div>
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid bg-grey">
@@ -712,6 +710,24 @@
     });
   })
 
+  $('input#user').keydown(function(e) { if (e.keyCode == 32) { return false; } });//usuario
+
+  $(document).ready(function(){
+    $('#mostrar_contrasena').mousedown(function(){
+      $('#password').attr("type","text");
+
+    }).mouseup(function(){
+      $('#password').attr("type","password");            
+    });
+
+    $('div.expandable p').expander({
+      slicePoint: 157,
+      expandText: '<br>leer mas...',
+      collapseTimer: 5000,
+      userCollapseText: 'leer menos...'
+    });
+  });
+
   $(function(){
     /* Capturar el click del botón */
     $("#btn").on("click", function(){
@@ -727,13 +743,12 @@
           user: {required: 'Ingrese su usuario', minlength: 'El mínimo permitido son 4 caracteres', maxlength: 'El máximo permitido son 20 caracteres'},
           password: {required:'Ingrese su contraseña', minlength: 'El mínimo permitido son 8 caracteres', maxlength: 'El máximo permitido son 15 caracteres'},
         },
-
       });
     });
   });
 </script>
 
-  <!---->
+<!---->
 <script type="text/javascript" src="jvalidation/dist/jquery.validate.js"></script>
   <!-- Modal -->
 <div class="container">
@@ -803,22 +818,7 @@
 
 </body>
 <script>
-  $('input#user').keydown(function(e) { if (e.keyCode == 32) { return false; } });//usuario
 
-    $(document).ready(function(){
-      $('#mostrar_contrasena').mousedown(function(){
-        $('#password').attr("type","text");              
-      }).mouseup(function(){
-        $('#password').attr("type","password");            
-      });
-
-      $('div.expandable p').expander({
-        slicePoint: 157,
-        expandText: '<br>leer mas...',
-        collapseTimer: 5000,
-        userCollapseText: 'leer menos...'
-      });
-  });
 </script>
 
 </html>

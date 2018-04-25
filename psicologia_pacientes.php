@@ -1,12 +1,8 @@
-<?php include ('includes/conexion.php'); ?>
 <?php 
-/*date_default_timezone_set('America/Bogota');
-$hora = date('h:i:s A');
-$fecha = date('Y-m-d');*/
-?>
-<?php 
+
+  include ('includes/conexion.php'); 
 	  
-    if ($_GET){ 
+  if ($_GET){ 
   	$historia = $_GET['historia'];
     $estado = $_GET['estado'];
     $inicio = $_GET['iniciotime'];
@@ -22,8 +18,8 @@ $fecha = date('Y-m-d');*/
     }else{
       echo "<script>alert('Error, Intente Nuevamente')</script>";
     }
-   }
- ?>
+  }
+?>
 
 <!DOCTYPE html>
 <html>
