@@ -4,12 +4,10 @@
 	  background-color: #F71808;
 	  color: #FDFDFD;
 	}
-
 	.atendiendo{
 	  background-color: #F8630D;
 	  color: #FDFDFD;
 	}
-
 	.atendido{
 	  background-color: #0DDF03;
 	  color: #FDFDFD;

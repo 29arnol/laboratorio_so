@@ -1,12 +1,12 @@
  <?php
-session_start();
-if(isset($_SESSION['usuario']) and $_SESSION['rol']==1){
-$nombres = $_SESSION['nombre_completo'];
-$nick = $nombres;    
-}else{
-session_destroy();
-header('Location: index.php'); 
-}
+  session_start();
+    if(isset($_SESSION['usuario']) and $_SESSION['rol']==1){
+    $nombres = $_SESSION['nombre_completo'];
+    $nick = $nombres;    
+  }else{
+    session_destroy();
+    header('Location: index.php'); 
+  }
 ?>
 <!DOCTYPE html>
 <html>
