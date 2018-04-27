@@ -1,6 +1,6 @@
 <?php 
   include ('includes/conexion.php');
-  include ('bar/navbar_Recepcion.php');  
+  include ('bar/navbar_Recepcion.php'); 
 	  
   if ($_GET){
     $priorizar = $_GET['priorizar'];
@@ -36,34 +36,8 @@
       case '6':
         $data = "UPDATE `db_estado_atencion` SET `medico`= '$estado_atencion' WHERE paciente = '$historia'"; 
         $query2 = mysqli_query($conexion,$data);
-      break;
-      
+      break;  
     }
-
-    /*if ($priorizar == 1) {
-      $data = "UPDATE `db_estado_atencion` SET `audiometria`= '$estado_atencion' WHERE paciente = '$historia'"; 
-      $query2 = mysqli_query($conexion,$data);  
-    }
-    if ($priorizar == 2) {
-      $data = "UPDATE `db_estado_atencion` SET `visiometria`= '$estado_atencion' WHERE paciente = '$historia'"; 
-      $query2 = mysqli_query($conexion,$data);
-    }
-    if ($priorizar == 3) {
-      $data = "UPDATE `db_estado_atencion` SET `espirometria`= '$estado_atencion' WHERE paciente = '$historia'"; 
-      $query2 = mysqli_query($conexion,$data);
-    }
-    if ($priorizar == 4) {
-      $data = "UPDATE `db_estado_atencion` SET `psicologia`= '$estado_atencion' WHERE paciente = '$historia'"; 
-      $query2 = mysqli_query($conexion,$data);
-    }
-    if ($priorizar == 5) {
-      $data = "UPDATE `db_estado_atencion` SET `enfermeria`= '$estado_atencion' WHERE paciente = '$historia'"; 
-      $query2 = mysqli_query($conexion,$data);
-    }
-    if ($priorizar == 6) {
-      $data = "UPDATE `db_estado_atencion` SET `medico`= '$estado_atencion' WHERE paciente = '$historia'"; 
-      $query2 = mysqli_query($conexion,$data);
-    }*/
   }
 ?>
 
@@ -76,31 +50,19 @@
   </head>
 
 <script type="text/javascript">
-
-function show(){
-  var Digital=new Date()
-  var hours=Digital.getHours()
-  var minutes=Digital.getMinutes()
-  var seconds=Digital.getSeconds()
-  var dn="AM" 
-  if (hours>12){
-  dn="PM"
-  hours=hours-12
+  function getTimeAJAX() {
+    //GUARDAMOS EN UNA VARIABLE EL RESULTADO DE LA CONSULTA AJAX    
+    var time = $.ajax({
+      url: 'recepcion_pacientes_cita_asignada.php', //indicamos la ruta donde se genera la hora
+      dataType: 'text',//indicamos que es de tipo texto plano
+      async: false     //ponemos el parámetro asyn a falso
+    }).responseText;
+    //actualizamos el div que nos mostrará la hora actual
+    document.getElementById("pacientes").innerHTML = "Pacientes En espera: "+time;
   }
-  if (hours==0)
-  hours=12
-  if (minutes<=9)
-  minutes="0"+minutes
-  if (seconds<=9)
-  seconds="0"+seconds
-  document.hora.clock.value=hours+":"+minutes+":"
-  +seconds+" "+dn
-  setTimeout("show()",1000)
-}
-show()
-//-->
-</script>
-
+  //con esta funcion llamamos a la función getTimeAJAX cada segundo para actualizar el div que mostrará la hora
+  setInterval(getTimeAJAX,1000);
+</script> 
 
 <body>
   <br>
@@ -108,7 +70,7 @@ show()
     <div class="row"> 
       <div class="panel panel-default">
         <div class="panel-body">
-          <div id='myWatch'></div>
+          <div id='pacientes'></div>
         </div>
       </div>
     </div>

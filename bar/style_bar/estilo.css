@@ -203,12 +203,33 @@
   }
 
   #screenshot{
-  position:absolute;
   border:1px solid #ccc;
-  background:#aaa;
-  padding:5px;
-  display:none;
-  color:#fff;
+    position:absolute;
+    border:1px solid #ccc;
+    background:#aaa;
+    padding:5px;
+    display:none;
+    color:#fff;
+  }
+
+  .priorizar{
+    background-color: #F71808;
+    color: #FDFDFD;
+  }
+  .atendiendo{
+    background-color: #F8630D;
+    color: #FDFDFD;
+  }
+  .atendido{
+    background-color: #0DDF03;
+    color: #FDFDFD;
+  }
+  .esperando{
+    background-color: #F9FDF8;
+    color: black;
+  }
+  .size_font {
+    font-size: 12px;
   }
 
   </style>
