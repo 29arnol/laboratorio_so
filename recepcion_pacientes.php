@@ -64,8 +64,7 @@
   setInterval(getTimeAJAX,1000);
 </script> 
 
-<body>
-  <br>
+<body><br>
   <div class="container">
     <div class="row"> 
       <div class="panel panel-default">

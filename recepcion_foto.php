@@ -1,6 +1,7 @@
 <?php
  include ('includes/conexion.php');
- include ('bar/navbar_recepcion.php'); 
+ include ('bar/navbar_recepcion.php');
+ include ('bar/style_bar/estilo.css') 
 ?>
 
 <!DOCTYPE html>
@@ -9,16 +10,7 @@
     <title>Captura de Fotos</title>
     <script src='http://escalantecreativo.com/js/jQuery-v1.11.0.js'></script>
     <style>
-      #save-photo-result,#save_photo,#again,#video-recorder-holder, #canvas-recorder,#camara-no-activa{display:none;}
-      .g {
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        width: 520px;
-      }
-      .border { border-style: solid; border-width: 4px; height: 393px; }
+
     </style>
 
     <script>
