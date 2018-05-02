@@ -1,47 +1,29 @@
-
 <?php
-//Archivo de conexión a la base de datos
 include ('includes/conexion.php');
 include ('bar/style_bar/estilo.css');
 //Variable de búsqueda
 $consultaBusqueda = $_POST['valorBusqueda'];
-
 //Filtro anti-XSS
 $caracteres_malos = array("<", ">", "'", "/", "<", ">", "'", "/");
 $caracteres_buenos = array("& lt;", "& gt;", "& quot;", "& #x27;", "& #x2F;", "& #060;", "& #062;", "& #039;", "& #047;");
 $consultaBusqueda = str_replace($caracteres_malos, $caracteres_buenos, $consultaBusqueda);
-
 //Variable vacía (para evitar los E_NOTICE)
 $mensaje = "";
-
-
 //Comprueba si $consultaBusqueda está seteado
 if (isset($consultaBusqueda)) {
-	//Selecciona todo de la tabla mmv001 
-	//donde el nombre sea igual a $consultaBusqueda, 
-	//o el apellido sea igual a $consultaBusqueda, 
-	//o $consultaBusqueda sea igual a nombre + (espacio) + apellido
-	/*$consulta = mysqli_query($conexion, "SELECT * FROM mmv001
-	WHERE nombre COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%' 
-	OR apellido COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-	OR CONCAT(nombre,' ',apellido) COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-	");*/
 	$query = "SELECT * FROM equipos_prestados
 	WHERE ficha_formativa LIKE '%$consultaBusqueda%'
 	OR nombres_instructor LIKE '%$consultaBusqueda%'
 	OR fecha LIKE '%$consultaBusqueda%'
 	OR equipo LIKE '%$consultaBusqueda%'
-	OR nombres_estudiante LIKE '%$consultaBusqueda%' 
-	";
+	OR nombres_estudiante LIKE '%$consultaBusqueda%'";
 	$consulta = mysqli_query($conexion,$query);
-
 	//Obtiene la cantidad de filas que hay en la consulta
 	$filas = mysqli_num_rows($consulta);
-
 	//Si no existe ninguna fila que sea igual a $consultaBusqueda, entonces mostramos el siguiente mensaje
 	if ($filas === 0 or $consultaBusqueda == "") {
 		$mensaje = "<p>No hay ningún equipo registrado con esa carateristica</p>";
-	} else {
+	}else{
 		//Si existe alguna fila que sea igual a $consultaBusqueda, entonces mostramos el siguiente mensaje
 		echo 'Resultados para <strong>'.$consultaBusqueda.'</strong>';
 
@@ -77,21 +59,21 @@ if (isset($consultaBusqueda)) {
 			  <table class="table table-bordered">
 			    <thead>
 			      <tr>
-			      	<th><h6 class="text-center">Equipo</h6></th>
-			        <th><h6 class="text-center">Fecha</h6></th>
-			        <th><h6 class="text-center">Estado</h6></th>
-			        <th><h6 class="text-center">Devuelto</h6></th>
-			        <th><h6 class="text-center">Ficha</h6></th>
-			        <th><h6 class="text-center">Hora Salida</h6></th>
-			        <th><h6 class="text-center">Hora Entrada</h6></th>
-			        <th><h6 class="text-center">Nombres Estudiante</h6></th>
-			        <th><h6 class="text-center">Nombres Instructor</h6></th>
-			        <th><h6 class="text-center">Nombres Persona Entrega</h6></th>
-			        <th><h6 class="text-center">Observaciones</h6></th>
+			      	<th class="text-center">Equipo</th>
+			        <th class="text-center">Fecha</th>
+			        <th class="text-center">Estado</th>
+			        <th class="text-center">Devuelto</th>
+			        <th class="text-center">Ficha</th>
+			        <th class="text-center">Salida</th>
+			        <th class="text-center">Entrada</th>
+			        <th class="text-center">Aprendiz</th>
+			        <th class="text-center">Instructor</th>
+			        <th class="text-center">Entregado por</th>
+			        <th class="text-center">Observaciones</th>
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
+			      <tr class="text-center">
 			      	<td>'. $equipo .'</td>
 			        <td>'. $fecha .'</td>
 			        <td>'. $estado .'</td>

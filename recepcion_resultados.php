@@ -1,132 +1,174 @@
 <?php
-include ('includes/conexion.php'); 
-include ('bar/navbar_recepcion.php');
+  include ('includes/conexion.php'); 
+  include ('bar/navbar_recepcion.php');
 
-    //$especialidad = $_POST['tipoconsulta'];
-$documento = $_POST['documento'];
-$fecharegistro = $_POST['fecha_registro'];
-$tipodoc = $_POST['tipodoc'];
+  $documento = $_POST['documento'];
+  $fecharegistro = $_POST['fecha_registro'];
+  $tipodoc = $_POST['tipodoc'];
 
-$consulta = "SELECT * FROM datos_basicos AS db
-JOIN datos_complementarios AS dc ON db.fk_d_complementario
-JOIN datos_basicos_tipo_documento AS dbtd ON dc.fk_tipo_documento = dbtd.idtd
-WHERE dc.numero_documento = '$documento' AND db.fecha='$fecharegistro' AND dc.fk_tipo_documento = '$tipodoc'";
-$query = mysqli_query($conexion,$consulta);
+  $consulta = "SELECT * FROM datos_basicos AS db
+  JOIN datos_complementarios AS dc ON db.fk_d_complementario
+  WHERE dc.numero_documento = '$documento' AND db.fecha='$fecharegistro' AND dc.fk_tipo_documento = '$tipodoc'";
+  $query = mysqli_query($conexion,$consulta);
 
-if (mysqli_num_rows($query) > 0){
+  if (mysqli_num_rows($query) > 0){
 
-while($resultados = mysqli_fetch_array($query)) {
-			$numerodocumento = $resultados['numero_documento'];
-			$nombrescompleto = $resultados['nombres_apellidos'];
-			$motivoevaluacion = $resultados['motivo_evaluacion'];
-			$fecha = $resultados['fecha'];
-			$nombreempresa = $resultados{'nombre_empresa'};
-			$cargo_aspira = $resultados{'cargo_a_desempenar'};
-			$celular = $resultados{'celular'};
+    while($resultados = mysqli_fetch_array($query)) {
 
 			$historia = $resultados['id_historia'];
-
 			$code = base64_encode(522);
 			$t_code = base64_encode(1);
 			$th_code = base64_encode(2);
-			$h_code= base64_encode($numerodocumento);
-			$f_code= base64_encode($fecha);
-//}
+			$h_code= base64_encode($resultados['numero_documento']);
+			$f_code= base64_encode($resultados['fecha']);
 
 ?>
 <body>
+<br>
 <div class="container">
-  <h2>Resultados de Paciente</h2>
   <p>Resultados de Examenes Practicados:</p>            
   <table class="table table-bordered">
     <thead>
       <tr>
-      	<th>historia</th>
-        <th>N documento</th>
-        <th>Nombres - Apellidos</th>
-        <th>motivo evaluacion</th>
-        <th>fecha</th>
-        <th>Telefono</th>
-        <th>empresa</th>
-        <th>Cargo-aspira</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-      <th><?php echo $historia ?></th>
-        <td><?php echo $numerodocumento ?></td>
-        <td><?php echo $nombrescompleto ?></td>
-        <td><?php echo $motivoevaluacion ?></td>
-        <td><?php echo $fecha ?></td>
-        <td><?php echo $celular ?></td>
-        <td><?php echo $nombreempresa ?></td>
-        <td><?php echo $cargo_aspira ?></td>
-      </tr>
-    </tbody>
-    <tbody>
-		<tr>
-			<th colspan="8" class="text-center">Resultados</th>
-		</tr>
-    </tbody>
-     <thead>
-      <tr>
+        <th>Consulta</th>
         <th>Datos Basicos</th>
         <th>Audiometria</th>
         <th>Visiometria</th>
-        <th>Optometria</th>
-        <th>Psicologia</th>
-        <th>Psicologia</th>
         <th>Espirometria</th>
+        <th>Psicologia</th>
+        <th>Enfermeria</th>
         <th>Medico</th>
       </tr>
     </thead>
     <tbody>
       <tr class="text-center">
-      	<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="recepcion_paciente.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+      
+        <td>Resultado</td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="audiometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+        <td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="recepcion_paciente.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>">
+                <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="visiometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="audiometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="visiometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="espirometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="espirometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="psicologia_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="psicologia_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="enfermeria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="enfermeria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="medico_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="medico_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $t_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
       </tr>
     </tbody>
-        <tbody>
-		<tr>
-			<th colspan="8" class="text-center">Historia</th>
-		</tr>
-    </tbody>
-        <tbody>
+
+    <tbody>
       <tr class="text-center">
-        <td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="recepcion_paciente.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="audiometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+        <td>Historia</td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="visiometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+        <td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="recepcion_paciente.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="audiometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="espirometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="visiometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="psicologia_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="espirometria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="enfermeria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="psicologia_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
 
- 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="medico_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="enfermeria_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
+
+     		<td>
+          <button type="button" class="btn btn-default btn-sm">
+            <a target="_blank" href="medico_result.php?paciente=<?php echo $h_code ?>&&registro=<?php echo $f_code ?>&&cod=<?php echo $code ?>&&tipoconsulta=<?php echo $th_code ?>">
+              <strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong>
+            </a>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
 <?php 
-}
+}//while
 }else{
   echo '<script>
    $(document).ready(function(){

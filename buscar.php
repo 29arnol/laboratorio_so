@@ -1,45 +1,27 @@
-<link rel="stylesheet" type="text/css" href="bar/style_bar/estilo.css">
 <?php
-
 //Archivo de conexión a la base de datos
 include ('includes/conexion.php');
 include ('bar/style_bar/estilo.css');
-
-
 //Variable de búsqueda
 $consultaBusqueda = $_POST['valorBusqueda'];
-
 //Filtro anti-XSS
 $caracteres_malos = array("<", ">", "'", "/", "<", ">", "'", "/");
 $caracteres_buenos = array("& lt;", "& gt;", "& quot;", "& #x27;", "& #x2F;", "& #060;", "& #062;", "& #039;", "& #047;");
 $consultaBusqueda = str_replace($caracteres_malos, $caracteres_buenos, $consultaBusqueda);
-
 //Variable vacía (para evitar los E_NOTICE)
 $mensaje = "";
 
-
 //Comprueba si $consultaBusqueda está seteado
-if (isset($consultaBusqueda)) {
+if (isset($consultaBusqueda)){
 
-	//Selecciona todo de la tabla mmv001 
-	//donde el nombre sea igual a $consultaBusqueda, 
-	//o el apellido sea igual a $consultaBusqueda, 
-	//o $consultaBusqueda sea igual a nombre + (espacio) + apellido
-	/*$consulta = mysqli_query($conexion, "SELECT * FROM mmv001
-	WHERE nombre COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%' 
-	OR apellido COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-	OR CONCAT(nombre,' ',apellido) COLLATE UTF8_SPANISH_CI LIKE '%$consultaBusqueda%'
-	");*/
 	$query = "SELECT * FROM equipos_laboratorio
 	WHERE equipos_laboratorio.nombre_equipo LIKE '%$consultaBusqueda%'
 	OR equipos_laboratorio.referencia LIKE '%$consultaBusqueda%' 
 	";
 	//
 	$consulta = mysqli_query($conexion,$query);
-
 	//Obtiene la cantidad de filas que hay en la consulta
 	$filas = mysqli_num_rows($consulta);
-
 	//Si no existe ninguna fila que sea igual a $consultaBusqueda, entonces mostramos el siguiente mensaje
 	if ($filas === 0 or $consultaBusqueda == "") {
 		$mensaje = "<p>No hay ningún equipo registrado con esa carateristica</p>";
@@ -69,40 +51,30 @@ if (isset($consultaBusqueda)) {
 			//Output
 			$mensaje .= '
 			<p>
-
 			<div class="container col-sm-12">           
 			  <table class="table table-bordered">
 			    <thead>
 			      <tr>
-			        <th>Referencia</th>
-			        <th>Nombre del Equipo</th>
-			        <th>Disponibilidad</th>
-			        <th>Descripcion</th>
-			        <th>Accion</th>
+			        <th class="text-center">Referencia</th>
+			        <th class="text-center">Nombre del Equipo</th>
+			        <th class="text-center">Disponibilidad</th>
+			        <th class="text-center">Descripcion</th>
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td>'. $referencia .'</td>
-			        <td>'. $nombre_equipo .'</td>
-			        	'. $est .'
-			        <td>'. $descripcion .'</td>
-			        
-			        <td>'.$estado.'</td>
+			      <tr class="text-center">
+			        <td>'.$referencia.'</td>
+			        <td>'.$nombre_equipo.'</td>
+			        '.$est.'
+			        <td>'.$descripcion.'</td>
 			      </tr>
 			    </tbody>
 			  </table>
 			</div>
-
 			</p>';
-
 		};//Fin while $resultados
-
-
 	}; //Fin else $filas
-
 };//Fin isset $consultaBusqueda
-
 //Devolvemos el mensaje que tomará jQuery
 echo $mensaje;
 ?>

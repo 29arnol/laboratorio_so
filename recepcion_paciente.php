@@ -1,23 +1,23 @@
 <?php 
-include ('includes/conexion.php');
-  $code = base64_decode($_REQUEST['cod']);
-  if ($code==255) {
-    include ('bar/navbar_administracion.php'); 
-  }else{
-     include ('bar/navbar_recepcion.php');
- }
+	include ('includes/conexion.php');
+	$code = base64_decode($_REQUEST['cod']);
+	if ($code==255) {
+		include ('bar/navbar_administracion.php'); 
+	}else{
+		include ('bar/navbar_recepcion.php');
+	}
 
-   if ($_POST == true) {
-    //$tipocon = $_POST['tipocon'];
-    $historia = $_POST['documento'];
-    $fecharegistro = $_POST['fecha_registro'];
+   	if ($_POST == true) {
+	    //$tipocon = $_POST['tipocon'];
+	    $historia = $_POST['documento'];
+	    $fecharegistro = $_POST['fecha_registro'];
 
-  }else{
-    //$tipocon = base64_decode($_REQUEST['tipoconsulta']);
-    //$historia1 = $_GET['historia'];
-    $historia = base64_decode($_REQUEST['paciente']);
-    $fecharegistro = base64_decode($_REQUEST['registro']);
-  }
+  	}else{
+	    //$tipocon = base64_decode($_REQUEST['tipoconsulta']);
+	    //$historia1 = $_GET['historia'];
+	    $historia = base64_decode($_REQUEST['paciente']);
+	    $fecharegistro = base64_decode($_REQUEST['registro']);
+  	}
 
     $consultaregistro = "SELECT * FROM datos_basicos AS db 
     JOIN datos_complementarios AS dc ON db.fk_d_complementario = dc.id
@@ -29,35 +29,6 @@ include ('includes/conexion.php');
           $datos_complementario = $datos{'id'};
           $paciente = $datos{'id_historia'};
           $ultimo = $datos{'fecha'}; 
-          //echo $ultimo;
-          //datos cargados de el ultimo registro
-          $motivoeva= $datos['motivo_evaluacion'];
-
-          $nombreempresa= $datos['nombre_empresa'];
-          $actividadeconomica= $datos['actividad_economica'];
-          $cargoadesempenar= $datos['cargo_a_desempenar'];
-          $nit= $datos['numero_nit'];
-          $telefono_empresa= $datos['telefono_empresa'];
-          $direccion_empresa= $datos['direccion_empresa'];
-
-          $ciudad= $datos['ciudad'];
-          $nombresapellidos= $datos['nombres_apellidos'];
-          $tipodocumento = $datos['tipo_documento'];
-          $numero_documento= $datos['numero_documento'];
-          $direccion= $datos['direccion'];
-          $fechanacimiento= $datos['fecha_nacimiento'];
-          $lugarnacimiento= $datos['lugar_nacimiento'];
-          $edad= $datos['edad'];
-          $genero= $datos['genero'];
-          $hijos= $datos['hijos'];
-          $estadocivil= $datos['estado_civil'];
-          $celular= $datos['celular'];
-          $escolaridad= $datos['escolaridad'];
-          $eps= $datos['eps'];
-          $arl= $datos['arl'];
-          $afp= $datos['afp']; 
-          $fechaing= $datos['fecha'];
-          $horaing= $datos['hora'];
 
 
           $ruta_destino =   "fotografias/"; //ruta de las fotos de los paciente
@@ -67,122 +38,105 @@ include ('includes/conexion.php');
 <body>
 
 <div class="container">
-<div class="panel panel-default">
-  <div class="panel-heading text-center"><label>Datos  <a href="#" data-toggle="modal" data-target="#historial">Paciente</a> - Empresa</label></div>
-    <div class="panel-body">    
-      <img class="img-responsive img-thumbnail paciente_datos" alt="Foto del Paciente" src=<?php echo $ruta_destino."".$paciente.'.png'; ?> >
-      <div class="col-sm-12">
-      <div class="tabla_paciente">
-        <table class="table table-bordered">
-        <thead>
-          <th>Nombres-Apellidos:</th>
-          <th>Tipo Documento:</th>
-          <th>Numero Documento:</th>
-        </thead>
+	<div class="panel panel-default">
+	  <div class="panel-heading text-center"><label>Datos  <a href="#" data-toggle="modal" data-target="#historial">Paciente</a> - Empresa</label></div>
+	    <div class="panel-body">    
+	      <img class="img-responsive img-thumbnail paciente_datos" alt="Foto del Paciente" src=<?php echo $ruta_destino."".$paciente.'.png'; ?> >
+	      	<div class="tabla_paciente">
+		        <table class="table table-bordered">
+			        <thead>
+			          <th class="text-center">Nombres-Apellidos:</th>
+			          <th class="text-center">Tipo Documento:</th>
+			          <th class="text-center">Numero Documento:</th>
+			        </thead>
 
-          <tbody>
-            <tr>
-              <td><?php echo $nombresapellidos ?></td>
-              <td><?php echo $tipodocumento ?></td>
-              <td><?php echo $numero_documento ?></td> 
-            </tr>
-            </tbody>
+			          <tbody>
+			            <tr class="text-center">
+			              <td><?php echo $datos['nombres_apellidos']; ?></td>
+			              <td><?php echo $datos['tipo_documento']; ?></td>
+			              <td><?php echo $datos['numero_documento']; ?></td> 
+			            </tr>
 
-            <thead>
-              <th>Edad:</th>
-              <th>Fecha Nacimiento:</th>
-              <th>Genero:</th>
-            </thead>
-            <tr>   
-              <td><?php echo $edad ?></td>
-              <td><?php echo $fechanacimiento ?></td>
-              <td><?php echo $genero ?></td>
-            </tr>
-            <thead>      
-              <th>Estado Civil:</th>
-              <th>Lugar Nacimiento:</th>
-              <th>Hijos</th>
-            </thead>
-            <tr>   
-              <td><?php echo $estadocivil ?></td>
-              <td><?php echo $lugarnacimiento ?></td>
-              <td><?php echo $hijos ?></td>
-            </tr>
-            <thead> 
-            <th>Numero Celular:</th>
-              <th>Direccion</th>
-              <th>Escolaridad</th>
-           </thead>
-            <tr>
-              <td><?php echo $celular ?></td>
-              <td><?php echo $direccion ?></td>  
-              <td><?php echo $escolaridad ?></td>              
-            </tr>
-          </tbody>
-          <thead>
-          	<th >Motivo de Evaluacion:</th>
-          	<th>EPS</th>
-          	<th>ARL</th>
-          </thead>
-          <tbody>
-          	<tr>
-	      		<td ><?php echo $motivoeva ?></td>
-	      		<td><?php echo $eps ?></td>
-	      		<td><?php echo $arl ?></td>
-          	</tr>
-          </tbody>
-          <thead>
-          	<th>AFP</th>
-          	<th>Fecha Ingreso</th>
-          	<th>Hora Ingreso</th>
-          </thead>
-          <tbody>
-          	<td><?php echo $afp ?></td>
-          	<td><?php echo $fechaing ?></td>
-          	<td><?php echo $horaing ?></td>
-          </tbody>
-        </table>
-        </div>
-      </div>
+			            <thead>
+			              <th class="text-center">Edad:</th>
+			              <th class="text-center">Fecha Nacimiento:</th>
+			              <th class="text-center">Genero:</th>
+			            </thead>
+			            <tr class="text-center">   
+			              <td><?php echo $datos['edad']; ?></td>
+			              <td><?php echo $datos['fecha_nacimiento']; ?></td>
+			              <td><?php echo $datos['genero']; ?></td>
+			            </tr>
+			            <thead>      
+			              <th class="text-center">Estado Civil:</th>
+			              <th class="text-center">Lugar Nacimiento:</th>
+			              <th class="text-center">Hijos</th>
+			            </thead>
+			            <tr class="text-center">   
+			              <td><?php echo $datos['estado_civil']; ?></td>
+			              <td><?php echo $datos['lugar_nacimiento']; ?></td>
+			              <td><?php echo $datos['hijos']; ?></td>
+			            </tr>
+			            </tbody>
+			    </table>
+		    </div>
+			   
+	        <table class="table table-bordered">
+	            <tbody>
+	           <thead> 
+		            <th class="text-center">Numero Celular:</th>
+		            <th class="text-center">Direccion</th>
+		            <th class="text-center">Escolaridad</th>
+	       			<th class="text-center">Motivo de Evaluacion:</th>
+	        		<th class="text-center">EPS</th>
+		          	<th class="text-center">ARL</th>
+		          	<th class="text-center">AFP</th>
+	          		<th class="text-center">Fecha Ingreso</th>
+	          		<th class="text-center">Hora Ingreso</th>
+	           </thead>
+	            <tr class="text-center">
+		            <td><?php echo $datos['celular']; ?></td>
+		            <td><?php echo $datos['direccion']; ?></td>  
+		            <td><?php echo $datos['escolaridad']; ?></td> 
+		            <td><?php echo $datos['motivo_evaluacion']; ?></td>
+		            <td><?php echo $datos['eps']; ?></td>
+		      		<td><?php echo $datos['arl']; ?></td>
+		      		<td><?php echo $datos['afp']; ?></td>
+		          	<td><?php echo $datos['fecha']; ?></td>
+		          	<td><?php echo $datos['hora']; ?></td>             
+	            </tr>
+	        </table>
 
-
-      <div class="col-sm-12"> 
-        <table class="table table-bordered">
-          <tbody style="font-size: 13px;">
-          <thead>
-            <th>Nombre de la Empresa:</th>
-            <th>Actividad Economica:</th>
-            <th>Ciudad:</th>
-            <th>Direccion de la empresa</th>
-            <th>Numero de Nit</th>
-            <th>Telefono</th>
-            <th>Cargo ejercer</th>
-          </thead>
-            <tr>
-              <td><?php echo $nombreempresa ?></td>
-              <td><?php echo $actividadeconomica ?></td>
-              <td><?php echo $ciudad ?></td>
-              <td><?php echo $direccion_empresa ?></td>
-              <td><?php echo $nit ?></td>
-              <td><?php echo $telefono_empresa ?></td>
-              <td><?php echo $cargoadesempenar ?></td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-      <!--  -->
-    </div>
-  </div>
+  	 
+	        <table class="table table-bordered"> 
+	          <thead>
+	            <th class="text-center">Nombre de la Empresa:</th>
+	            <th class="text-center">Actividad Economica:</th>
+	            <th class="text-center">Ciudad:</th>
+	            <th class="text-center">Direccion de la empresa</th>
+	            <th class="text-center">Numero de Nit</th>
+	            <th class="text-center">Telefono</th>
+	            <th class="text-center">Cargo a ejercer</th>
+	          </thead>
+	          <tbody>
+	            <tr class="text-center">
+	              <td><?php echo $datos['nombre_empresa']; ?></td>
+	              <td><?php echo $datos['actividad_economica']; ?></td>
+	              <td><?php echo $datos['ciudad']; ?></td>
+	              <td><?php echo $datos['direccion_empresa']; ?></td>
+	              <td><?php echo $datos['numero_nit']; ?></td>
+	              <td><?php echo $datos['telefono_empresa']; ?></td>
+	              <td><?php echo $datos['cargo_a_desempenar']; ?></td>
+	            </tr>
+	          </tbody>
+	        </table>
+	    </div>
+  	</div>
 </div>
-
-
-
 </body>
 
-
- <?php 
-	}//array
+<?php 
+}//array
 
 }else{//rows
 
