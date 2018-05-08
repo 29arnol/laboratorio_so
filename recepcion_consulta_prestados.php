@@ -14,7 +14,7 @@
     <form accept-charset="utf-8" method="POST">
       <div class="container">
         <div class="col-sm-12">
-          <label>Buscar equipos prestados:</label>
+          <label><span class="fa fa-search"></span> Buscar equipos prestados:</label>
           <input class="form-control" type="text" name="busqueda" id="busqueda" maxlength="30" autocomplete="off" onKeyUp="buscar();">
           <div id="resultadoBusqueda"></div>    
         </div>

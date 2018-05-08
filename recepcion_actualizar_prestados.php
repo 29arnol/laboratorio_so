@@ -67,50 +67,56 @@
       </label>
   	</div>
 
-  	<form class="" method="POST" action="">
-  		<div class="col-sm-6"> 
-		    <label>Hora de Entrada:</label>
-		    <input class="form-control" type="text" name="hora_entrada" value="<?php echo $hora; ?>" required>
-  		</div>
-	      
-      <div class="col-sm-6">
-        <label>Nombre Persona Entrega:</label>
-        <input class="form-control" type="text" name="nombres_persona_entrega" required><br>
-      </div>
+  	<form name="formulario" method="POST" action="">
 
-      <div class="col-sm-6">
-        <label class="">Selecciona un estado de devolucion:</label>    
-        <select name="est" class="form-control">
-          <?php 
-            $disponible = "SELECT * FROM equipo_disponible Where id_estado = $est"; 
-            $quer = mysqli_query($conexion,$disponible);
-            while ($dat = mysqli_fetch_array($quer)) {
-              echo '<option value="'.$dat['id_estado'].'">'.$dat['estado_eq'].'</option>';
-            }
-            $disp = "SELECT * FROM equipo_disponible Where id_estado != $est"; 
-            $qry = mysqli_query($conexion,$disp);
-            while ($data = mysqli_fetch_array($qry)) {
-              echo '<option value="'.$data['id_estado'].'">'.$data['estado_eq'].'</option>';
-            }
-          ?>
-        </select>
+      <div class="row">
+    		<div class="col-sm-6"> 
+  		    <label>Hora de Entrada:</label>
+  		    <input class="form-control" type="text" name="hora_entrada" value="<?php echo $hora; ?>" required>
+    		</div>
+  	      
+        <div class="col-sm-6">
+          <label>Nombre Persona Entrega:</label>
+          <input class="form-control" type="text" name="nombres_persona_entrega" required><br>
+        </div>
       </div>
-        
-      <div class="col-sm-6">
-        <label>Retorno:</label>
-        <fieldset>
-          <label>
-            <input type="radio" name="devuelto" value="Si"> Si  /
-            <input type="radio" name="devuelto" value="No" checked> No 
-          </label>
-        </fieldset><br>
+      
+      <div class="row">
+        <div class="col-sm-6">
+          <label class="">Selecciona un estado de devolucion:</label>    
+          <select name="est" class="form-control">
+            <?php 
+              $disponible = "SELECT * FROM equipo_disponible Where id_estado = $est"; 
+              $quer = mysqli_query($conexion,$disponible);
+              while ($dat = mysqli_fetch_array($quer)) {
+                echo '<option value="'.$dat['id_estado'].'">'.$dat['estado_eq'].'</option>';
+              }
+              $disp = "SELECT * FROM equipo_disponible Where id_estado != $est"; 
+              $qry = mysqli_query($conexion,$disp);
+              while ($data = mysqli_fetch_array($qry)) {
+                echo '<option value="'.$data['id_estado'].'">'.$data['estado_eq'].'</option>';
+              }
+            ?>
+          </select>
+        </div>
+          
+        <div class="col-sm-6">
+          <label>Retorno:</label>
+          <fieldset>
+            <label>
+              <input type="radio" name="devuelto" value="Si"> Si  /
+              <input type="radio" name="devuelto" value="No" checked> No 
+            </label>
+          </fieldset><br>
+        </div>
       </div>
-
-
-  	  <div class="col-sm-12">
-  			<label>Observacion:</label>
-        <textarea  class="form-control" type="text" name="observaciones" rows="4"><?php echo $observaciones; ?></textarea>
-  		</div> 
+      
+      <div class="row">
+    	  <div class="col-sm-12">
+    			<label>Observacion:</label>
+          <textarea  class="form-control" type="text" name="observaciones" rows="4"><?php echo $observaciones; ?></textarea>
+    		</div> 
+      </div>
      
       <div class="col-sm-12">
         <div class="text-center"><br>
@@ -122,6 +128,28 @@
 </body>
 
   <script type="text/javascript">
+    function show(){
+      var Digital=new Date()
+      var hours=Digital.getHours()
+      var minutes=Digital.getMinutes()
+      var seconds=Digital.getSeconds()
+      var dn="AM" 
+      if (hours>12){
+        dn="PM"
+        hours=hours-12
+      }
+      if (hours==0)
+      hours=12
+      if (minutes<=9)
+      minutes="0"+minutes
+      if (seconds<=9)
+      seconds="0"+seconds
+      document.formulario.hora_entrada.value=hours+":"+minutes+":"
+      +seconds+" "+dn
+      setTimeout("show()",1000)
+    }
+    show()
+
     function esInteger(e) {
       var charCode 
       charCode = e.keyCode 

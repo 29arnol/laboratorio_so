@@ -234,6 +234,15 @@
   .position{
     padding: 6px;
   }
+
+  .element{
+    padding: 18px;
+  }
+
+  .element2{
+    padding: 10px;
+  }
+
   .center{
     margin: 0 auto;"
   }

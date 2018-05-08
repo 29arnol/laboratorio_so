@@ -5,17 +5,25 @@
   <title>Laboratorio SST</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"> -->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"><!-- ya -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"><!-- ya -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><!-- ya -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script> <!-- ya -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
  <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+ <!--  <link rel="stylesheet" href="css/bootstrap.min.css"> -->
   <!-- <script src="jquery/jquery.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="jquery/jquery.expander.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+<!--   <script src="js/bootstrap.min.js"></script> -->
 
 <style type="text/css">
   input.error{
@@ -224,6 +232,9 @@
   .portafoliotext{
     font-size: 13px;
   }
+  .pad{
+    padding: 4px;
+  }
   li{
     font-size: 12px;
     padding: 5px;
@@ -235,7 +246,7 @@
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" >
 
-<div class="container">
+<!-- <div class="container">
 <nav class="navbar navbar-default navbar-fixed-top">
   
     <div class="navbar-header">
@@ -261,53 +272,68 @@
 
     </div>
   </nav>
-</div>
+</div> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+  <a class="navbar-brand" href="#">LABORATORIO SST</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
 
-<div class="jumbotron" >
-  <!-- <h2 class="text-center">Laboratorio de Sefuridad y Salud en el Trabajo</h2> -->
-  <div class="container">
-  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel" style="margin-bottom: -53px;">
-    <!-- Indicators -->
-<!--     <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li class="white" data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol> -->
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right"> 
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#services">SERVICES</a></li>
+        <li><a href="#portfolio">PORTFOLIO</a></li>
+        <li><a href="#pricing">PRICING</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <h4 class="white">Examenes Medico Ocupacional</h4>
-      </div>
-      <div class="item">
-        <h4 class="white">Examenes de Audiometria</h4>
-      </div>
-      <div class="item">
-        <h4 class="white">Examenes de Visiometria</h4>
-      </div>
-      <div class="item">
-        <h4 class="white">Examenes de Espirometria</h4>
-      </div>
-      <div class="item">
-        <h4 class="white">Examenes de Psicologia</h4>
-      </div>
-      <div class="item">
-        <h4 class="white">Mediciones de Higiene Ambiental</h4>
-      </div>
+        </li>
+      </ul>
     </div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left white" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="white glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-  </div>
+    <span class="navbar-text">
+      <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><span class="fa fa-user"  aria-hidden="true"></span> Login</a>
+    </span>
+</nav>
+
+
+<div class="jumbotron jumbotron-fluid" >
+
+  <div id= "carouselExampleFade" class= "carousel slide carousel-fade" data-ride= "carousel" > 
+    <div class= "carousel-inner" > 
+      <div class= "carousel-item active" > 
+        <!-- <img class= "d-block w-100" src= ".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt= "First slide" >  -->
+        <h3 class="text-center">Examenes Medico Ocupacional</h3>
+      </div> 
+      <div class= "carousel-item"> 
+        <h3 class="text-center">Examenes de Audiometria</h3>
+      </div>
+      <div class= "carousel-item"> 
+        <h3 class="text-center">Examenes de Visiometria</h3>
+      </div> 
+      <div class= "carousel-item"> 
+        <h3 class="text-center">Examenes de Espirometria</h3>
+      </div> 
+      <div class= "carousel-item"> 
+        <h3 class="text-center">Examenes de Psicologia</h3>
+      </div>
+      <div class= "carousel-item"> 
+        <h3 class="text-center">Mediciones de Higiene Ambiental</h3>
+      </div>
+    </div> 
+      <a class= "carousel-control-prev" href= "#carouselExampleFade" role= "button" data-slide= "prev" > 
+        <span class= "carousel-control-prev-icon" aria-hidden= "true" ></span> 
+        <span class= "sr-only"> Previous </span> 
+      </a> 
+      <a class= "carousel-control-next" href= "#carouselExampleFade" role= "button" data-slide= "next" > 
+        <span class= "carousel-control-next-icon" aria-hidden= "true" ></span> 
+        <span class= "sr-only"> Next </span> 
+      </a> 
+  </div> 
 </div>
 
 <!-- Container (About Section) -->
@@ -357,14 +383,14 @@
     <div class="col-sm-3">
       <div class="panel panel-default thumb">
         <div class="panel-body expandable">
-          <div class="text-center"><span class="glyphicon glyphicon-heart logo-small"></span></div>
+          <div class="text-center"><span class="fa fa-heart logo-small"></span></div>
           <h4 class="text-center">Medicina Preventiva Y Del Trabajo</h4>
           <p class="portafoliotext">
             • Examen Medico Laboral: Ingreso y Egreso<br>
             • Audiometria Laboral<br>
             • Espirometria Laboral<br>
             • Visiometria Laboral<br>
-            • Optometria Laboral<br>
+            <!-- • Optometria Laboral<br> -->
             • Programas de Vigilancia Epidemiologica:
             Diseño, Implementacion y Seguimiento.
           </p>
@@ -374,8 +400,8 @@
 
     <div class="col-sm-3">
       <div class="panel panel-default thumb">
-        <div class="panel-body expandable" style="margin-bottom: 23px;">
-          <div class="text-center"><span class="glyphicon glyphicon-lock logo-small"></span></div>
+        <div class="panel-body expandable">
+          <div class="text-center"><span class="fa fa-lock logo-small"></span></div>
           <h4 class="text-center">Seguridad Industrial</h4>
           <P class="portafoliotext">
             • Matriz de identificacion de los peligros y valoraciones de riesgos.<br>
@@ -387,7 +413,7 @@
             • Diseño y analisis de los puestos de trabajo<br>
             • Diseño e implementacion de planes de emergencia<br>
             • Elaboracion de procedimientos de trabajo seguro.<br>
-            • Asesorias en tareas de alto riesgo<br>
+            • Asesorias en tareas de alto riesgo.
           </P>
         </div> 
       </div>
@@ -396,14 +422,14 @@
     <div class="col-sm-3">
       <div class="panel panel-default thumb">
         <div class="panel-body">
-          <div class="text-center"><span class="glyphicon glyphicon-leaf logo-small"></span></div>
+          <div class="text-center"><span class="fa fa-leaf logo-small"></span></div>
           <h4 class="text-center">Higiene Industrial</h4>
           <p class="portafoliotext">
             • Sonometria<br>
             • Dosimetria de ruido<br>
             • Mediciones de iluminacion<br>
             • Mediciones de temperatura-Stress termico<br>
-            • Estudio del nivel de vibraciones: control de procesos, vigilancia de la salud de trabajadores expuestos.<br>
+            • Estudio del nivel de vibraciones: control de procesos, vigilancia de la salud de trabajadores expuestos.
           </p>
         </div>  
       </div>
@@ -412,7 +438,7 @@
     <div class="col-sm-3">
       <div class="panel panel-default thumb">
         <div class="panel-body" style="margin-bottom: 63px;">
-          <div class="text-center"><span class="glyphicon glyphicon-wrench logo-small"></span></div>
+          <div class="text-center"><span class="fa fa-wrench logo-small"></span></div>
           <h4 class="text-center">Asesoria y Asistencia Tecnica para el Desarrollo e Implementacion del SG-SST</h4>
           <h2 class="text-center">PSICOLOGIA LABORAL</h2>
           <p class="portafoliotext">
@@ -425,10 +451,10 @@
 </div>
 
 <!-- Container (Portfolio Section) -->
-<div id="portfolio" class="col-sm-12 text-center bg-grey"><br>
+<div class="col-sm-12 text-center bg-grey"><br>
   <h2>Portfolio</h2>
   <h4>Lo que hemos creado</h4>
-  <div class="row text-center slideanim">
+  <div class="row text-center slideanim pad">
 
     <div class="col-sm-4">
       <div class="panel panel-default">
@@ -444,7 +470,7 @@
                 • Asesoría en el registro estadísticos de morbi-mortalidad general (Enfermedad común) y especifica por riesgos (Enfermedad Laboral).<br>
                 • Elaboración y diseño de los Profesiogramas (Protocolos de evaluación médica ocupacional de acuerdo al cargo y complementados con la Matriz de Peligro de la empresa).<br>
                 • Diseño y ejecución de campañas educativas.<br>
-                • Elaboración de Diagnósticos de Salud.<br>
+                • Elaboración de Diagnósticos de Salud.
               </p>
           </div>
         </div>
@@ -453,8 +479,8 @@
 
     <div class="col-sm-4">
       <div class="panel panel-default">
-        <div class="panel-body" style="margin-bottom: 10px;">
-          <div class="thumbnail thumb1">
+        <div class="panel-body">
+          <div class="thumbnail thumb1" >
             <p><strong>Examen Médico Laboral</strong></p>
             <img src="images/medico.jpg" alt="Medicina Preventiva" class="img-thumbnail im">        
             <div class="portafoliotext text-justify">
@@ -467,7 +493,7 @@
 
     <div class="col-sm-4">
       <div class="panel panel-default">
-        <div class="panel-body" style="margin-bottom:  20px;">    
+        <div class="panel-body" style="margin-bottom:  7px;">    
           <div class="thumbnail expandable">
             <p><strong>Audiometría Laboral</strong></p>
             <img src="images/audiometria.jpg" alt="Medicina Preventiva" class="img-thumbnail im">        
@@ -480,13 +506,13 @@
         </div>
       </div>
     </div>
-</div>
+</div><br>
 
 <div class="row text-center slideanim">
 
   <div class="col-sm-4">
     <div class="panel panel-default">
-      <div class="panel-body">
+      <div class="panel-body"  style="margin-bottom:  2px;">
         <div class="thumbnail expandable">
           <p><strong>Visiometria Laboral</strong></p>
           <img src="images/visiometria.jpg" alt="Medicina Preventiva" class="img-thumbnail im">        
@@ -545,18 +571,18 @@
               • Diseño e implementación de planes de emergencia.<br>
               • Elaboración procedimientos de trabajo seguros.<br>
               • Asesorías en tareas de alto riesgo. 
-            </p><br>
+            </p>
           </div>
         </div>
       </div>
     </div>
-</div>
+</div><br>
 
 <div class="row text-center slideanim">
   
   <div class="col-sm-4">
     <div class="panel panel-default">
-      <div class="panel-body" style="margin-bottom:  50px;">
+      <div class="panel-body" style="margin-bottom: 75px;">
         <div class="thumbnail expandable">
           <p><strong>Higiene Industrial</strong></p>
           <img src="images/higiene_industrial.jpg" alt="Medicina Preventiva" class="img-thumbnail im">
@@ -580,7 +606,7 @@
 
   <div class="col-sm-4">
     <div class="panel panel-default">
-      <div class="panel-body" style="margin-bottom: 10px;">
+      <div class="panel-body" >
         <div class="thumbnail expandable">
           <p><strong>Asesoría y Asistencia Técnica para la Implementación y Desarrollo del SG-SST (Sistema de Gestión en Seguridad y Salud en el Trabajo)</strong></p>
           <img src="images/sgsst.jpg" alt="Medicina Preventiva" class="img-thumbnail im">
@@ -603,7 +629,7 @@
 
   <div class="col-sm-4">
     <div class="panel panel-default">
-      <div class="panel-body">
+      <div class="panel-body" style="margin-bottom: 10px;">
         <div class="thumbnail expandable">
           <p><strong>Psicología Laboral</strong></p>
           <img src="images/psicologia.jpg" alt="Medicina Preventiva" class="img-thumbnail im">
@@ -677,6 +703,74 @@
   </div><br>
 </footer>
 
+
+<script type="text/javascript" src="jvalidation/dist/jquery.validate.js"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Usuario Inicio de sesion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" action="login.php" method="POST" id="formulario" name="form">
+          <div class="form-group">
+            <label class="control-label" for="email">
+              <span class="fa fa-list"> Area:</span>
+            </label>
+            <div class="col-sm-12">
+              <select name="tiporol" id="tiporol" class="form-control ">
+                <option value="">Seleccionar</option>
+                <option value="1">Recepcion</option>
+                <option value="2">Enfermeria</option>
+                <option value="3">Audiometria</option>
+                <option value="4">Espirometria</option>
+                <option value="5">Visiometria</option>
+                <option value="7">Psicologia</option>
+                <option value="6">Medico</option>
+                <option value="8">Gestion Higiene</option>
+                <option value="9">Administracion</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="user">
+              <span class="fa fa-user"> Usuario:</span>
+            </label>
+            <div class="col-sm-12">
+              <input type="text" class="form-control" id="user" placeholder="Enter user" name="user">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="password">
+              <span class="fa fa-lock"> Password:</span>
+            </label>
+            <div class="col-sm-12"> 
+              <div class="input-group">
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">        
+                <span class="input-group-addon">
+                  <i class="fa fa-eye-open" id="mostrar_contrasena" title="clic para mostrar contraseña" href="#"></i>
+                </span>
+              </div>
+              <label for="password" generated="true" class="error"></label> 
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-success btn-sm" id="btn">Ingresar</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   $(document).ready(function(){
     // Add smooth scrolling to all links in navbar + footer link
@@ -748,73 +842,7 @@
   });
 </script>
 
-<!---->
-<script type="text/javascript" src="jvalidation/dist/jquery.validate.js"></script>
-  <!-- Modal -->
-<div class="container">
-  <div class="modal fade" id="myModal" role="dialog" style="top: 130px;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header" style="background-color: #0685E5;" >
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="color: #FFFFFF;">Usuario Inicio de sesion</h4>
-        </div>
-        <div class="modal-body">
-          <?php //include ('secure.php'); ?>
-          <form class="form-horizontal" action="login.php" method="POST" id="formulario" name="form">
-            <div class="form-group">
-              <label class="control-label col-sm-2" for="email">
-                <span class=" glyphicon glyphicon-list"> Area:</span>
-              </label>
-              <div class="col-sm-10">
-                <select name="tiporol" id="tiporol" class="form-control ">
-                  <option value="">Seleccionar</option>
-                  <option value="1">Recepcion</option>
-                  <option value="2">Enfermeria</option>
-                  <option value="3">Audiometria</option>
-                  <option value="4">Espirometria</option>
-                  <option value="5">Visiometria</option>
-                  <option value="7">Psicologia</option>
-                  <option value="6">Medico</option>
-                  <option value="8">Gestion Higiene</option>
-                  <option value="9">Administracion</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-sm-2" for="user">
-                <span class="glyphicon glyphicon-user">Usuario:</span>
-              </label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="user" placeholder="Enter user" name="user">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-sm-2" for="password">
-                <span class="glyphicon glyphicon-lock">Password:</span>
-              </label>
-              <div class="col-sm-10"> 
-                <div class="input-group">
-                  <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">        
-                  <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-eye-open" id="mostrar_contrasena" title="clic para mostrar contraseña" href="#"></i>
-                  </span>
-                </div>
-                <label for="password" generated="true" class="error"></label> 
-              </div><br>
-            </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-success btn-sm" id="btn">Ingresar</button>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div> 
-</div>
 
 </body>
+
 </html>

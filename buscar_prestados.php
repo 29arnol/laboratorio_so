@@ -1,6 +1,6 @@
 <?php
 include ('includes/conexion.php');
-include ('bar/style_bar/estilo.css');
+include ('bar/css/estilo.css');
 //Variable de búsqueda
 $consultaBusqueda = $_POST['valorBusqueda'];
 //Filtro anti-XSS
@@ -22,7 +22,7 @@ if (isset($consultaBusqueda)) {
 	$filas = mysqli_num_rows($consulta);
 	//Si no existe ninguna fila que sea igual a $consultaBusqueda, entonces mostramos el siguiente mensaje
 	if ($filas === 0 or $consultaBusqueda == "") {
-		$mensaje = "<p>No hay ningún equipo registrado con esa carateristica</p>";
+		$mensaje = '<p><span class="fa fa-exclamation-triangle"></span> No hay ningún equipo registrado con esa carateristica</p>';
 	}else{
 		//Si existe alguna fila que sea igual a $consultaBusqueda, entonces mostramos el siguiente mensaje
 		echo 'Resultados para <strong>'.$consultaBusqueda.'</strong>';
@@ -58,7 +58,7 @@ if (isset($consultaBusqueda)) {
 			<div class="container col-sm-12">           
 			  <table class="table table-bordered">
 			    <thead>
-			      <tr>
+			      <tr class="size_font">
 			      	<th class="text-center">Equipo</th>
 			        <th class="text-center">Fecha</th>
 			        <th class="text-center">Estado</th>
@@ -68,7 +68,7 @@ if (isset($consultaBusqueda)) {
 			        <th class="text-center">Entrada</th>
 			        <th class="text-center">Aprendiz</th>
 			        <th class="text-center">Instructor</th>
-			        <th class="text-center">Entregado por</th>
+			        <th class="text-center">Devolucion</th>
 			        <th class="text-center">Observaciones</th>
 			      </tr>
 			    </thead>

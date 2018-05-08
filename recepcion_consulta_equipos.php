@@ -14,7 +14,7 @@
 <body><br>
   <div class="container">
     <div class="col-sm-12">
-      <label>Buscar equipos registrados:</label>
+      <label><span class="fa fa-search"></span> Buscar equipos registrados:</label>
       <input class="form-control" type="text" name="busqueda" id="busqueda" maxlength="30" autocomplete="on" onKeyUp="buscar();">
       <div style="width: 1160px;" id="resultadoBusqueda"></div>
     </div>

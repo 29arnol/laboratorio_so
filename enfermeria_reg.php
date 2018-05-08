@@ -10,6 +10,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="text/javascript" src="jvalidation/dist/jquery.validate.js"></script>
+		<!--  -->
+<!-- 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> -->
+		<!--  -->
 	</head>
 
 <?php 
@@ -1547,7 +1554,7 @@
 						</thead>
 						<tr class="text-center">
 							<td>
-								<div class="P">
+								<div class="element">
 									<label for="p_auditivos" generated="true" class="error"></label>
 									Si <input type="radio" name="p_auditivos" value="Si"> / 
 									No <input type="radio" name="p_auditivos" value="No" checked>
@@ -1555,7 +1562,7 @@
 							</td>
 
 							<td>
-								<div class="P">
+								<div class="element">
 									<label for="p_respiratorios" generated="true" class="error"></label>
 									Si <input type="radio" name="p_respiratorios" value="Si"> / 
 									No <input type="radio" name="p_respiratorios" value="No" checked>
@@ -1568,7 +1575,7 @@
 							</td>  
 
 							<td>
-								<div class="P">
+								<div class="element">
 									<label for="p_adecuada" generated="true" class="error"></label>
 									Si <input type="radio" name="p_adecuada" value="Si"> / 
 									No <input type="radio" name="p_adecuada" value="No" checked>
@@ -1576,7 +1583,7 @@
 							</td>
 
 							<td> 
-								<div class="P">
+								<div class="element">
 									<label for="todoadecuado" generated="true" class="error"></label>
 									Si <input type="radio" name="todoadecuado" value="Si"> / 
 									No <input type="radio" name="todoadecuado" value="No" checked>
@@ -1620,21 +1627,21 @@
 							<tr class="text-center">	            	
 							<td>
 									<div>
-										<div class="position">
-											<input class="form-control" style="width: 160px;" type="date" name="fechaaccidente" >
+										<div class="element2">
+											<input class="form-control input-sm" style="width: 160px;" type="date" name="fechaaccidente" >
 										</div>  
 									</div>
 								</td>
 							<td>
-									<textarea class="form-control input-sm" type="text" name="empresaaccidente"></textarea>
-									<label for="empresaaccidente" generated="true" class="error"></label><br>
-								</td>
+								<textarea class="form-control input-sm" type="text" name="empresaaccidente"></textarea>
+								<label for="empresaaccidente" generated="true" class="error"></label><br>
+							</td>
 							<td>                  
 									<textarea class="form-control input-sm" type="text" name="causaaccidente" ></textarea>
 									<label for="causaaccidente" generated="true" class="error"></label><br>
 								</td>
 							<td>
-									<div class="position">
+									<div class="element2">
 										<input type="text" name="lesionaccidente" class="form-control input-sm">
 									</div>
 								</td>
@@ -1643,12 +1650,12 @@
 									<label for="parteafectadaaccidente" generated="true" class="error"></label><br>
 								</td>
 							<td>
-									<div class="position">
+									<div class="element2">
 										<input type="text" name="incapacidadaccidente" class="form-control input-sm">           
 									</div>
 								</td>
 							<td>
-									<div class="position">
+									<div class="element2">
 										<input type="text" name="secuelaaccidente" class="form-control input-sm">
 									</div>  
 								</td>
@@ -1900,7 +1907,7 @@
 							<td> 
 								<div class="N">
 									<label for="exbebedor_anos" generated="true" class="error"></label><br>
-									<input style="width: 100px;" class="form-control input-sm center" type="text" name="exbebedor_anos" >
+									<input style="width: 100px;" class="form-control input-sm center" type="text" name="exbebedor_anos">
 								</div>
 							</td>
 						</tr>

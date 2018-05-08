@@ -217,61 +217,70 @@
           </table>
         </div><!--finsm-->
       </div>
-    </div>
+    </div><br>
 
-    <div class="panel panel-default">
+    <div class="panel panel-default container">
       <div class="panel-heading text-center">Identificacion de la Empresa</div>
-      <div class="panel-body">      
-        <div class="col-sm-12"><br>
-          <label>Nombre de la empresa:</label>
-          <input class="form-control" type="text" name="nombreempresa" value='<?php echo $nombreempresa ?>'  >
+      <div class="panel-body"> 
+        <div class="row">
+          <div class="col">
+            <label>Nombre de la empresa:</label>
+            <input class="form-control" type="text" name="nombreempresa" value='<?php echo $nombreempresa ?>'  >
+          </div>
         </div>
 
-        <div class="col-sm-6"><br>
-          <label>Actividad Económica:</label>
-          <input class="form-control" type="text" name="actividadeconomica" value='<?php echo $actividadeconomica ?>' >
+        <div class="row">
+          <div class="col"><br>
+            <label>Actividad Económica:</label>
+            <input class="form-control" type="text" name="actividadeconomica" value='<?php echo $actividadeconomica ?>' >
+          </div>
+
+          <div class="col-sm-6"><br> 
+            <label>Numero Nit:</label>
+            <input class="form-control" type="text" name="nit" value='<?php echo $nit ?>' >
+          </div>  
         </div>
 
-        <div class="col-sm-6"><br> 
-          <label>Numero Nit:</label>
-          <input class="form-control" type="text" name="nit" value='<?php echo $nit ?>' >
-        </div>
-         
+        <div class="row">
+          <div class="col-sm-6"><br>   
+            <label>Cargo a desempeñar:</label>
+            <label for="cargodesempena" generated="true" class="error"></label> 
+            <input class="form-control" type="text" name="cargodesempena" value='<?php echo $cargoadesempenar ?>'>
+          </div>
 
-        <div class="col-sm-6"><br>   
-          <label>Cargo a desempeñar:</label>
-          <label for="cargodesempena" generated="true" class="error"></label> 
-          <input class="form-control" type="text" name="cargodesempena" value='<?php echo $cargoadesempenar ?>'>
+          <div class="col-sm-6"><br> 
+            <label>Ciudad:</label>
+            <input class="form-control" type="text" name="ciudad" value='<?php echo $ciudad ?>' >
+          </div>
         </div>
+        
+        <div class="row">
+          <div class="col-sm-6"><br> 
+            <label>Direccion de la Empresa:</label>
+            <input class="form-control" type="text" name="direccion_empresa" value='<?php echo $direccion_empresa ?>' >
+          </div>
 
-        <div class="col-sm-6"><br> 
-          <label>Ciudad:</label>
-          <input class="form-control" type="text" name="ciudad" value='<?php echo $ciudad ?>' >
-        </div>
-
-        <div class="col-sm-6"><br> 
-          <label>Direccion de la Empresa:</label>
-          <input class="form-control" type="text" name="direccion_empresa" value='<?php echo $direccion_empresa ?>' >
-        </div>
-
-        <div class="col-sm-6"><br> 
-          <label>Telefono de la Empresa:</label>
-          <input class="form-control" type="text" name="telefono_empresa" value='<?php echo $telefono_empresa ?>' >
-        </div>
+          <div class="col-sm-6"><br> 
+            <label>Telefono de la Empresa:</label>
+            <input class="form-control" type="text" name="telefono_empresa" value='<?php echo $telefono_empresa ?>' >
+          </div>
+        </div><br>
       </div>  
-    </div>      
+    </div><br>      
 
-    <div class="panel panel-default">
+    <div class="panel panel-default container">
       <div class="panel-heading text-center">Identificación del trabajador:</div>
       <div class="panel-body">
-        <div class="col-sm-6"><br> 
-          <label>Nombres y Apellidos:</label>
-          <label for="nombres" generated="true" class="error"></label>
-          <input class="form-control" type="text" name="nombres" id="nombres" value='<?php echo $nombresapellidos ?>' >
+        <div class="row">
+          <div class="col"><br> 
+            <label>Nombres y Apellidos:</label>
+            <label for="nombres" generated="true" class="error"></label>
+            <input class="form-control" type="text" name="nombres" id="nombres" value='<?php echo $nombresapellidos ?>' >
+          </div>
         </div>
-
-        <div class="col-sm-6"><br>   
-          <div>
+        
+        <div class="row">
+          <div class="col"><br>   
             <label>Seleccione Tipo Documento:</label>
             <label for="tipodocumento" generated="true" class="error"></label>
             <select class="form-control" name="tipodocumento">
@@ -282,53 +291,59 @@
                   echo "<option value='".$row2['id']."'>".$row2['tipo_documento']."</option>";
                 }
               ?>
-            </select>
-            <br><br>  
+            </select>  
+          </div>
+
+          <div class="col"><br>   
+            <label>Numero de Documento:</label>
+            <label for="numero_documento" generated="true" class="error"></label>
+            <input class="form-control" type="int" name="numero_documento" id="numero_documento" onkeypress="return esInteger(event)" value='<?php echo $numero_documento ?>' required>
           </div>
         </div>
+        
+        <div class="row">
+          <div class="col-sm-6"><br>       
+            <label>Dirección:</label>
+            <label for="direccion" generated="true" class="error"></label>
+            <input class="form-control" type="text" name="direccion" value='<?php echo $direccion ?>'>
+          </div>
 
-        <div class="col-sm-6"><br>   
-          <label>Numero de Documento:</label>
-          <label for="numero_documento" generated="true" class="error"></label>
-          <input class="form-control" type="int" name="numero_documento" id="numero_documento" onkeypress="return esInteger(event)" value='<?php echo $numero_documento ?>' required>
+          <div class="col-sm-6"><br>
+            <label>Fecha Expedicion:</label>
+            <label for="fechaexpedicion" generated="true" class="error"></label>
+            <input class="form-control" type="date" name="fechaexpedicion" value='<?php echo $expedicion ?>' required>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-6"><br>
+            <label>Edad:</label>
+            <label for="edad" generated="true" class="error"></label>
+            <input class="form-control" type="int" name="edad" onkeypress="return esInteger(event)" value='<?php echo $edad ?>' required>
+          </div>
+
+          <div class="col-sm-6"><br>
+            <label>Lugar de Nacimiento:</label>
+             <label for="lugarnacimiento" generated="true" class="error"></label>
+            <input class="form-control" type="text" name="lugarnacimiento" value='<?php echo $lugarnacimiento ?>' required> 
+          </div> 
         </div>
 
-        <div class="col-sm-6"><br>       
-          <label>Dirección:</label>
-          <label for="direccion" generated="true" class="error"></label>
-          <input class="form-control" type="text" name="direccion" value='<?php echo $direccion ?>'>
+        <div class="row">
+          <div class="col-sm-6"><br>
+            <label>Fecha de Nacimiento:</label>
+            <label for="fechana" generated="true" class="error"></label>
+            <input class="form-control" type="date" name="fechana" value='<?php echo $fechanacimiento ?>' required>
+            <br>
+          </div>
+
+          <div class="col-sm-6"><br> 
+            <label>Celular:</label>
+            <label for="celular" generated="true" class="error"></label>
+            <input class="form-control" type="int" name="celular" value='<?php echo $celular ?>' onkeypress="return esInteger(event)">
+          </div> 
         </div>
 
-        <div class="col-sm-3"><br>
-          <label>Fecha Expedicion:</label>
-          <label for="fechaexpedicion" generated="true" class="error"></label>
-          <input class="form-control" type="date" name="fechaexpedicion" value='<?php echo $expedicion ?>' required>
-        </div>
-
-        <div class="col-sm-3"><br>
-          <label>Edad:</label>
-          <label for="edad" generated="true" class="error"></label>
-          <input class="form-control" type="int" name="edad" onkeypress="return esInteger(event)" value='<?php echo $edad ?>' required>
-        </div>
-
-        <div class="col-sm-6"><br>
-          <label>Lugar de Nacimiento:</label>
-           <label for="lugarnacimiento" generated="true" class="error"></label>
-          <input class="form-control" type="text" name="lugarnacimiento" value='<?php echo $lugarnacimiento ?>' required> 
-        </div> 
-
-        <div class="col-sm-6"><br>
-          <label>Fecha de Nacimiento:</label>
-          <label for="fechana" generated="true" class="error"></label>
-          <input class="form-control" type="date" name="fechana" value='<?php echo $fechanacimiento ?>' required>
-          <br>
-        </div>
-
-        <div class="col-sm-6"><br> 
-          <label>Celular:</label>
-          <label for="celular" generated="true" class="error"></label>
-          <input class="form-control" type="int" name="celular" value='<?php echo $celular ?>' onkeypress="return esInteger(event)">
-        </div> 
         <!---->
         <div class="col-sm-12"> 
           <table class="table table-bordered">  
@@ -400,13 +415,12 @@
         </div> 
         
         <div class="col-sm-12">
-          <br><br>
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th class="text-center" colspan="9">Escolaridad:</th>
               </tr>
-              <tr>
+              <tr class="size_font">
               	<th>Analfabeta</th>
               	<th>Primaria Completa</th>
               	<th>Primaria Incompleta</th>
@@ -530,32 +544,36 @@
             </tbody>
           </table>
         </div><!--finsm-->
+        
+        <div class="row">
+          <div class="col-sm-6"><br>
+            <label>EPS:</label>
+            <input class="form-control" type="text" name="eps" value='<?php echo $eps ?>'>
+          </div>
 
-        <div class="col-sm-6"><br>
-          <label>EPS:</label>
-          <input class="form-control" type="text" name="eps" value='<?php echo $eps ?>'>
+          <div class="col-sm-6"><br> 
+            <label>ARL:</label>
+            <input class="form-control" type="text" name="arl" value='<?php echo $arl ?>'>
+          </div>
         </div>
 
-        <div class="col-sm-6"><br> 
-          <label>ARL:</label>
-          <input class="form-control" type="text" name="arl" value='<?php echo $arl ?>'>
-        </div>
+        <div class="row">
+          <div class="col-sm-6"><br> 
+            <label>AFP:</label>
+            <input class="form-control" type="text" name="afp" value='<?php echo $afp ?>'>
+          </div>
 
-        <div class="col-sm-6"><br> 
-          <label>AFP:</label>
-          <input class="form-control" type="text" name="afp" value='<?php echo $afp ?>'>
-        </div>
+          <div class="col-sm-3"><br> 
+            <label>Fecha (D/M/A):</label>
+            <label for="fecha" generated="true" class="error"></label>
+            <input class="form-control" type="date" name="fecha" value='<?PHP  echo $fecha ?>'><?php //echo $fecha ?>
+          </div>
 
-        <div class="col-sm-3"><br> 
-          <label>Fecha (D/M/A):</label>
-          <label for="fecha" generated="true" class="error"></label>
-          <input class="form-control" type="date" name="fecha" value='<?PHP  echo $fecha ?>'><?php //echo $fecha ?>
-        </div>
-
-        <div class="col-sm-3"><br> 
-          <label>Hora:</label>
-          <label for="hora" generated="true" class="error"></label>
-            <input class="form-control" type="text" name="hora" id="myWatch"><br>
+          <div class="col-sm-3"><br> 
+            <label>Hora:</label>
+            <label for="hora" generated="true" class="error"></label>
+              <input class="form-control" type="text" name="hora" id="myWatch"><br>
+          </div>
         </div>
       </div>
     </div>
@@ -581,7 +599,7 @@
       </div>
     </div>
   </div>
-
+  <br>
 </div>  
 </form>
 <?php 
@@ -765,119 +783,138 @@
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table><br>
         </div><!--finsm-->
       </div>
-    </div>
+    </div><br>
 
   	<div class="panel panel-default">
   	  <div class="panel-heading text-center">Identificacion Empresa</div>
-  	  <div class="panel-body">      
-	      <div class="col-sm-12"><br>
-	        <label>Nombre de la Empresa:</label>
-	        <label for="nombreempresa" generated="true" class="error"></label> 
-	        <input class="form-control" type="text" name="nombreempresa" id="nombreempresa">
-	      </div>
+  	  <div class="panel-body">
 
-	      <div class="col-sm-6"><br> 
-	        <label>Numero Nit:</label>
-	        <input class="form-control" type="text" name="nit" >
-	      </div>
+        <div class="row">    
+  	      <div class="col-sm-12">
+  	        <label>Nombre de la Empresa:</label>
+  	        <label for="nombreempresa" generated="true" class="error"></label> 
+  	        <input class="form-control" type="text" name="nombreempresa" id="nombreempresa">
+  	      </div>
+        </div>
+        
+        <div class="row">
+  	      <div class="col-sm-6"><br> 
+  	        <label>Numero Nit:</label>
+  	        <input class="form-control" type="text" name="nit" >
+  	      </div>
 
-	      <div class="col-sm-6"><br>
-	        <label>Actividad Económica:</label>
-	        <input class="form-control" type="text" name="actividadeconomica" >
-	      </div>
-	       
-	      <div class="col-sm-6"><br>   
-	        <label>Cargo a desempeñar:</label>
-	        <label for="cargodesempena" generated="true" class="error"></label> 
-	        <input class="form-control" type="text" name="cargodesempena" id="cargodesempena">
-	      </div>
+  	      <div class="col-sm-6"><br>
+  	        <label>Actividad Económica:</label>
+  	        <input class="form-control" type="text" name="actividadeconomica" >
+  	      </div>
+        </div>
 
-	      <div class="col-sm-6"><br> 
-	        <label>Ciudad:</label>
-	        <input class="form-control" type="text" name="ciudad" >
-	      </div>
+	      <div class="row"> 
+  	      <div class="col-sm-6"><br>   
+  	        <label>Cargo a desempeñar:</label>
+  	        <label for="cargodesempena" generated="true" class="error"></label> 
+  	        <input class="form-control" type="text" name="cargodesempena" id="cargodesempena">
+  	      </div>
 
-	      <div class="col-sm-6"><br> 
-	        <label>Direccion de la Empresa:</label>
-	        <input class="form-control" type="text" name="direccion_empresa" >
-	      </div>
+  	      <div class="col-sm-6"><br> 
+  	        <label>Ciudad:</label>
+  	        <input class="form-control" type="text" name="ciudad" >
+  	      </div>
+        </div>
+        
+        <div class="row">
+  	      <div class="col-sm-6"><br> 
+  	        <label>Direccion de la Empresa:</label>
+  	        <input class="form-control" type="text" name="direccion_empresa" >
+  	      </div>
 
-	      <div class="col-sm-6"><br> 
-	        <label>Telefono de la Empresa:</label>
-	        <input class="form-control" type="text" name="telefono_empresa">
-	      </div>
+  	      <div class="col-sm-6"><br> 
+  	        <label>Telefono de la Empresa:</label>
+  	        <input class="form-control" type="text" name="telefono_empresa"><br>
+  	      </div>
+        </div>
     	</div>
-    </div>
+    </div><br>
 
 	  <div class="panel panel-default">
 	  	<div class="panel-heading text-center">Identificación del Trabajador:</div>
 	    <div class="panel-body">
+        
+        <div class="row">
+  	      <div class="col"><br> 
+  	        <label>Nombres y Apellidos:</label>
+  	        <label for="nombres" generated="true" class="error"></label> 
+  	        <input class="form-control" type="text" name="nombres" id="nombres">
+  	      </div>
+        </div>
+        
+        <div class="row">
+  	      <div class="col-sm-6"><br>   
+  	        <label>Seleccione Tipo Documento:</label>
+  	        <label for="tipodocumento" generated="true" class="error"></label> 
+  	        <select class="form-control" name="tipodocumento" id="tipodocumento">
+  	          <option value="">Seleccionar</option>
+  	          <?php
+  	            $tipo_doc ="SELECT * FROM `datos_basicos_tipo_documento` ";
+  	            $querydoc = mysqli_query($conexion,$tipo_doc);
+  	            while ($row2 = mysqli_fetch_array($querydoc)){
+  	            	echo "<option value='".$row2['idtd']."'>".$row2['tipo_documento']."</option>";
+  	            }
+  	          ?>
+  	        </select><br> 
+  	      </div>
 
-	      <div class="col-sm-6"><br> 
-	        <label>Nombres y Apellidos:</label>
-	        <label for="nombres" generated="true" class="error"></label> 
-	        <input class="form-control" type="text" name="nombres" id="nombres">
-	      </div>
+  	      <div class="col-sm-6"><br>   
+  	        <label>Numero documento:</label>
+  	        <label for="numero_documento" generated="true" class="error"></label> 
+  	        <input class="form-control" type="int" name="numero_documento" id="numero_documento" onkeypress="return esInteger(event)" required>
+  	      </div>
+        </div>
+        
+        <div class="row">
+  	      <div class="col-sm-6"><br>       
+  	        <label>Dirección:</label>
+  	        <label for="direccion" generated="true" class="error"></label>
+  	        <input class="form-control" type="text" name="direccion" id="direccion">
+  	      </div>
 
-	      <div class="col-sm-6"><br>   
-	        <label>Seleccione Tipo Documento:</label>
-	        <label for="tipodocumento" generated="true" class="error"></label> 
-	        <select class="form-control" name="tipodocumento" id="tipodocumento">
-	          <option value="">Seleccionar</option>
-	          <?php
-	            $tipo_doc ="SELECT * FROM `datos_basicos_tipo_documento` ";
-	            $querydoc = mysqli_query($conexion,$tipo_doc);
-	            while ($row2 = mysqli_fetch_array($querydoc)){
-	            	echo "<option value='".$row2['idtd']."'>".$row2['tipo_documento']."</option>";
-	            }
-	          ?>
-	        </select><br><br>  
-	      </div>
+  	      <div class="col-sm-6"><br>
+  	        <label>Fecha Expedicion:</label>
+  	        <label for="fechaexpedicion" generated="true" class="error"></label>
+  	        <input class="form-control" type="date" name="fechaexpedicion" required>
+  	      </div>
+        </div>
+        
+        <div class="row">
+  	      <div class="col-sm-6"><br>
+  	        <label>Edad:</label>
+  	        <label for="edad" generated="true" class="error"></label>
+  	        <input class="form-control" type="int" name="edad" onkeypress="return esInteger(event)" required>
+  	      </div>
 
-	      <div class="col-sm-6"><br>   
-	        <label>Numero documento:</label>
-	        <label for="numero_documento" generated="true" class="error"></label> 
-	        <input class="form-control" type="int" name="numero_documento" id="numero_documento" onkeypress="return esInteger(event)" required>
-	      </div>
+  	      <div class="col-sm-6"><br>
+  	        <label>Lugar de nacimiento:</label>
+  	        <label for="lugarnacimiento" generated="true" class="error"></label>
+  	        <input class="form-control" type="text" name="lugarnacimiento" required> 
+  	      </div> 
+        </div>
+        
+        <div class="row">
+  	      <div class="col-sm-6"><br>
+  	        <label>Fecha de nacimiento:</label>
+  	        <label for="fechana" generated="true" class="error"></label>
+  	        <input class="form-control" type="date" name="fechana" required>
+  	      </div>
 
-	      <div class="col-sm-6"><br>       
-	        <label>Dirección:</label>
-	        <label for="direccion" generated="true" class="error"></label>
-	        <input class="form-control" type="text" name="direccion" id="direccion">
-	      </div>
-
-	      <div class="col-sm-3"><br>
-	        <label>Fecha Expedicion:</label>
-	        <label for="fechaexpedicion" generated="true" class="error"></label>
-	        <input class="form-control" type="date" name="fechaexpedicion" required>
-	      </div>
-
-	      <div class="col-sm-3"><br>
-	        <label>Edad:</label>
-	        <label for="edad" generated="true" class="error"></label>
-	        <input class="form-control" type="int" name="edad" onkeypress="return esInteger(event)" required>
-	      </div>
-
-	      <div class="col-sm-6"><br>
-	        <label>Lugar de nacimiento:</label>
-	        <label for="lugarnacimiento" generated="true" class="error"></label>
-	        <input class="form-control" type="text" name="lugarnacimiento" required> 
-	      </div> 
-
-	      <div class="col-sm-6"><br>
-	        <label>Fecha de nacimiento:</label>
-	        <label for="fechana" generated="true" class="error"></label>
-	        <input class="form-control" type="date" name="fechana" required><br>
-	      </div>
-
-	      <div class="col-sm-6"><br> 
-	        <label>Celular:</label>
-	        <label for="celular" generated="true" class="error"></label>
-	        <input class="form-control" type="int" name="celular" onkeypress="return esInteger(event)">
-	      </div>  
+  	      <div class="col-sm-6"><br> 
+  	        <label>Celular:</label>
+  	        <label for="celular" generated="true" class="error"></label>
+  	        <input class="form-control" type="int" name="celular" onkeypress="return esInteger(event)"><br>
+  	      </div>
+        </div>  
 
 	      <div class="col-sm-12">
 	        <table class="table table-bordered">
@@ -926,14 +963,14 @@
 	        </table>
 	      </div>
 
-	      <div class="col-sm-12"><br>
+	      <div class="col-sm-12">
 	        <table class="table table-bordered">
 	          <thead>
 	            <tr>
 	              <th class="text-center" colspan="9">Escolaridad:</th>
 	              <label for="escolaridad" generated="true" class="error"></label> 
 	            </tr>
-	            <tr>
+	            <tr class="size_font">
                 <th>Analfabeta</th>
                 <th>Primaria Completa</th>
                 <th>Primaria Incompleta</th>
@@ -979,36 +1016,39 @@
 	        </table>
 	      </div><!--finsm-->
 
-	      <div class="col-sm-6"><br>
-	        <label>EPS:</label>
-	        <input class="form-control" type="text" name="eps">
-	      </div>
+        <div class="row">
+  	      <div class="col-sm-6">
+  	        <label>EPS:</label>
+  	        <input class="form-control" type="text" name="eps">
+  	      </div>
 
-	      <div class="col-sm-6">
-	        <br> 
-	        <label>ARL:</label>
-	        <input class="form-control" type="text" name="arl">
-	      </div>
+  	      <div class="col-sm-6">
+  	        <label>ARL:</label>
+  	        <input class="form-control" type="text" name="arl">
+  	      </div>
+        </div>
+        
+        <div class="row">
+  	      <div class="col-sm-6"><br> 
+  	        <label>AFP:</label>
+  	        <input class="form-control" type="text" name="afp">
+  	      </div>
 
-	      <div class="col-sm-6"><br> 
-	        <label>AFP:</label>
-	        <input class="form-control" type="text" name="afp">
-	      </div>
+  	      <div class="col-sm-3"><br> 
+  	        <label for="fecha" generated="true" class="error"></label>
+  	        <label>Fecha:</label>
+  	        <input class="form-control" type="text" name="fecha" value='<?php echo $fecha ?>'>
+  	      </div>
 
-	      <div class="col-sm-3"><br> 
-	        <label for="fecha" generated="true" class="error"></label>
-	        <label>Fecha:</label>
-	        <input class="form-control" type="text" name="fecha" value='<?php echo $fecha ?>'>
-	      </div>
-
-	      <div class="col-sm-3"><br>
-	        <label for="hora" generated="true" class="error"></label> 
-	        <label>Hora:</label>
-	        <input class="form-control" type="text" name="hora" id="myWatch">
-	        <br>
-	      </div>
+  	      <div class="col-sm-3"><br>
+  	        <label for="hora" generated="true" class="error"></label> 
+  	        <label>Hora:</label>
+  	        <input class="form-control" type="text" name="hora" id="myWatch">
+  	        <br>
+  	      </div>
+        </div>
 	    </div>
-	  </div>
+	  </div><br>
 
 
     <div class="container">      
@@ -1027,13 +1067,12 @@
       </div>
     </div>
 
-  	<div class="row">
-  		<div class="text-center">
-  		  <div class="col-sm-12"><br> 
-  		    <input type="submit" id="btn2" name="Registrocompleto" value="Registrar" class="btn btn-success">
-  		  </div>
-  		</div>
-  	</div><br><br>
+		<div class="text-center">
+		  <div class="col-sm-12"><br> 
+		    <input type="submit" id="btn2" name="Registrocompleto" value="Registrar" class="btn btn-success">
+		  </div>
+		</div>
+  	<br>
   </form>
 </body>
 <?php }//if > 0 ?>
@@ -1184,7 +1223,7 @@ show()
 
 
 
-    //--control motivo de evaluacion
+  //--control motivo de evaluacion
 	function activar(){
 		if (document.getElementById('otro').checked==false){
 			document.getElementById('otromotivo').disabled=true;

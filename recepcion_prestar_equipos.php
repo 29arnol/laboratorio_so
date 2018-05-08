@@ -62,82 +62,86 @@
   	</div><br>
 
   	<form method="POST" name="formulario" action=""> 
-  	      
-      <div class="col-sm-6">   
-        <label>Nombre del Equipo:</label>
-        <input class="form-control" type="text" name="nombre_equipo" value="<?php echo $datos['nombre_equipo'];?>" required>
-      </div>
+  	  <div class="row">
+        <div class="col-sm-6">   
+          <label>Nombre del Equipo:</label>
+          <input class="form-control" type="text" name="nombre_equipo" value="<?php echo $datos['nombre_equipo'];?>" required>
+        </div>
 
-      <div class="col-sm-6"> 
-        <label>Fecha:</label>
-        <input class="form-control" type="text" name="fecha" value="<?php echo $fecha ?>" required>
-      </div>
-
-      <div class="col-sm-6"><br> 
-        <label class="">Selecciona un estado:</label>        
-        <select name="est" class="form-control ">
-          <?php 
-            $disponible = "SELECT * FROM equipo_disponible Where id_estado = $est"; 
-            $quer = mysqli_query($conexion,$disponible);
-            while ($dat = mysqli_fetch_array($quer)) {
-              echo '<option value="'.$dat['id_estado'].'">'.$dat['estado_eq'].'</option>';
-            }
-            $disp = "SELECT * FROM equipo_disponible Where id_estado != $est"; 
-            $qry = mysqli_query($conexion,$disp);
-            while ($data = mysqli_fetch_array($qry)) {
-              echo '<option value="'.$data['id_estado'].'">'.$data['estado_eq'].'</option>';
-            }
-          ?>
-        </select>
-      </div>
-
-      <div class="col-sm-6"><br>  
-        <label>Hora Salida:</label>
-        <input class="form-control" type="text" name="hora_salida" value="<?php echo $hora ?>" required>
-      </div>
-
-      <div class="col-sm-6"><br>   
-        <label>Ficha Formativa:</label>
-        <input class="form-control" type="text" name="ficha" required>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="form-inline"><br><br>
-            <fieldset>
-              <label>Estado del Equipo: </label>
-              <input type="radio" name="estado_equipo" value="Bueno" checked> Bueno
-              <input type="radio" name="estado_equipo" value="Malo" disabled> Malo
-            |
-
-            | <label>Retorno:</label>
-              <input type="radio" name="devuelto" value="Si" disabled> Si 
-              <input type="radio" name="devuelto" value="No" checked> No 
-            </fieldset>
-          </div>
+        <div class="col-sm-6"> 
+          <label>Fecha:</label>
+          <input class="form-control" type="text" name="fecha" value="<?php echo $fecha ?>" required>
         </div>
       </div>
+      
+      <div class="row">
+        <div class="col-sm-6"><br> 
+          <label class="">Selecciona un estado:</label>        
+          <select name="est" class="form-control ">
+            <?php 
+              $disponible = "SELECT * FROM equipo_disponible Where id_estado = $est"; 
+              $quer = mysqli_query($conexion,$disponible);
+              while ($dat = mysqli_fetch_array($quer)) {
+                echo '<option value="'.$dat['id_estado'].'">'.$dat['estado_eq'].'</option>';
+              }
+              $disp = "SELECT * FROM equipo_disponible Where id_estado != $est"; 
+              $qry = mysqli_query($conexion,$disp);
+              while ($data = mysqli_fetch_array($qry)) {
+                echo '<option value="'.$data['id_estado'].'">'.$data['estado_eq'].'</option>';
+              }
+            ?>
+          </select>
+        </div>
 
-      <div class="col-sm-6"><br>   
-        <label>Nombres y Apellidos Estudiante:</label>
-        <input class="form-control" type="text" name="nombres_estudiante" required>
+        <div class="col-sm-6"><br>  
+          <label>Hora Salida:</label>
+          <input class="form-control" type="text" name="hora_salida" value="<?php echo $hora ?>" required>
+        </div>
       </div>
+      
+      <div class="row">
+        <div class="col-sm-6"><br>   
+          <label>Ficha Formativa:</label>
+          <input class="form-control" type="text" name="ficha" required>
+        </div>
+ 
+        <div class="col-sm-6"><br>
+          <label>Estado del Equipo: </label>
+          <fieldset>       
+            <input type="radio" name="estado_equipo" value="Bueno" checked> Bueno
+            <input type="radio" name="estado_equipo" value="Malo" disabled> Malo
+          |
 
-      <div class="col-sm-6"><br>   
-        <label>Nombres y Apellidos Instructor:</label>
-        <input class="form-control" type="text" name="nombres_Instructor" required>
+          | <label>Retorno:</label>
+            <input type="radio" name="devuelto" value="Si" disabled> Si 
+            <input type="radio" name="devuelto" value="No" checked> No 
+          </fieldset>
+        </div>
       </div>
+      
+      <div class="row">
+        <div class="col-sm-6"><br>   
+          <label>Nombres y Apellidos Estudiante:</label>
+          <input class="form-control" type="text" name="nombres_estudiante" required>
+        </div>
 
-      <div class="col-sm-12"><br>
-        <label>Observaciones:</label>
-        <td>
-          <textarea  class="form-control" type="text" name="descripcion_equipo" rows="2"></textarea>
-        </td>
+        <div class="col-sm-6"><br>   
+          <label>Nombres y Apellidos Instructor:</label>
+          <input class="form-control" type="text" name="nombres_Instructor" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-12"><br>
+          <label>Observaciones:</label>
+          <td>
+            <textarea  class="form-control" type="text" name="descripcion_equipo" rows="2"></textarea>
+          </td>
+        </div>
       </div> 
 
-      <div class="text-center">
-        <div class="col-sm-12">
-          <br><br>
+      <div class="col-sm-12">
+        <div class="text-center"><br>
           <input type="submit" name="Registrar" value="Registrar" class="btn btn-success">
         </div>
       </div> 

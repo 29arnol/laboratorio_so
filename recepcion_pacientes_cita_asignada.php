@@ -9,7 +9,7 @@
 	}
 
 	include ('includes/conexion.php'); 
-	include ('bar/style_bar/estilo.css');
+	include ('bar/css/estilo.css');
 
 	date_default_timezone_set('America/Bogota');
 	$hora = date('h:i:s A');
@@ -40,9 +40,9 @@
 <body>  
     <form method="POST" action="">
     <div class="container">
-    <div class="col-sm-12">
     	<div style="font-size: 20px;" class="text-center">
-			<label>Fecha: </label> <?php  echo date("Y-m-d | h:i:s A"); ?>
+    		<i class="fas fa-spinner fa-pulse"></i>
+			<label>Fecha: </label> <?php  echo date("Y-m-d | h:i:s A"); ?>       
 		</div>  
 	  <table class="table table-bordered table-sm">
 	    <thead>
@@ -254,7 +254,6 @@
 
  ?>	
 	</table>
-</div>
 </div>
 </form>
 </html>
