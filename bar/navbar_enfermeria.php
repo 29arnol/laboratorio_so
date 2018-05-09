@@ -15,62 +15,59 @@ header('Location: index.php');
     <title>LSST ENFERMERIA</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" type="text/css" href="bar/css/bootstrap.min.css">
+  <script defer src="https://use.fontawesome.com/releases/[VERSION]/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" href="bar/css/estilo.css">
 
-   <link rel="stylesheet" href="css/bootstrap.min.css">
-
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- <link rel="stylesheet" type="text/css" href="bar/style_bar/style.css"> --><!--css code-->
-
-   <script src="jquery/jquery.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-
-
-   <link rel="stylesheet" type="text/css" href="bar/style_bar/estilo.css">
-    <style type="text/css">
-
-
-  </style>
+  <!-- JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>
+  <script src="bar/js/jquery-3.2.1.min.js"></script>
+  <script src="bar/js/bootstrap.min.js"></script>
+  <script src="bar/js/popper.min.js"></script>
 
   </head>
 
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="enfermeria_pacientes.php">Laboratorio SST</a>
-    <!--   <a class="navbar-brand" href="index.php" style="margin-top: 14px; color: #fff;"><img src="images/ico.png" style="margin-top:-22px;">
- -->    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-left">
-        <li><a href="enfermeria_pacientes.php"> CITAS</span></a></li>
-        <li><a target="_blank" href="enfermeria.php">REGISTRAR HISTORIA</a></li>
-        <li><a target="_blank" href="enfermeria_con.php">CONSULTAR</a></li>
-      </ul>
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
-      <ul class="nav navbar-nav navbar-right" >
-        <li><a><span class="glyphicon glyphicon-user"></span> <?php echo strtoupper($nick); ?></a></li>
-          <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> CERRAR SESION</a></li>
-      </ul>
+  <a class="navbar-brand" href="enfermeria_pacientes.php">LABORATORIO SST</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    </div>
+  <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav navbar-left">
+      <li class="nav-item">
+        <a class= "nav-link" href="enfermeria_pacientes.php"><span class="fas fa-notes-medical"></span> CITAS</a>
+      </li>
+      <li class="nav-item">
+        <a class= "nav-link" target="_blank" href="enfermeria.php"><span class="fa fa-file-medical"></span> REGISTRAR EXAMEN</a>
+      </li>
+      <li class="nav-item">
+        <a class= "nav-link" target="_blank" href="enfermeria_con.php"><span class="fa fa-search"></span> 
+         CONSULTAR</a>
+      </li>
+    </ul>
   </div>
+
+  <span class=" my-2 my-sm-0  navbar-nav" >
+    <li class="dropdown nav-item">
+      <a class="dropdown-toggle nav-link" id= "navbarDropdownMenuLink"   data-toggle="dropdown" href="#"><span class="fa fa-user-circle"></span>  <?php echo strtoupper($nick); ?>
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu ground">
+        <li class="nav-item">
+          <a class= "dropdown-item size_font" href="logout.php"><span class="fa fa-power-off"></span> CERRAR SESION</a>
+        </li>
+      </ul>
+    </li> 
+  </span>
 </nav>
 
-
-<br><br>
+<br>
   <script>
 
     $(function(){//eventos de Mouse

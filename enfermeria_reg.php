@@ -1,7 +1,7 @@
 <?php 
 	include('includes/conexion.php'); 
 	include('bar/navbar_enfermeria.php');
-	include('bar/style_bar/estilo.css');
+	include('bar/css/estilo.css');
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,13 +10,6 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="text/javascript" src="jvalidation/dist/jquery.validate.js"></script>
-		<!--  -->
-<!-- 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> -->
-		<!--  -->
 	</head>
 
 <?php 
@@ -977,76 +970,92 @@
 				</div>
 			</div>
 			<div class="panel-body">
-				<div class=" col-sm-4">
-					<label>Años en la empresa:</label>
-					<input class="form-control" type="text" name="anosenempresa" onkeypress="return esInteger(event)">
-				</div>
-
-				<div class=" col-sm-4">
-					<label for="dependencia" generated="true" class="error"></label>
-					<label>Dependencia:</label>
-					<input class="form-control" type="text" name="dependencia">
-				</div>
-
-				<div class=" col-sm-4">
-					<label>Cargo:</label>
-					<input class="form-control" type="text" name="cargo_historia" id="cargo_historia">
-					<br>
-				</div>
-
-				<div class="col-sm-6">
-					<label>Descripcion del cargo:</label>
-					<textarea class="form-control" type="text" name="descripcioncargo" rows="2"></textarea>
-				</div>
-
-				<div class=" col-sm-6">
-					<br>
-					<div class="text-center">
-						<table class="table table-bordered">    
-							<thead>
-								<tr>
-									<th class="text-center">Turno: <label for="turno" generated="true" class="error"></label> </th>
-								</tr>
-							</thead>
-							<tbody>
-							<tr>
-								<td>
-								<div class="text-center"><input type="radio" name="turno" value="Diurno"> Diurno
-								<input type="radio" name="turno" value="Nocturno"> Nocturno
-								<input type="radio" name="turno" value="Rotativo"> Rotativo</div></td>
-							</tr>
-							</tbody>
-						</table>
+				<div class="row">
+					<div class=" col-sm-6">
+						<label>Años en la empresa:</label>
+						<input class="form-control" type="text" name="anosenempresa" onkeypress="return esInteger(event)">
 					</div>
-				</div><!--finsm-->
 
-				<div class="col-sm-5">
-					<div class="text-center">
-						<table class="table table-bordered">    
-							<thead>
-								<tr>
-									<th><label>Actividades:</label></th>
-								</tr>
-							</thead>
-							<tbody>
+					<div class=" col-sm-6">
+						<label>Cargo:</label>
+						<input class="form-control" type="text" name="cargo_historia" id="cargo_historia">
+						<br>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class=" col-sm-6">
+						<label for="dependencia" generated="true" class="error"></label>
+						<label>Dependencia:</label>
+						<input class="form-control" type="text" name="dependencia">
+					</div>
+					
+					<div class="col-sm-6">
+						<label for="">Turno:</label> <label for="turno" generated="true" class="error"></label>
+						<fieldset>
+							
+							<input type="radio" name="turno" value="Diurno"> Diurno
+							<input type="radio" name="turno" value="Nocturno"> Nocturno
+							<input type="radio" name="turno" value="Rotativo"> Rotativo
+						</fieldset>
+					</div>
+				</div>
+				<br>
+
+				<div class="row">
+					<div class="col-sm-12">
+						<label>Descripcion del cargo:</label>
+						<textarea class="form-control" type="text" name="descripcioncargo" rows="1"></textarea>
+					</div>
+
+<!-- 						<div class="text-center">
+							<table class="table table-bordered">    
+								<thead>
+									<tr>
+										<th class="text-center">Turno: <label for="turno" generated="true" class="error"></label> </th>
+									</tr>
+								</thead>
+								<tbody>
 								<tr>
 									<td>
-										<div class="text-center">
-											<input type="checkbox" name="actividades[]" value="Pie"> Pie
-											<input type="checkbox" name="actividades[]" value=" Sentado"> Sentado
-											<input type="checkbox" name="actividades[]" value=" Inclinado"> Inclinado
-											<input type="checkbox" name="actividades[]" value=" Arrodillado"> Arrodillado
-											<input type="checkbox" name="actividades[]" value=" Acostado"> Acostado 
-											<input type="text" name="actividades[]" class="form-control input-sm">
-										</div>
-									</td>
+									<div class="text-center"><input type="radio" name="turno" value="Diurno"> Diurno
+									<input type="radio" name="turno" value="Nocturno"> Nocturno
+									<input type="radio" name="turno" value="Rotativo"> Rotativo</div></td>
 								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div><!--finsm--> 
-
-				<div class="col-sm-7">
+								</tbody>
+							</table>
+						</div> -->
+					</div><!--finsm-->
+					<br>
+				<!-- </div> -->
+					<div class="row"> 
+						<div class="col-sm-6">
+							<div class="text-center">
+								<table class="table table-bordered">    
+									<thead>
+										<tr>
+											<th><label>Actividades:</label></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<div class="text-center">
+													<input type="checkbox" name="actividades[]" value="Pie"> Pie
+													<input type="checkbox" name="actividades[]" value=" Sentado"> Sentado
+													<input type="checkbox" name="actividades[]" value=" Inclinado"> Inclinado
+													<input type="checkbox" name="actividades[]" value=" Arrodillado"> Arrodillado
+													<input type="checkbox" name="actividades[]" value=" Acostado"> Acostado 
+													<input type="text" name="actividades[]" class="form-control input-sm">
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div><!--finsm--> 
+			
+				<div class="col-sm-6">
 					<div class="text-center">
 						<table class="table table-bordered"> 
 							<thead>
@@ -1065,7 +1074,7 @@
 										<input type="checkbox" name="acciones[]" value="Manuales"> Manuales
 										<input type="checkbox" name="acciones[]" value="MMSS"> MMSS
 										<input type="checkbox" name="acciones[]" value="MMII"> MMII <br>
-										Otro: <input type="text" name="acciones[]" class="form-control input-sm">  
+										<input type="text" name="acciones[]" class="form-control input-sm">  
 									</td>
 								</tr>
 							</tbody>
@@ -1074,6 +1083,7 @@
 				</div><!--finsm-->
 			</div>
 		</div>
+	</div><br>	
 
 <div class="container">
 	<div class="panel panel-default">
@@ -1090,7 +1100,7 @@
 				<table class="table table-bordered" id="tablsa">    
 					<thead>
 						<tr>
-						<th class="text">Empresa</th>
+							<th class="text">Empresa</th>
 							<th class="text-center" colspan="8">Factores-Riesgo</th>
 							<th class="text-center">CARGO</th>
 							<th class="text-center">TIEMPO</th>
@@ -1133,11 +1143,11 @@
 			<div class="panel-body">          
 				<div class="col-sm-12">
 					<table class="table table-bordered">
-						<thead class="active">
+						<thead class="active size_font">
 							<th class="text-center">Infancia:</th>
 							<th class="text-center">Enfermedad Cardiaca:</th>
 							<th class="text-center">Trauma:</th>
-							<th class="text-center">Enfermedad de Transmisión Sexual:</th>
+							<th class="text-center">Enf. de Transmisión Sexual:</th>
 							<th class="text-center">Vacunas Y Dosis:</th>
 							<th class="text-center">Toxicos:</th>
 						</thead>    
@@ -1176,7 +1186,7 @@
 								</td>
 							</tr>
 
-							<thead class="active">
+							<thead class="active size_font">
 								<th class="text-center">Hipertensión Arterial:</th>
 								<th class="text-center">Enfermedad Piel y Anexos:</th>
 								<th class="text-center">Enfermedad Vias Renales:</th>
@@ -1217,7 +1227,7 @@
 								</td>
 							</tr>
 
-							<thead class="active">
+							<thead class="active size_font">
 								<th class="text-center">Alergias:</th>
 								<th class="text-center">Hernias:</th>
 								<th class="text-center">Enf. Oído–Nariz–Laringe:</th>
@@ -1261,7 +1271,7 @@
 								</td>
 							</tr>
 
-							<thead class="active">
+							<thead class="active size_font">
 								<th class="text-center">Cirugias:</th>
 								<th class="text-center">Tunel del Carpo:</th>
 								<th class="text-center">Enfermedad Vascular:</th>
@@ -1307,7 +1317,7 @@
 								</td>
 							</tr>
 
-							<thead class="active">
+							<thead class="active size_font">
 								<th class="text-center">Hospitalizaciones:</th>
 								<th class="text-center">Enfermedad Quervein:</th>
 								<th class="text-center">Lumbalgias:</th>
@@ -1351,7 +1361,7 @@
 					</table>
 				</div><!--finsm-->
 
-				<div class="container-fluid">
+				<div class="">
 					<th class="text-center">Observaciones: </th> 
 					<td>
 						<label for="ant_observacion" generated="true" class="error"></label>
@@ -1359,31 +1369,26 @@
 					</td>
 					<br>
 				</div>
+				
+				<label for="">Familiar</label>
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+				    <div class="input-group-text">
+				      No Refiere . <input type="checkbox" aria-label="Checkbox for following text input"  name="ant_familiar" value="Si">
+				    </div>
+				  </div>
+				  <textarea type="text" class="form-control" aria-label="Text input with checkbox"  name="ant_familiar_descripcion" rows="1"></textarea>
+				</div>
 
-				<table class="table table-bordered">    
-					<tbody>
-						<tr>
-							<td class="col-sm-2 ">
-								<div style="padding-top: 10px;" class="form-inline"><label>Familiar:</label>
-									No Refiere <input type="checkbox" name="ant_familiar" value="Si" checked>
-								</div>
-							</td>
-							<td>
-								<textarea  class="form-control" type="text" name="ant_familiar_descripcion" rows="2"></textarea>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<div style="padding-top: 10px;" class="form-inline"><label>Personal:</label>
-									No Refiere <input type="checkbox" name="ant_personal" value="Si" checked>
-								</div>
-							</td>
-							<td>
-								<textarea  class="form-control" type="text" name="ant_personal_descripcion" rows="2"></textarea>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<label for="">Personal</label>
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+				    <div class="input-group-text">
+				      No Refiere . <input type="checkbox" aria-label="Checkbox for following text input"  name="ant_personal" value="Si">
+				    </div>
+				  </div>
+				  <textarea type="text" class="form-control" aria-label="Text input with checkbox"  name="ant_personal_descripcion" rows="1"></textarea>
+				</div>
 			 </div> 
 		</div>
 
@@ -1405,9 +1410,12 @@
 							<tbody>
 								<tr class="text-center">
 									<td>
-										<div class="form-inline">Años: 
-											<label for="gin_menarquia" generated="true" class="error"></label>
-											<input type="text" name="gin_menarquia" class="form-control input-sm" onkeypress="return esInteger(event)">
+										<div class="input-group input-group-sm mb-3">
+										  <div class="input-group-prepend">
+										    <span class="input-group-text" id="inputGroup-sizing-sm">Años</span>
+										  </div>
+										  	<label for="gin_menarquia" generated="true" class="error"></label>
+											<input type="number" name="gin_menarquia" class="form-control input-sm" onkeypress="return esInteger(event)">
 										</div>
 									</td>
 									<td>

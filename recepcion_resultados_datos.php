@@ -34,7 +34,7 @@ if (isset($consultaBusqueda)) {
 
 	//Si no existe ninguna fila que sea igual a $consultaBusqueda, entonces mostramos el siguiente mensaje
 	if ($filas === 0 or $consultaBusqueda == "") {
-		$mensaje = "<p>No hay ningún registro con esa carateristica</p>";
+		$mensaje = '<p><span class="fa fa-exclamation-triangle"></span> No hay ningún registro con esa carateristica</p>';
 	} else {
 		//Si existe alguna fila que sea igual a $consultaBusqueda, entonces mostramos el siguiente mensaje
 		echo 'Resultados para <strong>'.$consultaBusqueda.'</strong>';
@@ -63,8 +63,8 @@ if (isset($consultaBusqueda)) {
 			  <table class="table table-bordered">
 			    <thead>
 			      <tr>
-			      	<th>Historia</th>
-			        <th>Nºdocumento</th>
+			      	
+			        <th>Identificacion</th>
 			        <th>Nombres</th>
 			        <th>Evaluacion</th>
 			        <th>Fecha</th>
@@ -77,9 +77,9 @@ if (isset($consultaBusqueda)) {
 			        <th style="color: #808080;">Medico</th>
 			      </tr>
 			    </thead>
-			    <tbody>
+			    <tbody class="text-center">
 			      <tr>
-			        <td>'. $historia .'</td>
+			      
 			        <td>'. $numerodocumento .'</td>
 			        <td>'. $nombrescompleto .'</td>
 			        <td>'. $motivoevaluacion .'</td>

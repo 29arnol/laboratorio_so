@@ -66,7 +66,7 @@
         <a class="dropdown-toggle nav-link" id= "navbarDropdownMenuLink"   data-toggle="dropdown" href="#"><span class="fa fa-list-ol"></span> MENU
         <span class="caret"></span></a>
 
-        <ul class="dropdown-menu ground">
+        <ul class="dropdown-menu ground" id="menu">
           <li class="nav-item">
             <a class= "dropdown-item size_font" target="_blank" href="recepcion_registro_equipos.php"><span class="fa fa-microchip"></span> REGISTRAR EQUIPOS DE LABORATORIO</a>
 
@@ -91,8 +91,6 @@
     </li> 
   </span>
 </nav>
-
-
   <script>
 
     $(function(){//eventos de Mouse

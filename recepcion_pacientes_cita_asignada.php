@@ -41,7 +41,7 @@
     <form method="POST" action="">
     <div class="container">
     	<div style="font-size: 20px;" class="text-center">
-    		<i class="fas fa-spinner fa-pulse"></i>
+    		<i class="fas fa-sync fa-spin"></i>
 			<label>Fecha: </label> <?php  echo date("Y-m-d | h:i:s A"); ?>       
 		</div>  
 	  <table class="table table-bordered table-sm">

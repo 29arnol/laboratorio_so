@@ -25,11 +25,11 @@
     $hora_salida = $_POST['hora_salida'];
     $nombres_estudiante = $_POST['nombres_estudiante'];
     $nombres_Instructor = $_POST['nombres_Instructor'];
-    $descripcion_equipo = $_POST['descripcion_equipo'];
+    // $descripcion_equipo = $_POST['descripcion_equipo'];
     $devuelto = $_POST['devuelto']; 
     
-    $datos = "INSERT INTO `equipos_prestados`(`id`, `equipo`, `fecha`, `estado`, `devuelto`, `ficha_formativa`,`hora_salida`,`nombres_estudiante`,`nombres_instructor`,`observaciones`,`id_equipo`) 
-    VALUES (NULL, '$equipo','$fecha','$estado_equipo','$devuelto','$ficha','$hora_salida','$nombres_estudiante','$nombres_Instructor','$descripcion_equipo','$id' )"; 
+    $datos = "INSERT INTO `equipos_prestados`(`id`, `equipo`, `fecha`, `estado`, `devuelto`, `ficha_formativa`,`hora_salida`,`hora_entrada`,`nombres_estudiante`,`nombres_instructor`,`nombres_persona_entrega`,`observaciones`,`id_equipo`) 
+    VALUES (NULL, '$equipo','$fecha','$estado_equipo','$devuelto','$ficha','$hora_salida',NULL,'$nombres_estudiante','$nombres_Instructor',NULL,'$descripcion','$id' )"; 
     $query = mysqli_query($conexion,$datos);
 
     $est_disp = $_POST['est']; 
@@ -79,12 +79,12 @@
           <label class="">Selecciona un estado:</label>        
           <select name="est" class="form-control ">
             <?php 
-              $disponible = "SELECT * FROM equipo_disponible Where id_estado = $est"; 
+              $disponible = "SELECT * FROM equipo_disponible WHERE id_estado = $est"; 
               $quer = mysqli_query($conexion,$disponible);
               while ($dat = mysqli_fetch_array($quer)) {
                 echo '<option value="'.$dat['id_estado'].'">'.$dat['estado_eq'].'</option>';
               }
-              $disp = "SELECT * FROM equipo_disponible Where id_estado != $est"; 
+              $disp = "SELECT * FROM equipo_disponible WHERE id_estado != $est"; 
               $qry = mysqli_query($conexion,$disp);
               while ($data = mysqli_fetch_array($qry)) {
                 echo '<option value="'.$data['id_estado'].'">'.$data['estado_eq'].'</option>';
@@ -95,7 +95,7 @@
 
         <div class="col-sm-6"><br>  
           <label>Hora Salida:</label>
-          <input class="form-control" type="text" name="hora_salida" value="<?php echo $hora ?>" required>
+          <input class="form-control" type="text" name="hora_salida" required>
         </div>
       </div>
       

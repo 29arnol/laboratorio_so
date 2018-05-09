@@ -1,6 +1,6 @@
 <?php 
 	include('includes/conexion.php'); 
-	include('bar/style_bar/estilo.css');
+	include('bar/css/estilo.css');
 	include('timedata.php')
 ?>
 <style type="text/css">
@@ -39,7 +39,10 @@
 
 ?>
  <body>
-	<div style="font-size: 20px;" class="text-center">Fecha: <?php  echo $time ?></div>      
+    <div style="font-size: 20px;" class="text-center">
+		<i class="fas fa-sync fa-spin"></i>
+		<label>Fecha: </label> <?php  echo date("Y-m-d | h:i:s A"); ?>       
+	</div>
     <form method="POST" action="">
     <div class="container col-sm-12">  
 	  <table class="table table-bordered">

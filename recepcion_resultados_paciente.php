@@ -13,48 +13,53 @@
   
 <body>
   <form method="POST" target="_blank" action="recepcion_resultados.php"> 
-    <div class="container">
+    <div class="container"><br>
       <div class="panel panel-default">
         <div class="panel-body">
-          <div class="col-sm-4">
-            <label for="stylet_type">Tipo de documento:</label>
-            <select name="tipodoc" class="form-control " id="tipodoc">
-              <option value="">Seleccionar</option>
-                <?php $documentotipo = "SELECT * FROM datos_basicos_tipo_documento"; 
-                  $quer2 = mysqli_query($conexion,$documentotipo);
+          <div class="row container-fluid">
+            <div class="col-sm-4"><br>
+              <label for="stylet_type">Tipo de documento:</label>
+              <select name="tipodoc" class="form-control " id="tipodoc">
+                <option value="">Seleccionar</option>
+                  <?php $documentotipo = "SELECT * FROM datos_basicos_tipo_documento"; 
+                    $quer2 = mysqli_query($conexion,$documentotipo);
 
-                  while ($dat = mysqli_fetch_array($quer2)) {
-                    echo '<option value="'.$dat['idtd'].'">'.$dat['tipo_documento'].'</option>';
-                  }
-                ?>
-            </select>
-          </div>          
-                     
-          <div class="col-sm-4">
-            <label>Fecha:</label>
-            <input class="form-control" type="date" name="fecha_registro" required><br><br>
+                    while ($dat = mysqli_fetch_array($quer2)) {
+                      echo '<option value="'.$dat['idtd'].'">'.$dat['tipo_documento'].'</option>';
+                    }
+                  ?>
+              </select>
+            </div>          
+                       
+            <div class="col-sm-4"><br>
+              <label>Fecha:</label>
+              <input class="form-control" type="date" name="fecha_registro" required><br><br>
+            </div>
+          
+          
+            <div class="col-sm-4"><br> 
+              <label>N° Documento:</label>
+              <input class="form-control col-sm-12" type="int" name="documento" onkeypress="return esInteger(event)" required>
+            </div>
           </div>
 
-          <div class="col-sm-4">  
-            <label>N° Documento:</label>
-            <input class="form-control col-sm-12" type="int" name="documento" onkeypress="return esInteger(event)" required>
-          </div>
-
+        </div>
           <div class="col-sm-12 text-center">
             <input type="submit" class="btn btn-info" name="Consultar" value="Consultar">
-          </div>                      
+          </div><br>                      
         </div>
       </div> 
+
     </div>
   </form>  
 
   <form accept-charset="utf-8" method="POST">
     <div class="container">
       <div class="col-sm-12">
-        <label><span class="glyphicon glyphicon-search"></span> Busqueda Avanzada:</label>
+        <label><span class="glyphicon glyphicon-search"></span><span class="fa fa-search"></span> Busqueda Avanzada:</label>
         <input class="form-control" type="text" name="busqueda" id="busqueda" value="" placeholder="" maxlength="30" autocomplete="off" onKeyUp="buscar();">
 
-        <div id="resultadoBusqueda"></div>
+          <div id="resultadoBusqueda"></div>
 
       </div>
     </div>
@@ -63,7 +68,7 @@
 
   <script type="text/javascript">
     $(document).ready(function(){ 
-      $("#resultadoBusqueda").html('<p>NO HA REALIZADO NINGUNA BUSQUEDA.</p>');
+      $("#resultadoBusqueda").html('<p class="size_font">NO HA REALIZADO NINGUNA BUSQUEDA.</p>');
     });
     function buscar() {
       var textoBusqueda = $("input#busqueda").val();
