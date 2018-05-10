@@ -1374,7 +1374,7 @@
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
 				    <div class="input-group-text">
-				      No Refiere . <input type="checkbox" aria-label="Checkbox for following text input"  name="ant_familiar" value="Si">
+				      No Refiere: <div class="separator"></div> <input type="checkbox" aria-label="Checkbox for following text input"  name="ant_familiar" value="Si">
 				    </div>
 				  </div>
 				  <textarea type="text" class="form-control" aria-label="Text input with checkbox"  name="ant_familiar_descripcion" rows="1"></textarea>
@@ -1384,7 +1384,7 @@
 				<div class="input-group mb-3">
 				  <div class="input-group-prepend">
 				    <div class="input-group-text">
-				      No Refiere . <input type="checkbox" aria-label="Checkbox for following text input"  name="ant_personal" value="Si">
+				      No Refiere: <div class="separator"></div> <input type="checkbox" aria-label="Checkbox for following text input"  name="ant_personal" value="Si">
 				    </div>
 				  </div>
 				  <textarea type="text" class="form-control" aria-label="Text input with checkbox"  name="ant_personal_descripcion" rows="1"></textarea>
@@ -1403,29 +1403,42 @@
 					<div class="panel-body">
 						<table class="table table-bordered"> 
 							<thead>
-								<th class="text-center">Menarquia:</th>
-								<th class="text-center">Ciclos:</th>
+								<th class="text-center" style="width:4px !important;">Menarquia:</th>
+								<!-- <th class="text-center">Ciclos:</th> -->
 								<th class="text-center" colspan="4">Ficha Obstetrica:</th>
+								<th>planificacion y metodo</th>
 							</thead>   
 							<tbody>
 								<tr class="text-center">
 									<td>
-										<div class="input-group input-group-sm mb-3">
+										<div class="input-group input-group-sm mb">
 										  <div class="input-group-prepend">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">Años</span>
 										  </div>
 										  	<label for="gin_menarquia" generated="true" class="error"></label>
 											<input type="number" name="gin_menarquia" class="form-control input-sm" onkeypress="return esInteger(event)">
+										</div><br>
+
+										<div class="input-group mb-3">
+										  <div class="input-group-prepend">
+										    <label class="input-group-text" for="inputGroupSelect01">Ciclos</label>
+										  </div>
+										  <select  name="gin_ciclo" class="custom-select" id="inputGroupSelect01">
+										    <option selected>Seleccionar</option>
+										    <option value="Regular">Regular</option>
+										    <option value="Irregular">Irregular</option>
+										    <option value="Dias">Dias</option>
+										  </select>
 										</div>
 									</td>
-									<td>
+<!-- 									<td>
 										<div class="form-inline">Regular 
 											<input type="radio" name="gin_ciclo" value="Regular">
 											| Irregular <input type="radio" name="gin_ciclo" value="Irregular">
 											| Dias <input type="radio" name="gin_ciclo" value="Dias">
 										</div>
-									</td>
-									<td colspan="4">
+									</td> -->
+									<td colspan="4" class="size_font">
 										Gestacion <input type="checkbox" name="gin_obstetrica[]" value="Gestacion">
 										| Parto <input type="checkbox" name="gin_obstetrica[]" value="Parto">
 										| Cesárea <input type="checkbox" name="gin_obstetrica[]" value="Cesarea">
@@ -1433,24 +1446,49 @@
 										| Ectópico <input type="checkbox" name="gin_obstetrica[]" value="Ectopico">
 										| Hijos Vivos <input type="checkbox" name="gin_obstetrica[]" value="Hijos Vivos">
 										| Hijos Muertos <input type="checkbox" name="gin_obstetrica[]" value="Hijos Muertos">
-										<hr>
-										<div class="form-inline"><label>Planifica:</label> 
+										<!--  -->
+<!-- 										<label for="gin_metodo" generated="true" class="error"></label>
+										<label for="">Planificacion y Metodo:</label>
+										<div class="input-group mb-3">
+										  <div class="input-group-prepend">
+										    <div class="input-group-text">
+											Si <input type="radio" name="gin_planifica" value="Si"> <div class="separator">/</div>
+											No <input type="radio" name="gin_planifica" value="No">
+										    </div>
+										  </div>
+										  <textarea type="text" class="form-control" aria-label="Text input with checkbox"  name="gin_metodo" class="form-control input-sm" rows="1"></textarea>
+										</div> -->
+
+										<!--  -->
+<!-- 										<div class="form-inline"><label>Planifica:</label> 
 											Si <input type="radio" name="gin_planifica" value="Si"> 
 											No <input type="radio" name="gin_planifica" value="No">
 
 											<label>Metodo:</label>
 											<label for="gin_metodo" generated="true" class="error"></label> 
 											<input type="text" name="gin_metodo" class="form-control input-sm">
+										</div> -->
+									</td>
+									<td>
+										<div class="input-group mb-3">
+										  <div class="input-group-prepend">
+										    <div class="input-group-text">
+											Si <input type="radio" name="gin_planifica" value="Si"> <div class="separator">/</div>
+											No <input type="radio" name="gin_planifica" value="No">
+										    </div>
+										  </div>
+										  <label for="gin_metodo" generated="true" class="error"></label><br>
+										  <textarea type="text" class="form-control" aria-label="Text input with checkbox"  name="gin_metodo" class="form-control input-sm" rows="3"></textarea>
 										</div>
 									</td>
 								</tr>
 									<thead>
 										<th class="text-center">Ultima Mestruacion :</th>
 										<th class="text-center">Ultima Citologia :</th>
-										<th class="text-center">Resultado:</th>
-										<th class="text-center">Flujo Vaginal:</th>
+										<th class="text-center size_font">Flujo Vaginal:</th>
 										<th class="text-center">Dolor Pelvico:</th>
 										<th class="text-center">Dolor Senos:</th>
+										<th class="text-center">Resultado:</th>
 									</thead>
 								<tr class="text-center">
 									<td>
@@ -1458,9 +1496,6 @@
 									</td>
 									<td>
 										<input class="form-control input-sm" type="date" name="gin_ult_citologia" >
-									</td>
-									<td>
-										Normal: <input type="radio" name="resultado_ginecologia" value="Normal"> / Anormal: <input type="radio" name="resultado_ginecologia" value="Anormal">
 									</td>
 									<td>  
 										 Si <input type="radio" name="gin_flujo" value="Si"> / 
@@ -1474,6 +1509,9 @@
 										Si <input type="radio" name="gin_dolor_senos" value="Si"> / 
 										No <input type="radio" name="gin_dolor_senos" value="No">
 									</td>
+									<td>
+										Normal: <input type="radio" name="resultado_ginecologia" value="Normal"> / Anormal: <input type="radio" name="resultado_ginecologia" value="Anormal">
+									</td> 
 								</tr>
 							</tbody>
 						</table>
@@ -1492,14 +1530,14 @@
 
 			<div class="panel-body">
 				<table class="table table-bordered"> 
-					<thead>
+					<thead class="size_font">
 						<th class="text-center">En el Cargo o Empresa:</th>
 						<th class="text-center">Actual:</th>
 						<th class="text-center">Casco:</th>
 						<th class="text-center">Guantes:</th>
 						<th class="text-center">Botas:</th>
 						<th class="text-center">Gafas:</th>
-						<th class="text-center">Tapabocas:</th>
+						
 						<th class="text-center">Overol:</th>
 					</thead>   
 					<tbody>
@@ -1541,28 +1579,30 @@
 							</td>
 
 							<td>
-								<label for="tapabocas" generated="true" class="error"></label>
-								Si <input type="radio" name="tapabocas" value="Si"> / 
-								No <input type="radio" name="tapabocas" value="No" checked>
-							</td>
-
-							<td>
 								<label for="overol" generated="true" class="error"></label> 
 								Si <input type="radio" name="overol" value="Si"> / 
 								No <input type="radio" name="overol" value="No" checked>
 							</td>
 						</tr>
 						<thead>
-							<th class="text-center">Protectores Auditivos:</th>
-							<th class="text-center">Protectores Respiratorios:</th>
+							<th class="text-center">Tapabocas:</th>
+							<th class="text-center">P. Auditivos:</th>
+							<th class="text-center">P. Respiratorios:</th>
 							<th class="text-center">Otros:</th>
-							<th class="text-center">Son Adecuados?</th>
+							<th class="text-center">¿Adecuados?</th>
 							<th class="text-center">Todas:</th>
-							<th class="text-center" colspan="3">Solo:</th>
+							<th class="text-center">Solo:</th>
 						</thead>
 						<tr class="text-center">
 							<td>
-								<div class="element">
+								<div class="radiobtn">
+									<label for="tapabocas" generated="true" class="error"></label>
+									Si <input type="radio" name="tapabocas" value="Si"> / 
+									No <input type="radio" name="tapabocas" value="No" checked>
+								</div>
+							</td>
+							<td>
+								<div class="radiobtn">
 									<label for="p_auditivos" generated="true" class="error"></label>
 									Si <input type="radio" name="p_auditivos" value="Si"> / 
 									No <input type="radio" name="p_auditivos" value="No" checked>
@@ -1570,20 +1610,20 @@
 							</td>
 
 							<td>
-								<div class="element">
+								<div class="radiobtn">
 									<label for="p_respiratorios" generated="true" class="error"></label>
 									Si <input type="radio" name="p_respiratorios" value="Si"> / 
 									No <input type="radio" name="p_respiratorios" value="No" checked>
 								</div>  
 							</td>
 
-							<td>
+							<td>		
+								<textarea type="text" name="p_otros" class="form-control input-sm" rows="1"></textarea> 
 								<label for="p_otros" generated="true" class="error"></label>
-								<textarea type="text" name="p_otros" class="form-control input-sm"></textarea> 
 							</td>  
 
 							<td>
-								<div class="element">
+								<div class="radiobtn">
 									<label for="p_adecuada" generated="true" class="error"></label>
 									Si <input type="radio" name="p_adecuada" value="Si"> / 
 									No <input type="radio" name="p_adecuada" value="No" checked>
@@ -1591,16 +1631,16 @@
 							</td>
 
 							<td> 
-								<div class="element">
+								<div class="radiobtn">
 									<label for="todoadecuado" generated="true" class="error"></label>
 									Si <input type="radio" name="todoadecuado" value="Si"> / 
 									No <input type="radio" name="todoadecuado" value="No" checked>
 								</div>
 							</td>
 
-							<td colspan="3">
+							<td>
+								<textarea class="form-control input-sm" type="text" name="solo_ad" rows="1"></textarea>
 								<label for="solo_ad" generated="true" class="error"></label>
-								<textarea class="form-control input-sm" type="text" name="solo_ad" ></textarea>
 							</td> 
 						</tr>
 					</tbody>
@@ -1632,42 +1672,32 @@
 						<th class="text-center"><label>Secuela</label></th>
 					</thead>  
 					<tbody id="tabla2">
-							<tr class="text-center">	            	
-							<td>
-									<div>
-										<div class="element2">
-											<input class="form-control input-sm" style="width: 160px;" type="date" name="fechaaccidente" >
-										</div>  
-									</div>
-								</td>
-							<td>
-								<textarea class="form-control input-sm" type="text" name="empresaaccidente"></textarea>
-								<label for="empresaaccidente" generated="true" class="error"></label><br>
-							</td>
-							<td>                  
-									<textarea class="form-control input-sm" type="text" name="causaaccidente" ></textarea>
-									<label for="causaaccidente" generated="true" class="error"></label><br>
-								</td>
-							<td>
-									<div class="element2">
-										<input type="text" name="lesionaccidente" class="form-control input-sm">
-									</div>
-								</td>
-							<td>
-									<textarea class="form-control input-sm" type="text" name="parteafectadaaccidente"></textarea>
-									<label for="parteafectadaaccidente" generated="true" class="error"></label><br>
-								</td>
-							<td>
-									<div class="element2">
-										<input type="text" name="incapacidadaccidente" class="form-control input-sm">           
-									</div>
-								</td>
-							<td>
-									<div class="element2">
-										<input type="text" name="secuelaaccidente" class="form-control input-sm">
-									</div>  
-								</td>
-							</tr>
+						<tr class="text-center">	            	
+						<td>
+							<input class="form-control input-sm" style="width: 160px;" type="date" name="fechaaccidente" > 
+						</td>
+						<td>
+							<textarea class="form-control input-sm" type="text" name="empresaaccidente" rows="1"></textarea>
+							<label for="empresaaccidente" generated="true" class="error"></label>
+						</td>
+						<td>                  
+							<textarea class="form-control input-sm" type="text" name="causaaccidente" rows="1"></textarea>
+							<label for="causaaccidente" generated="true" class="error"></label>
+						</td>
+						<td>
+							<textarea name="lesionaccidente" class="form-control input-sm" rows="1"></textarea>
+						</td>
+						<td>
+							<textarea class="form-control input-sm" type="text" name="parteafectadaaccidente" rows="1"></textarea>
+							<label for="parteafectadaaccidente" generated="true" class="error"></label>
+						</td>
+						<td>
+							<textarea name="incapacidadaccidente" class="form-control input-sm" rows="1"></textarea>          
+						</td>
+						<td>
+							<textarea name="secuelaaccidente" class="form-control input-sm" rows="1"></textarea>
+						</td>
+						</tr>
 					</tbody>
 				</table>
 				<input type="button" value="Agregar Otro" id="agregarFila2" class="btn-info">
@@ -1679,58 +1709,49 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading text-center">
-			<label for="enfermedad_p" generated="true" class="error"></label><br>
-			<label>Enfermedad Profesional: </label> 
-			<input type="radio" name="enfermedad_p" value="Si"> Si 
-			<input type="radio" name="enfermedad_p" value="No"> No
+		<label for="enfermedad_p" generated="true" class="error"></label><br>
+		<label>Enfermedad Profesional: </label> 
+		<input type="radio" name="enfermedad_p" value="Si"> Si 
+		<input type="radio" name="enfermedad_p" value="No"> No
 	</div>
 	<div class="panel-body">
-			<label class="text-center"> </label>
-			<table class="table table-bordered">  
-				<thead>
-					
-					<th><label>Fecha</label></th>
-					<th><label>Empresa</label></th>
-					<th><label>Diagnostico</label></th>
-					<th><label>ARL</label></th>
-					<th><label>Reubicacion</label></th>
-					<th><label>Pension</label></th>
-				</thead>  
-				<tbody id="tabla3">
-					<tr class="text-center">
-						<td>
-							<div class="position">
-								<input class="form-control input-sm" type="date" name="fechaenfermedad">
-							</div>
-						</td>
-						<td>
-							<textarea class="form-control input-sm" type="text" name="empresaenfermedad"></textarea>
-							<label for="empresaenfermedad" generated="true" class="error"></label><br>
-						</td>
-						<td>
-							<textarea class="form-control input-sm"  type="text" name="diagnosticoenfermedad"></textarea>
-							<label for="diagnosticoenfermedad" generated="true" class="error"></label><br>
-						</td>
-						<td>
-							<div class="position">
-								<input type="text" name="arl" class="form-control input-sm"> 
-							</div>
-						</td>
-						<td>
-							<div class="position">
-								<input type="text" name="reubicacion" class="form-control input-sm">
-							</div>
-						</td>
-						<td>
-							<div class="position">
-								<input type="text" name="pension" class="form-control input-sm">
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<input type="button" value="Agregar Otro" id="agregarFila3" class="btn-info">
-			<!-- <input type="button" value="Eliminar" class="delete3">  -->
+		<label class="text-center"> </label>
+		<table class="table table-bordered">  
+			<thead>	
+				<th><label>Fecha</label></th>
+				<th><label>Empresa</label></th>
+				<th><label>Diagnostico</label></th>
+				<th><label>ARL</label></th>
+				<th><label>Reubicacion</label></th>
+				<th><label>Pension</label></th>
+			</thead>  
+			<tbody id="tabla3">
+				<tr class="text-center">
+					<td>
+						<input class="form-control input-sm" type="date" name="fechaenfermedad">
+					</td>
+					<td>
+						<textarea class="form-control input-sm" name="empresaenfermedad" rows="1"></textarea>
+						<label for="empresaenfermedad" generated="true" class="error"></label>
+					</td>
+					<td>
+						<textarea class="form-control input-sm"  type="text" name="diagnosticoenfermedad" rows="1"></textarea>
+						<label for="diagnosticoenfermedad" generated="true" class="error"></label>
+					</td>
+					<td>
+						<textarea class="form-control input-sm" name="arl" rows="1"></textarea>
+					</td>
+					<td>
+						<textarea class="form-control input-sm" name="reubicacion" rows="1"></textarea>
+					</td>
+					<td>
+						<textarea class="form-control input-sm" name="pension" rows="1"></textarea>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="button" value="Agregar Otro" id="agregarFila3" class="btn-info">
+		<!-- <input type="button" value="Eliminar" class="delete3">  -->
 		</div>
 	</div>
 </div>
@@ -1743,13 +1764,13 @@
 		<table class="table table-bordered">  
 			<thead>
 				<th class="text-center">Realiza algun deporte:</th>
-				<th class="text-center">Cual Deporte?:</th>
+				<th class="text-center">¿Cual Deporte?</th>
 				<th class="text-center">Sedentario:</th>
 			</thead>
 			<tbody>
 				<tr class="text-center">
 					<td>
-						<label for="deporte" generated="true" class="error"></label><br>
+						<label for="deporte" generated="true" class="error"></label>
 						Si <input type="radio" name="deporte" value="Si"> / 
 						NO <input type="radio" name="deporte" value="No">
 					</td>
@@ -1764,7 +1785,7 @@
 					</td>
 
 					<td>
-						<label for="sedentario" generated="true" class="error"></label><br>
+						<label for="sedentario" generated="true" class="error"></label>
 						Si <input type="radio" name="sedentario" value="Si"> / 
 						NO <input type="radio" name="sedentario" value="No">
 					</td> 
@@ -1778,14 +1799,14 @@
 			<tbody>   
 				<tr class="text-center">
 					<td>
-						<label for="depor_cardiopulmonar" generated="true" class="error"></label><br>
+						<label for="depor_cardiopulmonar" generated="true" class="error"></label>
 						Si <input type="radio" name="depor_cardiopulmonar" value="Si"> / 
 						NO <input type="radio" name="depor_cardiopulmonar" value="No" >
 					</td>
 
 					<td>
-						<label for="cual_deporte" generated="true" class="error"></label><br>
 						<input class="form-control input-sm" type="text" name="cual_deporte">
+						<label for="cual_deporte" generated="true" class="error"></label>
 					</td>
 
 					<td>
@@ -1798,213 +1819,208 @@
 	</div>  
 </div>
 
-		<div class="panel panel-default">
-			<div class="panel-heading text-center">
-				<label>Habitos Toxicos: </label>
-			</div>
-			<div class="panel-body">
-				<table class="table table-bordered"> 
+	<div class="panel panel-default">
+		<div class="panel-heading text-center">
+			<label>Habitos Toxicos: </label>
+		</div>
+		<div class="panel-body">
+			<table class="table table-bordered"> 
+				<thead>
+					<th class="text-center">Fuma:</th>
+					<th class="text-center">Fumador:</th>
+					<th class="text-center">Fumador-Años:</th>
+					<th class="text-center">EX-Fumador:</th>
+					<th class="text-center">Exfumador-Años:</th>
+					<th class="text-center">Nª Cigarrillos/Dia:</th>
+				</thead> 
+				<tbody>
+					<tr class="text-center">
+						<td>
+							<label for="fuma" generated="true" class="error"></label>
+							<input type="radio" name="fuma" value="Si"> Si 
+							<input type="radio" name="fuma" value="No"> No
+						</td>
+
+						<td>
+							<label for="fumador" generated="true" class="error"></label>
+							<input type="radio" name="fumador" value="Si"> Si 
+							<input type="radio" name="fumador" value="No"> No
+						</td>
+
+						<td>
+							<input style="width: 100px;" class="form-control input-sm center" type="number" name="anosfumador">
+							<label for="anosfumador" generated="true" class="error"></label>
+						</td>
+
+						<td>
+							<label for="exfumador" generated="true" class="error"></label>
+							<input type="radio" name="exfumador" value="Si"> Si 
+							<input type="radio" name="exfumador" value="No"> No
+						</td>
+
+						<td>
+							<input style="width: 100px;" class="form-control input-sm center" type="number" name="anosexfumador" onkeypress="return esInteger(event)" >
+							<label for="anosexfumador" generated="true" class="error"></label>
+						</td>
+
+						<td>
+							<input style="width: 100px;" type="number" name="cantidad_cigarrillos_dia" class="form-control input-sm center">
+							<label for="cantidad_cigarrillos_dia" generated="true" class="error"></label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="table table-bordered"> 
+				<thead>
+					<th class="text-center">Toma Habitualmente:</th>
+					<th class="text-center">Años de Habito:</th>
+					<th class="text-center">Frecuencia:</th>
+					<th class="text-center">Tipo Licor:</th>
+				</thead> 
+				<tbody>
+					<tr class="text-center">
+						<td>
+							<label for="tomahab" generated="true" class="error"></label>
+							<input type="radio" name="tomahab" value="Si"> Si 
+							<input type="radio" name="tomahab" value="No"> No
+						</td>
+
+						<td>
+							<input style="width:100px;" class="form-control input-sm center" type="number" name="anoshab_beber" onkeypress="return esInteger(event)">
+							<label for="anoshab_beber" generated="true" class="error"></label>
+						</td>
+
+						<td>
+							<label>Dia:</label> <input type="radio" name="frec_beber" value="Dia"> | 
+							<label>Sem:</label> <input type="radio" name="frec_beber" value="Semana"> |
+							<label>15:</label> <input type="radio" name="frec_beber" value="Quincenalmente"> | 
+							<label>30:</label> <input type="radio" name="frec_beber" value="Mensualmente"> | 
+							<label>Ocac:</label> <input type="radio" name="frec_beber" value="Ocacionalmente">
+							<label for="frec_beber" generated="true" class="error"></label>
+						</td>
+
+						<td>
+							<label>Cerveza:</label> <input type="checkbox" name="tipolicor[]" value="Cerveza"> | 
+							<label>Ron:</label> <input type="checkbox" name="tipolicor[]" value="Ron"> | 
+							<label>Vino:</label> <input type="checkbox" name="tipolicor[]" value=" Vino">
+						</td> 	   
+					</tr>
 					<thead>
-						<th class="text-center">Fuma:</th>
-						<th class="text-center">Fumador:</th>
-						<th class="text-center">Fumador-Años:</th>
-						<th class="text-center">EX-Fumador:</th>
-						<th class="text-center">Exfumador-Años:</th>
-						<th class="text-center">Nª Cigarrillos/Dia:</th>
-					</thead> 
-					<tbody>
-						<tr class="text-center">
-							<td>
-								<label for="fuma" generated="true" class="error"></label><br>
-								<input type="radio" name="fuma" value="Si"> Si 
-								<input type="radio" name="fuma" value="No"> No
-							</td>
+						<th class="text-center">Problemas con Bebidas:</th>
+						<th class="text-center">Cuales Bebidas?</th>
+						<th class="text-center">Exbebedor:</th>
+						<th class="text-center">Exbebedor-Años:</th>
+					</thead>
+					<tr class="text-center">
+						<td>
+							<div class="N">
+								<label for="problemasbebidas" generated="true" class="error"></label>
+								<input type="radio" name="problemasbebidas" value="Si"> Si 
+								<input type="radio" name="problemasbebidas" value="No"> No
+							</div>
+						</td>
+						<td>
+							<textarea class="form-control input-sm" type="text" name="cuales_bebidas" rows="1"></textarea>
+							<label for="cuales_bebidas" generated="true" class="error"></label>
+						</td>
 
-							<td>
-								<label for="fumador" generated="true" class="error"></label><br>
-								<input type="radio" name="fumador" value="Si"> Si 
-								<input type="radio" name="fumador" value="No"> No
-							</td>
+						<td>
+							<div class="N">
+								<label for="exbebedor" generated="true" class="error"></label>
+								<input type="radio" name="exbebedor" value="Si"> Si 
+								<input type="radio" name="exbebedor" value="No"> No
+							</div>
+						</td>
 
-							<td>
-								<label for="anosfumador" generated="true" class="error"></label><br>
-								<input style="width: 100px;" class="form-control input-sm center" type="number" name="anosfumador"  >
-							</td>
-
-							<td>
-								<label for="exfumador" generated="true" class="error"></label><br>
-								<input type="radio" name="exfumador" value="Si"> Si 
-								<input type="radio" name="exfumador" value="No"> No
-							</td>
-
-							<td>
-								<label for="anosexfumador" generated="true" class="error"></label><br> 
-								<input style="width: 100px;" class="form-control input-sm center" type="number" name="anosexfumador" onkeypress="return esInteger(event)" >
-							</td>
-
-							<td>
-								<label for="cantidad_cigarrillos_dia" generated="true" class="error"></label>
-								<input style="width: 100px;" type="number" name="cantidad_cigarrillos_dia" class="form-control input-sm center">
-							</td>
-						</tr>
-					</tbody>
-				</table>
-
-				<table class="table table-bordered"> 
+						<td> 
+							<input style="width: 100px;" class="form-control input-sm center" type="number" name="exbebedor_anos">
+							<label for="exbebedor_anos" generated="true" class="error"></label>
+						</td>
+					</tr>
 					<thead>
-						<th class="text-center">Toma Habitualmente:</th>
-						<th class="text-center">Años de Habito:</th>
-						<th class="text-center">Frecuencia:</th>
-						<th class="text-center">Tipo Licor:</th>
-					</thead> 
-					<tbody>
-						<tr class="text-center">
-							<td>
-								<label for="tomahab" generated="true" class="error"></label><br>
-								<input type="radio" name="tomahab" value="Si"> Si 
-								<input type="radio" name="tomahab" value="No"> No
-							</td>
+						<th class="text-center">Otros Habitos Toxicos:</th>
+					<th class="text-center">¿Cuales Habitos Toxicos?</th>
+						<th class="text-center">¿Medicamentos Regularmente?</th>
+						<th class="text-center">¿Cuales Medicamentos?</th>
+					</thead>
+					<tr class="text-center">
+						<td>
+							<label for="otroshabitos" generated="true" class="error"></label>
+							<input type="radio" name="otroshabitos" value="Si"> Si 
+							<input type="radio" name="otroshabitos" value="No"> No
+						</td>
 
-							<td>
-								<label for="anoshab_beber" generated="true" class="error"></label><br>
-								<input style="width:100px;" class="form-control input-sm center" type="number" name="anoshab_beber" onkeypress="return esInteger(event)" >
-							</td>
+						<td>
+							<textarea class="form-control input-sm" name="nombre_otrohabito" rows="1"></textarea>
+							<label for="nombre_otrohabito" generated="true" class="error"></label> 		
+						</td>
 
-							<td>
-								<label for="frec_beber" generated="true" class="error"></label><br>
-								<label>Dia:</label> <input type="radio" name="frec_beber" value="Dia"> | 
-								<label>Sem:</label> <input type="radio" name="frec_beber" value="Semana"> |
-								<label>15:</label> <input type="radio" name="frec_beber" value="Quincenalmente"> | 
-								<label>30:</label> <input type="radio" name="frec_beber" value="Mensualmente"> | 
-								<label>Ocac:</label> <input type="radio" name="frec_beber" value="Ocacionalmente">
-							</td>
+						<td>
+							<label for="medic_regularmente" generated="true" class="error"></label>							<input type="radio" name="medic_regularmente" value="Si"> Si 
+							<input type="radio" name="medic_regularmente" value="No"> No
+						</td>  
 
-							<td><br>
-								<label>Cerveza:</label> <input type="checkbox" name="tipolicor[]" value="Cerveza"> | 
-								<label>Ron:</label> <input type="checkbox" name="tipolicor[]" value="Ron"> | 
-								<label>Vino:</label> <input type="checkbox" name="tipolicor[]" value=" Vino">
-							</td> 	   
-						</tr>
-						<thead>
-							<th class="text-center">Problemas con Bebidas:</th>
-							<th class="text-center">Cuales Bebidas?</th>
-							<th class="text-center">Exbebedor:</th>
-							<th class="text-center">Exbebedor-Años:</th>
-						</thead>
-						<tr class="text-center">
-							<td>
-								<div class="N">
-									<label for="problemasbebidas" generated="true" class="error"></label><br>
-									<input type="radio" name="problemasbebidas" value="Si"> Si 
-									<input type="radio" name="problemasbebidas" value="No"> No
-								</div>
-							</td>
-							<td>
-								<label for="cuales_bebidas" generated="true" class="error"></label><br>
-								<textarea class="form-control input-sm" type="text" name="cuales_bebidas"></textarea>
-							</td>
+						<td>
+							<textarea class="form-control input-sm" name="nombre_medicamento" rows="1"></textarea>
+							<label for="nombre_medicamento" generated="true" class="error"></label>
+						</td>	          		
+					</tr>
+				</tbody>
+			</table>
 
-							<td>
-								<div class="N">
-									<label for="exbebedor" generated="true" class="error"></label><br>
-									<input type="radio" name="exbebedor" value="Si"> Si 
-									<input type="radio" name="exbebedor" value="No"> No
-								</div>
-							</td>
+			<table class="table table-bordered"> 
+				<thead>
+					<th class="text-center">Pendiente Cirugias en su EPS:</th>
+					<th class="text-center">¿Cual Cirugia?</th>
+					<th class="text-center">Pendiente Algun Tratamiento:</th>
+					<th class="text-center">Cual Tratamiento?:</th>
+				</thead> 
+				<tbody>
+					<tr class="text-center">
+						<td>
+							<input type="radio" name="cirugiaseps" value="Si"> Si 
+							<input type="radio" name="cirugiaseps" value="No"> No
+						</td>
+						
+						<td>
+							<textarea class="form-control input-sm" name="cuales_cirugias" rows="1"></textarea>
+							<label for="cuales_cirugias" generated="true" class="error"></label>
+						</td>
 
-							<td> 
-								<div class="N">
-									<label for="exbebedor_anos" generated="true" class="error"></label><br>
-									<input style="width: 100px;" class="form-control input-sm center" type="text" name="exbebedor_anos">
-								</div>
-							</td>
-						</tr>
-						<thead>
-							<th class="text-center">Otros Habitos Toxicos:</th>
-							<th class="text-center">¿Cuales Habitos Toxicos?:</th>
-							<th class="text-center">Medicamentos Regularmente:</th>
-							<th class="text-center">¿Cuales Medicamentos?:</th>
-						</thead>
-						<tr class="text-center">
-							<td>
-								<label for="otroshabitos" generated="true" class="error"></label><br>
-								<input type="radio" name="otroshabitos" value="Si"> Si 
-								<input type="radio" name="otroshabitos" value="No"> No
-							</td>
+						<td>
+							<label for="pend_tratamiento" generated="true" class="error"></label>
+							<input type="radio" name="pend_tratamiento" value="Si"> Si 
+							<input type="radio" name="pend_tratamiento" value="No"> No
+						</td>
 
-							<td>
-								<label for="nombre_otrohabito" generated="true" class="error"></label><br>
-								<textarea type="text" class="form-control input-sm" name="nombre_otrohabito"></textarea> 		
-							</td>
-
-							<td>
-								<label for="medic_regularmente" generated="true" class="error"></label><br>
-								<input type="radio" name="medic_regularmente" value="Si"> Si 
-								<input type="radio" name="medic_regularmente" value="No"> No
-							</td>  
-
-							<td>
-								<label for="nombre_medicamento" generated="true" class="error"></label><br>
-								<textarea type="text" class="form-control input-sm" name="nombre_medicamento"></textarea>
-							</td>	          		
-						</tr>
-					</tbody>
-				</table>
-
-				<table class="table table-bordered"> 
+						<td>
+							<textarea class="form-control input-sm" name="cuales_tratamientos" rows="1"></textarea>
+							<label for="cuales_tratamientos" generated="true" class="error"></label>
+						</td>
+					</tr>
 					<thead>
-						<th class="text-center">Pendiente Cirugias en su EPS:</th>
-						<th class="text-center">Cual Cirugia?</th>
-						<th class="text-center">Pendiente Algun Tratamiento:</th>
-						<th class="text-center">Cual Tratamiento?:</th>
-					</thead> 
-					<tbody>
-						<tr class="text-center">
-							<td>
-								<div class="N">
-									<input type="radio" name="cirugiaseps" value="Si"> Si 
-									<input type="radio" name="cirugiaseps" value="No"> No
-								</div>
-							</td>
-							
-							<td>
-								<label for="cuales_cirugias" generated="true" class="error"></label><br>
-								<textarea class="form-control input-sm" type="text" name="cuales_cirugias"></textarea>
-							</td>
-
-							<td>
-								<div class="N">
-									<label for="pend_tratamiento" generated="true" class="error"></label><br>
-									<input type="radio" name="pend_tratamiento" value="Si"> Si 
-									<input type="radio" name="pend_tratamiento" value="No"> No
-								</div>
-							</td>
-
-							<td>
-								<label for="cuales_tratamientos" generated="true" class="error"></label><br>
-								<textarea class="form-control input-sm" type="text" name="cuales_tratamientos" ></textarea>
-							</td>
-						</tr>
-						<thead>
-							<th class="text-center">Incapacidad en estos 6 Meses:</th>
-							<th class="text-center" colspan="3">Motivo:</th>
-						</thead>
-						<tr class="text-center">
-							<td>
-								<div class="N">
-								<label for="incapacidadultimosmeses" generated="true" class="error"></label><br>
-									<input type="radio" name="incapacidadultimosmeses" value="Si"> Si 
+						<th colspan="4" class="text-center">¿Incapacidad en estos 6 Meses?</th>
+					</thead>
+						<td colspan="4">
+							<!--  -->
+							<div class="input-group mb-3">
+							  <div class="input-group-prepend">
+							    <div class="input-group-text">
+							      	<input type="radio" name="incapacidadultimosmeses" value="Si"> Si 
+							      	<div class="separator"></div>
 									<input type="radio" name="incapacidadultimosmeses" value="No"> No
-								</div>
-							</td>
-							<td colspan="3">
-								<textarea class="form-control input-sm" type="text" name="motivo_incapacidad" ></textarea>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>    
-		</div>  
+							    </div>
+							  </div>
+							  <textarea class="form-control input-sm" name="motivo_incapacidad" rows="1" placeholder="Motivo"></textarea>
+							</div>
+							<!--  -->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>    
+	</div>  
 
 		<div class="panel panel-default">
 			<div class="panel-heading text-center">
@@ -2012,36 +2028,60 @@
 			</div>
 			<div class="panel-body">
 				<table class="table table-bordered">
-					<tbody>
+					<thead>
+						<th>Extremidad habil</th>
+						<th>Cicatrices</th>
+						<th>Tatuajes</th>
+						<th data-toggle="tooltip" title="Perimetro Abdominal">P. Abdominal</th>
+						<th data-toggle="tooltip" title="Perimetro Toraxico">P. Toraxico</th>
+						<th data-toggle="tooltip" title="Perimetro Arterial">T. Arterial</th>
+						<th class="text-center" data-toggle="tooltip" title="Frecuencia Cardiaca">F. Cardiaca</th>
+						<th class="text-center" data-toggle="tooltip" title="Frecuencia Respiratoria">F. Respiratoria</th>
+					</thead>
+					<tbody class="text-center">
 						<tr>
 							<td>
-								<label for="mano_habil" generated="true" class="error"></label><br>
+								<label for="mano_habil" generated="true" class="error"></label>
 								<label>Diestro: </label>
-								<input type="radio" name="mano_habil" value="Diestro">
-							</td>
+								<input type="radio" name="mano_habil" value="Diestro"> /
 
-							<td>
-								<label for="mano_habil" generated="true" class="error"></label><br>
 								<label> Zurdo: </label>
-								<input type="radio" name="mano_habil" value="Zurdo">
-							</td>
+								<input type="radio" name="mano_habil" value="Zurdo"> /
 
-							<td>
-								<label for="mano_habil" generated="true" class="error"></label><br>
 								<label> Ambidiestro: </label>
 								<input type="radio" name="mano_habil" value="Ambidiestro">
 							</td>
 
 							<td>
-								<label for="cicatrices" generated="true" class="error"></label><br>
-								<label>Cicatrices: </label>
-								<input type="radio" name="cicatrices" value="Si"> Si <input type="radio" name="cicatrices" value="No" checked> No
+								<label for="cicatrices" generated="true" class="error"></label>
+								<input type="radio" name="cicatrices" value="Si"> Si /
+								<input type="radio" name="cicatrices" value="No" checked> No
 							</td>
 
 							<td>
-								<label for="tatuajes" generated="true" class="error"></label><br>
-								<label>Tatuajes: </label>
-								<input type="radio" name="tatuajes" value="Si"> Si <input type="radio" name="tatuajes" value="No" checked> No
+								<label for="tatuajes" generated="true" class="error"></label>
+								<input type="radio" name="tatuajes" value="Si"> Si /
+								<input type="radio" name="tatuajes" value="No" checked> No
+							</td>
+							<td class="size_number">
+								<input type="number" name="perimetro_abdominal" class="form-control input-sm">
+								<label for="perimetro_abdominal" generated="true" class="error"></label>
+							</td>
+							<td class="size_number">
+								<input type="number" name="perimetro_toraxico" class="form-control input-sm">
+								<label for="perimetro_toraxico" generated="true" class="error"></label>
+							</td>
+							<td class="size_number">
+							 	<input class="form-control input-sm" type="number" name="tensionarterial">
+							 	<label for="tensionarterial" generated="true" class="error"></label> 
+							</td>
+							<td class="size_number">							   
+							 	<input class="form-control input-sm" type="number" name="frecuenciacardiaca">
+							 	<label for="frecuenciacardiaca" generated="true" class="error"></label>
+							</td>
+							<td class="size_number">	    
+							 	<input class="form-control input-sm" type="text" name="frecuenciarespiratoria">
+							 	<label for="frecuenciarespiratoria" generated="true" class="error"></label>
 							</td>
 						</tr> 
 					</tbody>
@@ -2049,21 +2089,13 @@
 
 				<table class="table table-bordered">
 					<thead>
-						<th><label style="font-size: 12px;">Perimetro Abdominal: </label></th>
-						<th><label style="font-size: 12px;">Perimetro Toraxico: </label></th>
 						<th class="text-center"><label style="font-size: 12px;">Otras Mediciones:</label>  </th>
 					</thead>
 					<tbody class="form-inline">
 						<tr>
-							<td class="text-center">
-								<label for="perimetro_abdominal" generated="true" class="error"></label><br>
-								<input style="width: 65px;" type="text" name="perimetro_abdominal" class="form-control input-sm" onkeypress="return esInteger(event)" >
-							</td>
 
-							<td class="text-center">
-								<label for="perimetro_toraxico" generated="true" class="error"></label><br>
-								<input style="width: 65px;" type="text" name="perimetro_toraxico" class="form-control input-sm" onkeypress="return esInteger(event)" >
-							</td>
+
+
 
 							<td>
 								<label for="otras_mediciones" generated="true" class="error"></label><br>                  
@@ -2075,28 +2107,19 @@
 
 				<table class="table table-bordered">
 					<thead>
-						<th class="text-center">Tension Arterial:</th>
-						<th class="text-center">Frecuencia Cardiaca:</th>
-						<th class="text-center">Frecuencia Respiratoria:</th>
+
+						
+						
 						<th class="text-center">Talla:</th>
 						<th class="text-center">Peso:</th>
 					</thead>  
 					<tbody class="form-inline">    
 						<tr>
-							<td class="text-center">
-								<label for="tensionarterial" generated="true" class="error"></label><br>    
-							 <input class="form-control input-sm" type="text" style="width: 70px;" name="tensionarterial" onkeypress="return esInteger(event)" >
-							</td> 
+ 
 
-							<td class="text-center">
-								<label for="frecuenciacardiaca" generated="true" class="error"></label><br>    
-							 <input class="form-control input-sm" type="text" style="width: 70px;" name="frecuenciacardiaca" onkeypress="return esInteger(event)" >
-							</td> 
+ 
 
-							<td class="text-center">
-								<label for="frecuenciarespiratoria" generated="true" class="error"></label><br>    
-							 <input class="form-control input-sm" type="text" style="width: 70px;" name="frecuenciarespiratoria" onkeypress="return esInteger(event)" >
-							</td>
+
 
 							<td class="text-center">
 								<label for="talla" generated="true" class="error"></label><br>    
@@ -2268,7 +2291,10 @@ $(function(){
 		});
  
 });
-
+//tooltip
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
  //time*/
 	function show(){

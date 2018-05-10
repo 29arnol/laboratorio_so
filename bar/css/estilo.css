@@ -246,6 +246,15 @@
   .center{
     margin: 0 auto;"
   }
+  .separator{
+    padding: 3px;
+  }
+  .radiobtn{
+    padding: 10px !important;
+  }
+  .size_number{
+    width: 110px;
+  }
   /**/
 
     #save-photo-result,#save_photo,#again,#video-recorder-holder, #canvas-recorder,#camara-no-activa{display:none;}
