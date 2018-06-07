@@ -1,75 +1,71 @@
- <?php
+<?php
 session_start();
 if(isset($_SESSION['usuario']) and $_SESSION['rol']==6){
-$nombres = $_SESSION['nombre_completo'];
-$nick = $nombres;   
+  $nombres = $_SESSION['nombre_completo'];
+  $nick = $nombres;   
 }else{
-session_destroy();
-header('Location: index.php'); 
+  session_destroy();
+  header('Location: index.php'); 
 }
 ?>
+<!-- sdddddd -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MEDICO OCUPACIONAL</title>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medico</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="bar/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="bar/css/fontawesome.min.css"> -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">  -->
+<!--   <script defer src="https://use.fontawesome.com/releases/[VERSION]/js/all.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="bar/css/estilo.css">
 
-   <link rel="stylesheet" href="css/bootstrap.min.css">
-
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- <link rel="stylesheet" type="text/css" href="bar/style_bar/style.css"> --><!--css code-->
-
-   <script src="jquery/jquery.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-
-
-   <link rel="stylesheet" type="text/css" href="bar/style_bar/estilo.css">
-    <style type="text/css">
-
-
-  </style>
-
-  </head>
-
+  <!-- JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>
+  <script src="bar/js/jquery-3.2.1.min.js"></script>
+  <script src="bar/js/bootstrap.min.js"></script>
+  <script src="bar/js/popper.min.js"></script> 
+  <!--   <script src="bar/js/jquery-3.3.1.slim.min.js"></script> -->
+</head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="medico_pacientes.php">Laboratorio SST</a>
-    <!--   <a class="navbar-brand" href="index.php" style="margin-top: 14px; color: #fff;"><img src="images/ico.png" style="margin-top:-22px;">
- -->    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-left">
-        <li><a href="medico_pacientes.php">CITAS</a></li>
-        <li><a target="_blank" href="medico.php" style="color: #FFFFFF;" class="ccolor">REGISTRAR EXAMEN</a></li>
-        <li><a target="_blank" href="medico_consult.php" style="color: #FFFFFF;" class="ccolor">CONSULTAR</a></li>
-      </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="medico_citas.php">LABORATORIO SST</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-
-      <ul class="nav navbar-nav navbar-right" >
-        <li><a><span class="glyphicon glyphicon-user"></span> <?php echo strtoupper($nick); ?></a></li>
-          <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> CERRAR SESION</a></li>
-      </ul>
-
-    </div>
+  <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav navbar-left">
+      <li class="nav-item">
+        <a class= "nav-link" href="medico_citas.php"><span class="fas fa-notes-medical"></span> CITAS</a>
+      </li>
+      <li class="nav-item">
+        <a class= "nav-link" target="_blank" href="medico_validarpaciente.php"><span class="fa fa-file-medical"></span> REGISTRAR EXAMEN</a>
+      </li>
+      <li class="nav-item">
+        <a class= "nav-link" target="_blank" href="medico_listarpacientes.php"><span class="fa fa-search"></span> 
+         CONSULTAR</a>
+      </li>
+ 
+    </ul>
   </div>
+
+  <span class=" my-2 my-sm-0  navbar-nav" >
+    <li class="dropdown nav-item">
+      <a class="dropdown-toggle nav-link" id= "navbarDropdownMenuLink"   data-toggle="dropdown" href="#"><span class="fa fa-user-circle"></span>  <?php echo strtoupper($nick); ?>
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu ground">
+        <li class="nav-item">
+          <a class= "dropdown-item size_font" href="logout.php">CERRAR SESION <span class="fa fa-power-off"></span></a>
+        </li>
+      </ul>
+    </li> 
+  </span>
 </nav>
-
-
-<br><br>
   <script>
 
     $(function(){//eventos de Mouse
@@ -94,7 +90,6 @@ header('Location: index.php');
     }); 
   </script>
 </html>
-
 
 
 

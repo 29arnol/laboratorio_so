@@ -25,7 +25,7 @@
       font-family: Montserrat, sans-serif;
   }
   .container-fluid {
-      padding: 60px 50px;
+      padding: 30px /*50px*/ 30px;
   }
   .bg-grey {
       background-color: #f6f6f6;
@@ -84,7 +84,7 @@
   .panel-heading {
       color: #0685e5 !important;
       background-color: #fff !important;
-      padding: 25px;
+      padding: 8px;
       border-bottom: 1px solid transparent;
       border-top-left-radius: 0px;
       border-top-right-radius: 0px;
@@ -105,6 +105,9 @@
       margin: 15px 0;
       background-color: #0685e5;
       color: #fff;
+  }
+  .modal-header{
+    height: 60px;
   }
   .navbar {
       margin-bottom: 0;
@@ -191,15 +194,18 @@
   }
 
   .paciente_datos{
-    height: 220px; 
-    width: 270px;  
-    position:absolute; 
-    z-index:0; 
-    margin-left: 820px; 
+    height: 150px; 
+    width: 150px;  
+   /* position:absolute; */
+    /*z-index:0; */
+    /*margin-left: 820px; */
   }
-
   .tabla_paciente{
     width: 770px;
+  }
+
+  .table_sizefont{
+    font-size: 11px;
   }
 
   #screenshot{
@@ -228,7 +234,11 @@
     color: black;
   }
   .size_font {
-    font-size: 12px;
+    font-size: 13px;
+  }
+
+  .fontlistar{
+    font-size: 14px;
   }
 
   .position{
@@ -255,9 +265,11 @@
   .size_number{
     width: 110px;
   }
+  .groundcolor{
+    background: #F4FDFF;
+  }
   /**/
-
-    #save-photo-result,#save_photo,#again,#video-recorder-holder, #canvas-recorder,#camara-no-activa{display:none;}
+  #save-photo-result,#save_photo,#again,#video-recorder-holder, #canvas-recorder,#camara-no-activa{display:none;}
   .g {
     padding-left: 0;
     padding-right: 0;
@@ -267,5 +279,12 @@
     width: 520px;
   }
   .border { border-style: solid; border-width: 4px; height: 393px; }
+
+  .fontcolor {color: #fff !important;}
+
+  .framepdf{
+    width:1080px;
+    height:1175px;
+  }
 
   </style>

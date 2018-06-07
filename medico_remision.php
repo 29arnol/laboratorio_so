@@ -35,11 +35,9 @@
     $data_remision = "SELECT * FROM datos_basicos AS db
     JOIN datos_complementarios AS dc ON db.fk_d_complementario = dc.id
     JOIN datos_basicos_tipo_documento AS dbtd ON dc.fk_tipo_documento = dbtd.idtd
-    JOIN medico_examen_fisico AS mef ON mef.paciente_medico = db.id_historia
+    JOIN medico_examenfisico AS mef ON db.id_historia = mef.paciente_medico
     JOIN medico_paraclinicos AS mp ON mef.id = mp.id_examen_fisico
-    /*LEFT JOIN medico_remision as mr ON (mp.id = mr.id_paraclinico)*/
     JOIN medico_remision AS mr ON mp.id = mr.id_paraclinico
-    /*JOIN medico_concepto_aptitud_laboral AS mcal ON mr.id = mcal.id_remision*/
     WHERE db.id_historia = '$historia'";
     $query = mysqli_query($conexion,$data_remision);
 
@@ -152,7 +150,7 @@
         $periodico_diagnostico = $_POST['periodico_diagnostico'];
         $observaciones_aptitud_laboral = $_POST['observaciones_aptitud_laboral'];
 
-        $update_act_laboral = "UPDATE `medico_concepto_aptitud_laboral` SET `apto_trabajo_nivel`='$trabajo_nivel', `apto_trabajo_altura`='$trabajo_altura', `apto_con_restricciones_no_intervienen`='$trabajo_restricciones_no_interviene', `aplazado`='$aplazado', `nueva_valoracion`='$nueva_valoracion', `apto_con_limitaciones_si_intervienen`='$trabajo_limitaciones_si_interviene', `apto`='$apto', `examen_egreso_diagnostico`='$egreso_diagnostico', `examen_periodico_diagnostico`='$periodico_diagnostico', `observaciones_aptitud_laboral`='$observaciones_aptitud_laboral'
+        $update_act_laboral = "UPDATE `medico_cal` SET `apto_trabajo_nivel`='$trabajo_nivel', `apto_trabajo_altura`='$trabajo_altura', `apto_con_restricciones_no_intervienen`='$trabajo_restricciones_no_interviene', `aplazado`='$aplazado', `nueva_valoracion`='$nueva_valoracion', `apto_con_limitaciones_si_intervienen`='$trabajo_limitaciones_si_interviene', `apto`='$apto', `examen_egreso_diagnostico`='$egreso_diagnostico', `examen_periodico_diagnostico`='$periodico_diagnostico', `observaciones_aptitud_laboral`='$observaciones_aptitud_laboral'
         WHERE id_remision='$idfk_remi'  ";
         $query3 = mysqli_query($conexion,$update_act_laboral);
 

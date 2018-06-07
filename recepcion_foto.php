@@ -1,7 +1,7 @@
 <?php
  include ('includes/conexion.php');
  include ('bar/navbar_recepcion.php');
- include ('bar/style_bar/estilo.css') 
+ //include ('bar/ccs/estilo.css') 
 ?>
 
 <!DOCTYPE html>
@@ -27,11 +27,11 @@
         success: function(datos){    
           if(datos==1){
             alert('Foto almacenada correctamente');
-            location.href ="recepcion_pacientes.php";
+            location.href ="recepcion_citas.php";
           }
           else{
             alert('Error al guardar la foto');
-            location.href ="recepcion_pacientes.php";
+            location.href ="recepcion_citas.php";
           }
         }
       });

@@ -3,6 +3,7 @@ include ("includes/conexion.php");
 
 session_start();
 
+
 if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']) && !empty ($_POST['password'])){
 
 	$user = $_POST['user'];
@@ -11,6 +12,8 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 
 	$user = mysqli_real_escape_string($conexion,$user);
 	$pas = mysqli_real_escape_string($conexion,$pas);
+
+	
 
 	//$user = $conexion->real_escape_string($user);	
 	//$pas = $conexion->real_escape_string($pas);
@@ -52,13 +55,13 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 									
 						switch ($rol==1){
 						 	case 1:
-				         	echo "<script>window.location = 'recepcion_pacientes.php'</script>";
+				         	echo "<script>window.location = 'recepcion_citas.php'</script>";
 				         	break;
 						}		
 						
 					}else{
 						
-						echo "<script>alert('Clave Incorrecta')</script>";
+						echo "<script>alert('Datos de usuario Incorrectos')</script>";
 						echo "<script>window.location = 'index.php'</script>";
 						
 						}//If Si Con trae algo
@@ -66,11 +69,11 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 				}//if de CON
 			   	   
 			}elseif(mysqli_num_rows($result)==0){
-			  echo "<script>alert('El usuario no existe en el sistema')</script>";
+			  echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			  echo "<script>window.location = 'index.php'</script>";
 			}//If del 1er Num_Rows
 			
-			echo "<script>alert('El rol seleccionado no coincide con el usuario ingresado')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 	}
 	//---------------enfermeria---------
@@ -113,19 +116,19 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 										
 					switch ($rol){
 					 	case 2:
-			         	echo "<script>window.location = 'enfermeria_pacientes.php'</script>";
+			         	echo "<script>window.location = 'enfermeria_citas.php'</script>";
 			         	break;
 					}							
 				}else{					
-					echo "<script>alert('Clave Incorrecta')</script>";
+					echo "<script>alert('Datos de usuario Incorrectos')</script>";
 					echo "<script>window.location = 'index.php'</script>";					
 				}//If Si Con trae algo				
 			}//if de CON			   	   
 		}elseif(mysqli_num_rows($result)==0){
-			echo "<script>alert('El usuario no existe en el sistema')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 		}//If del 1er Num_Rows
-			echo "<script>alert('El rol seleccionado no coincide con el usuario ingresado')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 	}
 	//---------------Audiometria---------
@@ -166,21 +169,21 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 										
 					switch ($rol){
 						case 3:
-				         	echo "<script>window.location = 'audiometria_pacientes.php'</script>";
+				         	echo "<script>window.location = 'audiometria_citas.php'</script>";
 				        break;
 					}		
 					
 				}else{					
-					echo "<script>alert('Clave Incorrecta')</script>";
+					echo "<script>alert('Datos de usuario Incorrectos')</script>";
 					echo "<script>window.location = 'index.php'</script>";		
 				}//If Si Con trae algo				
 			}//if de CON
 		   	   
 	   	}elseif(mysqli_num_rows($result)==0){
-		  	echo "<script>alert('El usuario no existe en el sistema')</script>";
+		  	echo "<script>alert('Datos de usuario Incorrectos')</script>";
 		  	echo "<script>window.location = 'index.php'</script>";
 	   	}//If del 1er Num_Rows
-			echo "<script>alert('El rol seleccionado no coincide con el usuario ingresado')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 	}
 
@@ -223,26 +226,25 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 					
 					switch ($rol){
 						case 4:
-				         	echo "<script>window.location = 'espirometria_pacientes.php'</script>";
+				         	echo "<script>window.location = 'espirometria_citas.php'</script>";
 				        break;
 					}		
 					
 				}else{
-					echo "<script>alert('Clave Incorrecta')</script>";
+					echo "<script>alert('Datos de usuario Incorrectos')</script>";
 					echo "<script>window.location = 'index.php'</script>";				
 				}//If Si Con trae algo	
 			}//if de CON
 			   	   
 		}elseif(mysqli_num_rows($result)==0){
-			echo "<script>alert('El usuario no existe en el sistema')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 		}//If del 1er Num_Rows
-			echo "<script>alert('El rol seleccionado no coincide con el usuario ingresado')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 	}
 	//---visiometria---
 	if ($tipo_rol==5) {
-
 		$existe = "SELECT * FROM usuarios WHERE usuario = '".$user."'";
 		$result = mysqli_query($conexion,$existe);
 
@@ -277,20 +279,20 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 					
 					switch ($rol){
 					 	case 5:
-			         		echo "<script>window.location = 'visiometria_pacientes.php'</script>";
+			         		echo "<script>window.location = 'visiometria_citas.php'</script>";
 			         	break;
 					}			
 				}else{
-					echo "<script>alert('Clave Incorrecta')</script>";
+					echo "<script>alert('Datos de usuario Incorrectos')</script>";
 					echo "<script>window.location = 'index.php'</script>";				
 				}//If Si Con trae algo		
 			}//if de CON
 		   	   
 	   	}elseif(mysqli_num_rows($result)==0){
-		  	echo "<script>alert('El usuario no existe en el sistema')</script>";
+		  	echo "<script>alert('Datos de usuario Incorrectos')</script>";
 		  	echo "<script>window.location = 'index.php'</script>";
 	   	}//If del 1er Num_Rows
-			echo "<script>alert('El rol seleccionado no coincide con el usuario ingresado')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 	}
 	//---medico---
@@ -332,20 +334,20 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 
 					switch ($rol){
 						case 6:
-				         	echo "<script>window.location = 'medico_pacientes.php'</script>";
+				         	echo "<script>window.location = 'medico_citas.php'</script>";
 				        break;
 					}		
 					
 				}else{			
-					echo "<script>alert('Clave Incorrecta')</script>";
+					echo "<script>alert('Datos de usuario Incorrectos')</script>";
 					echo "<script>window.location = 'index.php'</script>";				
 				}//If Si Con trae algo		
 			}//if de CON	   	   
 	   	}elseif(mysqli_num_rows($result)==0){
-		  	echo "<script>alert('El usuario no existe en el sistema')</script>";
+		  	echo "<script>alert('Datos de usuario Incorrectos')</script>";
 		  	echo "<script>window.location = 'index.php'</script>";
 	   	}//If del 1er Num_Rows
-			echo "<script>alert('El rol seleccionado no coincide con el usuario ingresado')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 	}
 	//-----psicologia--
@@ -362,17 +364,16 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 			$nombre_c = $nombre;
 		}
 
-
-		if (mysqli_num_rows($result)>0){
+		if(mysqli_num_rows($result)>0){
 
 			$query = "SELECT * FROM usuarios WHERE usuario = '".$user."' and contrasena = '".$pas."'";
 			$con = mysqli_query($conexion,$query);
 
-			if ($con){
+			if($con){
 				
 				if (mysqli_num_rows($con) > 0){
 					//cuenta el numero de filas de la consulta
-					
+
 					$query2 = mysqli_fetch_array ($con); 
 					
 					$_SESSION ['usuario'] = $query2['usuario'];
@@ -388,20 +389,20 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 							
 					switch ($rol){
 					 	case 7:
-			         		echo "<script>window.location = 'psicologia.php'</script>";
+			         		echo "<script>window.location = 'psicologia_citas.php'</script>";
 			         	break;
 					}							
 				}else{
-					echo "<script>alert('Clave Incorrecta')</script>";
+					echo "<script>alert('Datos de usuario Incorrectos')</script>";
 					echo "<script>window.location = 'index.php'</script>";				
 				}//If Si Con trae algo	
 			}//if de CON
 		   	   
 		}elseif(mysqli_num_rows($result)==0){
-			echo "<script>alert('El usuario no existe en el sistema')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 		}//If del 1er Num_Rows
-			echo "<script>alert('El rol seleccionado no coincide con el usuario ingresado')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 	}
 	//---higiene--
@@ -449,15 +450,15 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 					
 				}else{
 					
-					echo "<script>alert('Clave Incorrecta')</script>";
+					echo "<script>alert('Datos de usuario Incorrectos')</script>";
 					echo "<script>window.location = 'index.php'</script>";				
 				}//If Si Con trae algo				
 			}//if de CON		   	   
 	   	}elseif(mysqli_num_rows($result)==0){
-		  	echo "<script>alert('El usuario no existe en el sistema')</script>";
+		  	echo "<script>alert('Datos de usuario Incorrectos')</script>";
 		  	echo "<script>window.location = 'index.php'</script>";
 	   	}//If del 1er Num_Rows
-			echo "<script>alert('El rol seleccionado no coincide con el usuario ingresado')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 	}
 
@@ -505,17 +506,17 @@ if (isset($_POST['user']) && !empty ($_POST['user']) && isset($_POST['password']
 					}		
 					
 				}else{				
-					echo "<script>alert('Clave Incorrecta')</script>";
+					echo "<script>alert('Datos de usuario Incorrectos')</script>";
 					echo "<script>window.location = 'index.php'</script>";				
 				}//If Si Con trae algo
 				
 			}//if de CON
 		   	   
 		}elseif(mysqli_num_rows($result)==0){
-			echo "<script>alert('El usuario no existe en el sistema')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 		}else{
-			echo "<script>alert('El rol seleccionado no coincide con el usuario ingresado')</script>";
+			echo "<script>alert('Datos de usuario Incorrectos')</script>";
 			echo "<script>window.location = 'index.php'</script>";
 		}
 	}

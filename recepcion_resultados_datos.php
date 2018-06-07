@@ -1,10 +1,9 @@
 <?php
 //Archivo de conexión a la base de datos
-include ('includes/conexion.php');
-
+include('includes/conexion.php');
+include('bar/css/estilo.css');
 //Variable de búsqueda
 $consultaBusqueda = $_POST['valorBusqueda'];
-
 //Filtro anti-XSS
 $caracteres_malos = array("<", ">", "'", "/", "<", ">", "'", "/");
 $caracteres_buenos = array("& lt;", "& gt;", "& quot;", "& #x27;", "& #x2F;", "& #060;", "& #062;", "& #039;", "& #047;");
@@ -68,35 +67,35 @@ if (isset($consultaBusqueda)) {
 			        <th>Nombres</th>
 			        <th>Evaluacion</th>
 			        <th>Fecha</th>
-			        <th>Datos</th>
-			        <th style="color: #FF0033;">Audiometria</th>
-			        <th style="color: #808080;">Visiometria</th>
-			        <th style="color: #808080;">Espirometria</th>
-			        <th style="color: #808080;">Psicologia</th>
-			        <th style="color: #808080;">Enfermeria</th>
-			        <th style="color: #808080;">Medico</th>
+			        <th class="text-dark">Datos</th>
+			        <th class="text-primary">Audiometria</th>
+			        <th class="text-primary">Visiometria</th>
+			        <th class="text-primary">Espirometria</th>
+			        <th class="text-primary">Psicologia</th>
+			        <th class="text-primary">Enfermeria</th>
+			        <th class="text-primary">Medico</th>
 			      </tr>
 			    </thead>
 			    <tbody class="text-center">
 			      <tr>
 			      
-			        <td>'. $numerodocumento .'</td>
-			        <td>'. $nombrescompleto .'</td>
-			        <td>'. $motivoevaluacion .'</td>
-			        <td>'. $fecha .'</td>
-			        <td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="recepcion_paciente.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+			        <td class="text-dark">'.$numerodocumento.'</td>
+			        <td class="text-dark">'.$nombrescompleto.'</td>
+			        <td class="text-dark">'.$motivoevaluacion.'</td>
+			        <td class="text-dark">'.$fecha.'</td>
+			        <td><a target="_blank" href="recepcion_datospaciente.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'"><strong><i class="far fa-eye"></i> Ver</strong></a></td>
 
-			 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="audiometria_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+			 		<td><a target="_blank" href="audiometria_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><strong><i class="far fa-eye"></i> Ver</strong></a></td>
 
-			 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="visiometria_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+			 		<td><a target="_blank" href="visiometria_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><strong><i class="far fa-eye"></i> Ver</strong></a></td>
 
-			 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="espirometria_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+			 		<td><a target="_blank" href="espirometria_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><strong><i class="far fa-eye"></i> Ver</strong></a></td>
 
-			 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="psicologia_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+			 		<td><a target="_blank" href="psicologia_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><strong><i class="far fa-eye"></i> Ver</strong></a></td>
 
-			 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="enfermeria_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+			 		<td><a target="_blank" href="enfermeria_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><strong><i class="far fa-eye"></i> Ver</strong></a></td>
 
-			 		<td><button type="button" class="btn btn-default btn-sm"><a target="_blank" href="medico_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><span class="glyphicon glyphicon-eye-open"></span> Ver</strong></a></button></td>
+			 		<td><a target="_blank" href="medico_result.php?paciente='.$h_code.'&&registro='.$f_code.'&&cod='.$code.'&&tipoconsulta='.$t_code.'"><strong><strong><i class="far fa-eye"></i> Ver</strong></a></td>
 			      </tr>
 			    </tbody>
 			  </table>

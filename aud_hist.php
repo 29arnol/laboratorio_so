@@ -8,8 +8,8 @@
 	$query = "SELECT * FROM datos_basicos AS db
 	JOIN datos_complementarios AS dc ON db.fk_d_complementario = dc.id
 	JOIN datos_basicos_tipo_documento AS dbtd ON dbtd.idtd = dc.fk_tipo_documento
-	JOIN audiometria_resultado_der AS ard ON db.id_historia = ard.paciente_audiometria
-  	JOIN audiometria_resultado_izq AS ari ON ari.id_audiometria_paciente = ard.id
+  	JOIN audiometria_oidoderecho AS aod ON db.id_historia = aod.paciente_audiometria
+  	JOIN audiometria_oidoizquierdo AS aoi ON aoi.id_audiometria_paciente = aod.id 
 	WHERE db.id_historia = '$historia'";
 	$resultado = mysqli_query($conexion,$query);
 	while($row = $resultado->fetch_assoc()){
@@ -79,7 +79,7 @@
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
-	$pdf->Cell(622,12,'                                                ANTECEDENTES ( '.utf8_decode($row['antecedentes_audiometria']).' )' ,1,1,'C',1);
+	$pdf->Cell(622,12,'                                                ANTECEDENTES ( '.utf8_decode($row['antecedenteaudiometria']).' )' ,1,1,'C',1);
 	$pdf->Cell(622,12,'                                                Antecedentes Personales:' ,1,1,'C',1);
 
 	$pdf->SetFont('Arial','',8);//
@@ -88,8 +88,8 @@
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->Cell(45,12,utf8_decode($row['ant_personal_quir']),1,0,'C');
-	$pdf->MultiCell(705,12,utf8_decode($row['descripcion_personal_quir']),1,1,'C');
+	$pdf->Cell(45,12,utf8_decode($row['ant_personalquirurgico']),1,0,'C');
+	$pdf->MultiCell(705,12,utf8_decode($row['desc_personalquirurgico']),1,1,'C');
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(232,232,232);
@@ -98,8 +98,8 @@
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->Cell(45,12,utf8_decode($row['ant_personal_gen']),1,0,'C');
-	$pdf->MultiCell(705,12,utf8_decode($row['descripcion_personal_gen']),1,1,'C');
+	$pdf->Cell(45,12,utf8_decode($row['ant_personalgeneral']),1,0,'C');
+	$pdf->MultiCell(705,12,utf8_decode($row['desc_personalgeneral']),1,1,'C');
 
 	$pdf->Ln(1);
 
@@ -114,8 +114,8 @@
 
 	$pdf->SetFont('Arial','',7);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->Cell(45,12,utf8_decode($row['ant_familiar_quir']),1,0,'C');
-	$pdf->MultiCell(705,12,utf8_decode($row['descripcion_familiar_quir']),1,1,'C');
+	$pdf->Cell(45,12,utf8_decode($row['ant_familiarquirurgico']),1,0,'C');
+	$pdf->MultiCell(705,12,utf8_decode($row['desc_familiarquirurgico']),1,1,'C');
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(232,232,232);
@@ -124,8 +124,8 @@
 
 	$pdf->SetFont('Arial','',7);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->Cell(45,12,utf8_decode($row['ant_familiar_gen']),1,0,'C');
-	$pdf->MultiCell(705,12,utf8_decode($row['descripcion_familiar_gen']),1,1,'C');
+	$pdf->Cell(45,12,utf8_decode($row['ant_familiargeneral']),1,0,'C');
+	$pdf->MultiCell(705,12,utf8_decode($row['desc_familiargeneral']),1,1,'C');
 
 	$pdf->Ln(1);
 
@@ -135,7 +135,7 @@
 
 	$pdf->SetFont('Arial','',7);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['ant_audiometria_anterior']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row['ant_audiometriaanterior']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
@@ -149,8 +149,8 @@
 
 	$pdf->SetFont('Arial','',7);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->Cell(42,12,utf8_decode($row['pasa_otoscopia']),1,0,'C');
-	$pdf->MultiCell(708,12,utf8_decode($row['hallazgo_der']),1,1,'C');
+	$pdf->Cell(42,12,utf8_decode($row['otoscopia_od']),1,0,'C');
+	$pdf->MultiCell(708,12,utf8_decode($row['hallazgo_od']),1,1,'C');
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(232,232,232);
@@ -159,8 +159,8 @@
 
 	$pdf->SetFont('Arial','',7);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->Cell(42,12,utf8_decode($row['pasa_otoscopia_izq']),1,0,'C');
-	$pdf->MultiCell(708,12,utf8_decode($row['hallazgo_izq']),1,1,'C');
+	$pdf->Cell(42,12,utf8_decode($row['otoscopia_oi']),1,0,'C');
+	$pdf->MultiCell(708,12,utf8_decode($row['hallazgo_oi']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
@@ -194,7 +194,7 @@
 	$pdf->Cell(40,12,utf8_decode($row['2000']),1,0,'C');
 	$pdf->Cell(40,12,utf8_decode($row['4000']),1,0,'C');
 	$pdf->Cell(40,12,utf8_decode($row['8000']),1,0,'C');
-	$pdf->Cell(135,12,utf8_decode($row['resultado_promedio']),1,0,'C');
+	$pdf->Cell(135,12,utf8_decode($row['promedio_od']),1,0,'C');
 
 	$pdf->Cell(40,12,utf8_decode($row['250_izq']),1,0,'C');
 	$pdf->Cell(40,12,utf8_decode($row['500_izq']),1,0,'C');
@@ -202,7 +202,7 @@
 	$pdf->Cell(40,12,utf8_decode($row['2000_izq']),1,0,'C');
 	$pdf->Cell(40,12,utf8_decode($row['4000_izq']),1,0,'C');
 	$pdf->Cell(40,12,utf8_decode($row['8000_izq']),1,0,'C');
-	$pdf->Cell(135,12,utf8_decode($row['resultado_promedio_izq']),1,1,'C');
+	$pdf->Cell(135,12,utf8_decode($row['promedio_oi']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
@@ -220,7 +220,7 @@
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['evaluacion_diagnostica']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row['evaluaciondiagnostica']),1,1,'C');
 	$pdf->Ln(1);
 
 
@@ -233,7 +233,7 @@
 	$pdf->SetFont('Arial','B',8);//
 	$pdf->Cell(250,12,utf8_decode($row['retamizaje']),1,0,'C');
 	$pdf->Cell(250,12,utf8_decode($row['interconsulta']),1,0,'C');
-	$pdf->Cell(250,12,utf8_decode($row['control_anual']),1,1,'C');
+	$pdf->Cell(250,12,utf8_decode($row['controlanual']),1,1,'C');
 
 
 	$pdf->Ln(300);

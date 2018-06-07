@@ -8,10 +8,10 @@
 	$query = "SELECT * FROM datos_basicos AS db
 	JOIN datos_complementarios AS dc ON db.fk_d_complementario = dc.id
 	JOIN datos_basicos_tipo_documento AS dbtd ON dbtd.idtd = dc.fk_tipo_documento
-    JOIN visiometria_campo_visual AS vcv ON db.id_historia = vcv.paciente_visiometria 
-    JOIN visiometria_vision_lejana AS vvl ON vcv.id = vvl.id_campo_visual
-    JOIN visiometria_vision_proxima AS vvp ON vvl.id = vvp.id_vision_lejana
-    JOIN visiometria_percepciones_y_forias AS vpf ON vvp.id = vpf.id_vision_proxima
+    JOIN visiometria_campovisual AS vcv ON db.id_historia = vcv.paciente_visiometria 
+    JOIN visiometria_visionlejana AS vvl ON vcv.id = vvl.id_campo_visual
+    JOIN visiometria_visionproxima AS vvp ON vvl.id = vvp.id_vision_lejana
+    JOIN visiometria_percepcionforia AS vpf ON vvp.id = vpf.id_vision_proxima
 	WHERE db.id_historia = '$historia'";
 	$resultado = mysqli_query($conexion,$query);
 	while($row = $resultado->fetch_assoc()){
@@ -82,24 +82,24 @@
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
-	$pdf->Cell(622,12,'                                       UTILIZA PRESCRIPCION OPTICA: ( '.utf8_decode($row['prescripcion_optica']).' )',1,1,'C',1);
+	$pdf->Cell(622,12,'                                       UTILIZA PRESCRIPCION OPTICA: ( '.utf8_decode($row['prescripcionoptica']).' )',1,1,'C',1);
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
-	$pdf->Cell(622,12,'                                        ANTECEDENTES PERSONALES ( '.utf8_decode($row['antecedentes_personales']).' )',1,1,'C',1);
+	$pdf->Cell(622,12,'                                        ANTECEDENTES PERSONALES ( '.utf8_decode($row['antecedentepersonal']).' )',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['visiometria_ant_personales']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row['desc_antpersonal']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
 	$pdf->SetFillColor(232,232,232);
-	$pdf->Cell(750,12,'ANTECEDENTES PROFESIONALES ( '.utf8_decode($row['antecedentes_profesionales']).' )',1,1,'C',1);
+	$pdf->Cell(750,12,'ANTECEDENTES PROFESIONALES ( '.utf8_decode($row['antecedentelaboral']).' )',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['visiometria_ant_profesionales']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row['desc_antlaboral']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFillColor(232,232,232);

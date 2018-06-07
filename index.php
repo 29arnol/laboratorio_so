@@ -385,6 +385,7 @@
         <div class="panel-body expandable">
           <div class="text-center"><span class="fa fa-heart logo-small"></span></div>
           <h4 class="text-center">Medicina Preventiva Y Del Trabajo</h4>
+          <div style="">
           <p class="portafoliotext">
             • Examen Medico Laboral: Ingreso y Egreso<br>
             • Audiometria Laboral<br>
@@ -394,6 +395,7 @@
             • Programas de Vigilancia Epidemiologica:
             Diseño, Implementacion y Seguimiento.
           </p>
+          </div>
         </div>
       </div>
     </div>
@@ -759,6 +761,9 @@
               <label for="password" generated="true" class="error"></label> 
             </div>
           </div>
+          <!---->
+
+			<!---->
           <div class="text-center">
             <button type="submit" class="btn btn-success btn-sm" id="btn">Ingresar</button>
           </div>

@@ -8,18 +8,17 @@
 	$query = "SELECT * FROM datos_basicos AS db
 	JOIN datos_complementarios AS dc ON db.fk_d_complementario = dc.id
 	JOIN datos_basicos_tipo_documento AS dbtd ON dbtd.idtd = dc.fk_tipo_documento
-    JOIN historia_laboral AS hl ON db.id_historia = hl.paciente_enfermeria 
-    JOIN exposicion_riesgos_enf AS ere ON hl.id = ere.id_paciente
-    JOIN antecedentes_per_fam_enf AS apfe ON apfe.id_paciente_riesgos = ere.id
-    JOIN antecedentes_ginecologia_enf AS age ON age.id_ant_per_fam = apfe.id
-    JOIN proteccion_personal_enf AS ppe ON age.id = ppe.id_ginecologia
-    JOIN accidentes_trabajo_enf AS ate ON ppe.id = ate.id_protec_personal
-    JOIN enfermedad_profesional_enf AS epe ON ate.id = epe.id_accidente_trabajo
-    JOIN habitos_saludables_enf AS hse ON epe.id = hse.id_enfermedad_prof
-    JOIN habitos_toxicos_enf AS hte ON hse.id = hte.id_hab_saludables
-    JOIN signos_vitales_enf AS sve ON hte.id = sve.id_habitos_toxicos
-    JOIN enfermeria_riesgos_suministrados AS ers ON sve.id = ers.id_signos_vitales
-
+  	JOIN enfermeria_historialaboral AS hl ON db.id_historia = hl.paciente_enfermeria 
+    JOIN enfermeria_riesgos AS er ON hl.id = er.id_paciente
+    JOIN enfermeria_antecedentes AS ea ON ea.id_paciente_riesgos = er.id
+    JOIN enfermeria_ginecologia AS eg ON eg.id_ant_per_fam = ea.id
+    JOIN enfermeria_epp AS epp ON eg.id = epp.id_ginecologia
+    JOIN enfermeria_accidentes AS eac ON epp.id = eac.id_protec_personal
+    JOIN enfermeria_enfermedad AS epe ON eac.id = epe.id_accidente_trabajo
+    JOIN enfermeria_habitosaludable AS ehs ON epe.id = ehs.id_enfermedad_prof
+    JOIN enfermeria_habitotoxico AS eht ON ehs.id = eht.id_hab_saludables
+    JOIN enfermeria_signovital AS esv ON eht.id = esv.id_habitos_toxicos
+    JOIN enfermeria_riesgosempresa AS ere ON esv.id = ere.id_signos_vitales
 	WHERE db.id_historia = '$historia'";
 	$resultado = mysqli_query($conexion,$query);
 	while($row = $resultado->fetch_assoc()){
@@ -93,7 +92,7 @@
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
-	$pdf->Cell(622,12,'HISTORIA LABORAL ( '.utf8_decode($row['historia_laboral']).' )',1,1,'C',1);
+	$pdf->Cell(622,12,'HISTORIA LABORAL ( '.utf8_decode($row['historialaboral']).' )',1,1,'C',1);
 
 	$pdf->Cell(270,12,'Cargo',1,0,'C',1);
 	$pdf->Cell(100,12,'Turno',1,0,'C',1);
@@ -103,7 +102,7 @@
 	$pdf->SetFont('Arial','',8);//
 	$pdf->Cell(270,12,utf8_decode($row['cargo']),1,0,'C');
 	$pdf->Cell(100,12,utf8_decode($row['turno']),1,0,'C');
-	$pdf->Cell(100,12,utf8_decode($row['anos_en_empresa']),1,0,'C');
+	$pdf->Cell(100,12,utf8_decode($row['aniosempresa']),1,0,'C');
 	$pdf->Cell(280,12,utf8_decode($row['dependencia']),1,1,'C');
 
 	$pdf->Cell(750,12,'Acciones',1,1,'C',1);
@@ -126,12 +125,12 @@
 
 	$pdf->SetFont('Arial','',7);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['descripcion_cargo']),1,1,'C',1);
+	$pdf->MultiCell(750,12,utf8_decode($row['descripcioncargo']),1,1,'C',1);
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
 	$pdf->SetFillColor(232,232,232);
-	$pdf->Cell(750,12,'EXPOSICION A FACTORES DE RIESGO ( '.utf8_decode($row['factores_riesgos']).' )',1,1,'C',1);
+	$pdf->Cell(750,12,'EXPOSICION A FACTORES DE RIESGO ( '.utf8_decode($row['factoresriesgos']).' )',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(232,232,232);
@@ -150,70 +149,11 @@
 
 	$pdf->SetFont('Arial','',7);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->Cell(100,12,utf8_decode($row['empresa1']),1,0,'C');
-	$pdf->Cell(24,12,utf8_decode($row['fisico1']),1,0,'C');
-	$pdf->Cell(32,12,utf8_decode($row['quimico1']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['biologico1']),1,0,'C');
-	$pdf->Cell(45,12,utf8_decode($row['ergonomico1']),1,0,'C');
-	$pdf->Cell(37,12,utf8_decode($row['mecanico1']),1,0,'C');
-	$pdf->Cell(43,12,utf8_decode($row['psicosocial1']),1,0,'C');
-	$pdf->Cell(33,12,utf8_decode($row['electrico1']),1,0,'C');
-	$pdf->Cell(120,12,utf8_decode($row['otros1']),1,0,'C');
-	$pdf->Cell(120,12,utf8_decode($row['cargo1']),1,0,'C');
-	$pdf->Cell(40,12,utf8_decode($row['tiempo1']),1,0,'C');
-	$pdf->Cell(121,12,utf8_decode($row['proteccion_personal1']),1,1,'C');
-
-	$pdf->Cell(100,12,utf8_decode($row['empresa2']),1,0,'C');
-	$pdf->Cell(24,12,utf8_decode($row['fisico2']),1,0,'C');
-	$pdf->Cell(32,12,utf8_decode($row['quimico2']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['biologico2']),1,0,'C');
-	$pdf->Cell(45,12,utf8_decode($row['ergonomico2']),1,0,'C');
-	$pdf->Cell(37,12,utf8_decode($row['mecanico2']),1,0,'C');
-	$pdf->Cell(43,12,utf8_decode($row['psicosocial2']),1,0,'C');
-	$pdf->Cell(33,12,utf8_decode($row['electrico2']),1,0,'C');
-	$pdf->Cell(120,12,utf8_decode($row['otros2']),1,0,'C');
-	$pdf->Cell(120,12,utf8_decode($row['cargo2']),1,0,'C');
-	$pdf->Cell(40,12,utf8_decode($row['tiempo2']),1,0,'C');
-	$pdf->Cell(121,12,utf8_decode($row['proteccion_personal2']),1,1,'C');
-
-	$pdf->Cell(100,12,utf8_decode($row['empresa3']),1,0,'C');
-	$pdf->Cell(24,12,utf8_decode($row['fisico3']),1,0,'C');
-	$pdf->Cell(32,12,utf8_decode($row['quimico3']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['biologico3']),1,0,'C');
-	$pdf->Cell(45,12,utf8_decode($row['ergonomico3']),1,0,'C');
-	$pdf->Cell(37,12,utf8_decode($row['mecanico3']),1,0,'C');
-	$pdf->Cell(43,12,utf8_decode($row['psicosocial3']),1,0,'C');
-	$pdf->Cell(33,12,utf8_decode($row['electrico3']),1,0,'C');
-	$pdf->Cell(120,12,utf8_decode($row['otros3']),1,0,'C');
-	$pdf->Cell(120,12,utf8_decode($row['cargo3']),1,0,'C');
-	$pdf->Cell(40,12,utf8_decode($row['tiempo3']),1,0,'C');
-	$pdf->Cell(121,12,utf8_decode($row['proteccion_personal3']),1,1,'C');
-
-	$pdf->Cell(100,12,utf8_decode($row['empresa4']),1,0,'C');
-	$pdf->Cell(24,12,utf8_decode($row['fisico4']),1,0,'C');
-	$pdf->Cell(32,12,utf8_decode($row['quimico4']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['biologico4']),1,0,'C');
-	$pdf->Cell(45,12,utf8_decode($row['ergonomico4']),1,0,'C');
-	$pdf->Cell(37,12,utf8_decode($row['mecanico4']),1,0,'C');
-	$pdf->Cell(43,12,utf8_decode($row['psicosocial4']),1,0,'C');
-	$pdf->Cell(33,12,utf8_decode($row['electrico4']),1,0,'C');
-	$pdf->Cell(120,12,utf8_decode($row['otros4']),1,0,'C');
-	$pdf->Cell(120,12,utf8_decode($row['cargo4']),1,0,'C');
-	$pdf->Cell(40,12,utf8_decode($row['tiempo4']),1,0,'C');
-	$pdf->Cell(121,12,utf8_decode($row['proteccion_personal4']),1,1,'C');
-
-	$pdf->Cell(100,12,utf8_decode($row['empresa5']),1,0,'C');
-	$pdf->Cell(24,12,utf8_decode($row['fisico5']),1,0,'C');
-	$pdf->Cell(32,12,utf8_decode($row['quimico5']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['biologico5']),1,0,'C');
-	$pdf->Cell(45,12,utf8_decode($row['ergonomico5']),1,0,'C');
-	$pdf->Cell(37,12,utf8_decode($row['mecanico5']),1,0,'C');
-	$pdf->Cell(43,12,utf8_decode($row['psicosocial5']),1,0,'C');
-	$pdf->Cell(33,12,utf8_decode($row['electrico5']),1,0,'C');
-	$pdf->Cell(120,12,utf8_decode($row['otros5']),1,0,'C');
-	$pdf->Cell(120,12,utf8_decode($row['cargo5']),1,0,'C');
-	$pdf->Cell(40,12,utf8_decode($row['tiempo5']),1,0,'C');
-	$pdf->Cell(121,12,utf8_decode($row['proteccion_personal5']),1,1,'C');
+	$pdf->Cell(100,12,utf8_decode($row['empresariesgo']),1,0,'C');
+	$pdf->Cell(369,12,utf8_decode($row['riesgos']),1,0,'C');
+	$pdf->Cell(120,12,utf8_decode($row['cargoriesgo']),1,0,'C');
+	$pdf->Cell(40,12,utf8_decode($row['tiemporiesgo']),1,0,'C');
+	$pdf->Cell(121,12,utf8_decode($row['proteccionriesgo']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
@@ -334,7 +274,7 @@
 		$pdf->Cell(60,12,utf8_decode($row['menarquia']),1,0,'C');
 		$pdf->Cell(45,12,utf8_decode($row['planifica']),1,0,'C');
 		$pdf->Cell(220,12,utf8_decode($row['metodo']),1,0,'C');
-		$pdf->Cell(425,12,utf8_decode($row['ficha_obstetrica']),1,1,'C');
+		$pdf->Cell(425,12,utf8_decode($row['fichaobstetrica']),1,1,'C');
 
 
 		$pdf->SetFont('Arial','',8);//
@@ -348,19 +288,19 @@
 
 		$pdf->SetFont('Arial','',7);//
 		$pdf->Cell(105,12,utf8_decode($row['ciclos']),1,0,'C');
-		$pdf->Cell(120,12,utf8_decode($row['ultima_mestruacion']),1,0,'C');
-		$pdf->Cell(120,12,utf8_decode($row['ultima_citologia']),1,0,'C');
+		$pdf->Cell(120,12,utf8_decode($row['ultimamestruacion']),1,0,'C');
+		$pdf->Cell(120,12,utf8_decode($row['ultimacitologia']),1,0,'C');
 		$pdf->Cell(100,12,utf8_decode($row['resultado']),1,0,'C');
-		$pdf->Cell(85,12,utf8_decode($row['flujo_vaginal']),1,0,'C');
-		$pdf->Cell(100,12,utf8_decode($row['dolor_pelvico']),1,0,'C');
-		$pdf->Cell(120,12,utf8_decode($row['dolor_senos']),1,1,'C');
+		$pdf->Cell(85,12,utf8_decode($row['flujovaginal']),1,0,'C');
+		$pdf->Cell(100,12,utf8_decode($row['dolorpelvico']),1,0,'C');
+		$pdf->Cell(120,12,utf8_decode($row['dolorsenos']),1,1,'C');
 		$pdf->Ln(1);
 
 	}
 
 	$pdf->SetFont('Arial','B',9);//
 	$pdf->SetFillColor(232,232,232);
-	$pdf->Cell(750,12,'USO DE ELEMNTOS DE PROTECCION PERSONAL ( '.utf8_decode($row['uso_proteccion']).' )',1,1,'C',1);
+	$pdf->Cell(750,12,'USO DE ELEMNTOS DE PROTECCION PERSONAL ( '.utf8_decode($row['uso_epp']).' )',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->Cell(95,12,'En el cargo o Empresa',1,0,'C',1);
@@ -375,31 +315,31 @@
 	$pdf->Cell(292,12,'Otros',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',7);//
-	$pdf->Cell(95,12,utf8_decode($row['cargo_o_empresa']),1,0,'C');
+	$pdf->Cell(95,12,utf8_decode($row['cargo_empresa']),1,0,'C');
 	$pdf->Cell(28,12,utf8_decode($row['actual']),1,0,'C');
 	$pdf->Cell(28,12,utf8_decode($row['casco']),1,0,'C');
 	$pdf->Cell(28,12,utf8_decode($row['botas']),1,0,'C');
 	$pdf->Cell(28,12,utf8_decode($row['gafas']),1,0,'C');
 	$pdf->Cell(43,12,utf8_decode($row['tapabocas']),1,0,'C');
 	$pdf->Cell(30,12,utf8_decode($row['overol']),1,0,'C');
-	$pdf->Cell(80,12,utf8_decode($row['protectores_auditivos']),1,0,'C');
-	$pdf->Cell(98,12,utf8_decode($row['protectores_respiratorios']),1,0,'C');
-	$pdf->Cell(292,12,utf8_decode($row['otros']),1,1,'C');
+	$pdf->Cell(80,12,utf8_decode($row['protectorauditivo']),1,0,'C');
+	$pdf->Cell(98,12,utf8_decode($row['protectorrespiratorio']),1,0,'C');
+	$pdf->Cell(292,12,utf8_decode($row['otroepp']),1,1,'C');
 
 	$pdf->SetFont('Arial','',8);//
-	$pdf->Cell(95,12,'Son adecuados',1,0,'C',1);
-	$pdf->Cell(50,12,'Todas',1,0,'C',1);
-	$pdf->Cell(605,12,'Solo:',1,1,'C',1);
+	$pdf->Cell(95,12,'Adecuados',1,0,'C',1);
+	//$pdf->Cell(50,12,'Todas',1,0,'C',1);
+	$pdf->Cell(655,12,'Solo:',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',7);//
 	$pdf->Cell(95,12,utf8_decode($row['adecuados']),1,0,'C');
-	$pdf->Cell(50,12,utf8_decode($row['todas']),1,0,'C');
-	$pdf->Cell(605,12,utf8_decode($row['solo']),1,1,'C');
+	//$pdf->Cell(50,12,utf8_decode($row['todas']),1,0,'C');
+	$pdf->Cell(655,12,utf8_decode($row['adecuadosolo']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
 	$pdf->SetFillColor(232,232,232);
-	$pdf->Cell(750,12,'ACCIDENTES DE TRABAJO ( '.utf8_decode($row['accidentes_trabajo']).' )',1,1,'C',1);
+	$pdf->Cell(750,12,'ACCIDENTES DE TRABAJO ( '.utf8_decode($row['accidentelaboral']).' )',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->Cell(80,12,'Fecha',1,0,'C',1);
@@ -411,50 +351,18 @@
 	$pdf->Cell(38,12,'Secuela',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',7);//
-	$pdf->Cell(80,12,utf8_decode($row['fecha1']),1,0,'C');
-	$pdf->Cell(150,12,utf8_decode($row['ac_empresa1']),1,0,'C');
-	$pdf->Cell(210,12,utf8_decode($row['causa1']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['lesion1']),1,0,'C');
-	$pdf->Cell(182,12,utf8_decode($row['parte_afectada1']),1,0,'C');
-	$pdf->Cell(55,12,utf8_decode($row['incapacidad1']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['secuela1']),1,1,'C');
-
-	$pdf->Cell(80,12,utf8_decode($row['fecha2']),1,0,'C');
-	$pdf->Cell(150,12,utf8_decode($row['ac_empresa2']),1,0,'C');
-	$pdf->Cell(210,12,utf8_decode($row['causa2']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['lesion1']),1,0,'C');
-	$pdf->Cell(182,12,utf8_decode($row['parte_afectada2']),1,0,'C');
-	$pdf->Cell(55,12,utf8_decode($row['incapacidad2']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['secuela2']),1,1,'C');
-
-	$pdf->Cell(80,12,utf8_decode($row['fecha3']),1,0,'C');
-	$pdf->Cell(150,12,utf8_decode($row['ac_empresa3']),1,0,'C');
-	$pdf->Cell(210,12,utf8_decode($row['causa3']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['lesion3']),1,0,'C');
-	$pdf->Cell(182,12,utf8_decode($row['parte_afectada3']),1,0,'C');
-	$pdf->Cell(55,12,utf8_decode($row['incapacidad3']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['secuela3']),1,1,'C');
-
-	$pdf->Cell(80,12,utf8_decode($row['fecha4']),1,0,'C');
-	$pdf->Cell(150,12,utf8_decode($row['ac_empresa4']),1,0,'C');
-	$pdf->Cell(210,12,utf8_decode($row['causa4']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['lesion4']),1,0,'C');
-	$pdf->Cell(182,12,utf8_decode($row['parte_afectada4']),1,0,'C');
-	$pdf->Cell(55,12,utf8_decode($row['incapacidad4']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['secuela4']),1,1,'C');
-
-	$pdf->Cell(80,12,utf8_decode($row['fecha5']),1,0,'C');
-	$pdf->Cell(150,12,utf8_decode($row['ac_empresa5']),1,0,'C');
-	$pdf->Cell(210,12,utf8_decode($row['causa5']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['lesion5']),1,0,'C');
-	$pdf->Cell(182,12,utf8_decode($row['parte_afectada5']),1,0,'C');
-	$pdf->Cell(55,12,utf8_decode($row['incapacidad5']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['secuela5']),1,1,'C');
+	$pdf->Cell(80,12,utf8_decode($row['accfecha']),1,0,'C');
+	$pdf->Cell(150,12,utf8_decode($row['accempresa']),1,0,'C');
+	$pdf->Cell(210,12,utf8_decode($row['causa']),1,0,'C');
+	$pdf->Cell(35,12,utf8_decode($row['lesion']),1,0,'C');
+	$pdf->Cell(182,12,utf8_decode($row['afectacion']),1,0,'C');
+	$pdf->Cell(55,12,utf8_decode($row['incapacidad']),1,0,'C');
+	$pdf->Cell(38,12,utf8_decode($row['secuela']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
 	$pdf->SetFillColor(232,232,232);
-	$pdf->Cell(750,12,'ENFERMEDAD PROFESIONAL ( '.utf8_decode($row['enfermedad_profesional']).' )',1,1,'C',1);
+	$pdf->Cell(750,12,'ENFERMEDAD PROFESIONAL ( '.utf8_decode($row['enfermedadlaboral']).' )',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->Cell(80,12,'Fecha',1,0,'C',1);
@@ -465,40 +373,12 @@
 	$pdf->Cell(38,12,'Pension',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',7);//
-	$pdf->Cell(80,12,utf8_decode($row['en_fecha1']),1,0,'C');
-	$pdf->Cell(150,12,utf8_decode($row['en_empresa1']),1,0,'C');
-	$pdf->Cell(409,12,utf8_decode($row['diagnostico1']),1,0,'C');
-	$pdf->Cell(25,12,utf8_decode($row['arl1']),1,0,'C');
-	$pdf->Cell(48,12,utf8_decode($row['reubicacion1']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['pension1']),1,1,'C');
-
-	$pdf->Cell(80,12,utf8_decode($row['en_fecha2']),1,0,'C');
-	$pdf->Cell(150,12,utf8_decode($row['en_empresa2']),1,0,'C');
-	$pdf->Cell(409,12,utf8_decode($row['diagnostico2']),1,0,'C');
-	$pdf->Cell(25,12,utf8_decode($row['arl2']),1,0,'C');
-	$pdf->Cell(48,12,utf8_decode($row['reubicacion2']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['pension2']),1,1,'C');
-
-	$pdf->Cell(80,12,utf8_decode($row['en_fecha3']),1,0,'C');
-	$pdf->Cell(150,12,utf8_decode($row['en_empresa3']),1,0,'C');
-	$pdf->Cell(409,12,utf8_decode($row['diagnostico3']),1,0,'C');
-	$pdf->Cell(25,12,utf8_decode($row['arl3']),1,0,'C');
-	$pdf->Cell(48,12,utf8_decode($row['reubicacion3']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['pension3']),1,1,'C');
-
-	$pdf->Cell(80,12,utf8_decode($row['en_fecha4']),1,0,'C');
-	$pdf->Cell(150,12,utf8_decode($row['en_empresa4']),1,0,'C');
-	$pdf->Cell(409,12,utf8_decode($row['diagnostico4']),1,0,'C');
-	$pdf->Cell(25,12,utf8_decode($row['arl4']),1,0,'C');
-	$pdf->Cell(48,12,utf8_decode($row['reubicacion4']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['pension4']),1,1,'C');
-
-	$pdf->Cell(80,12,utf8_decode($row['en_fecha5']),1,0,'C');
-	$pdf->Cell(150,12,utf8_decode($row['en_empresa5']),1,0,'C');
-	$pdf->Cell(409,12,utf8_decode($row['diagnostico5']),1,0,'C');
-	$pdf->Cell(25,12,utf8_decode($row['arl5']),1,0,'C');
-	$pdf->Cell(48,12,utf8_decode($row['reubicacion5']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['pension5']),1,1,'C');
+	$pdf->Cell(80,12,utf8_decode($row['fechaenf']),1,0,'C');
+	$pdf->Cell(150,12,utf8_decode($row['empresaenf']),1,0,'C');
+	$pdf->Cell(409,12,utf8_decode($row['diagnosticoenf']),1,0,'C');
+	$pdf->Cell(25,12,utf8_decode($row['arlenf']),1,0,'C');
+	$pdf->Cell(48,12,utf8_decode($row['reubicacion']),1,0,'C');
+	$pdf->Cell(38,12,utf8_decode($row['pension']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
@@ -514,12 +394,12 @@
 	$pdf->Cell(43,12,'Frecuencia',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',7);//
-	$pdf->Cell(80,12,utf8_decode($row['practica_deporte']),1,0,'C');
-	$pdf->Cell(245,12,utf8_decode($row['cuales']),1,0,'C');
+	$pdf->Cell(80,12,utf8_decode($row['practicadeporte']),1,0,'C');
+	$pdf->Cell(245,12,utf8_decode($row['cualdeporte']),1,0,'C');
 	$pdf->Cell(42,12,utf8_decode($row['sedentario']),1,0,'C');
-	$pdf->Cell(95,12,utf8_decode($row['ejercicio_cardiopulmonar']),1,0,'C');
-	$pdf->Cell(245,12,utf8_decode($row['ejercicio_otro']),1,0,'C');
-	$pdf->Cell(43,12,utf8_decode($row['frecuencia_ejercicio']),1,1,'C');
+	$pdf->Cell(95,12,utf8_decode($row['ejerciciocardiopulmonar']),1,0,'C');
+	$pdf->Cell(245,12,utf8_decode($row['otroejercicio']),1,0,'C');
+	$pdf->Cell(43,12,utf8_decode($row['frecuenciaejercicio']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
@@ -541,15 +421,15 @@
 	$pdf->SetFont('Arial','',7);//
 	$pdf->Cell(28,12,utf8_decode($row['fuma']),1,0,'C');
 	$pdf->Cell(38,12,utf8_decode($row['fumador']),1,0,'C');
-	$pdf->Cell(58,12,utf8_decode($row['fumador_anos']),1,0,'C');
+	$pdf->Cell(58,12,utf8_decode($row['fumadoranios']),1,0,'C');
 	$pdf->Cell(48,12,utf8_decode($row['exfumador']),1,0,'C');
-	$pdf->Cell(70,12,utf8_decode($row['exfumador_anos']),1,0,'C');
-	$pdf->Cell(65,12,utf8_decode($row['cant_cigarrillos_dia']),1,0,'C');
-	$pdf->Cell(75,12,utf8_decode($row['beber_habitualmente']),1,0,'C');
-	$pdf->Cell(58,12,utf8_decode($row['anos_habito_beber']),1,0,'C');
-	$pdf->Cell(60,12,utf8_decode($row['frecuencia_beber']),1,0,'C');
-	$pdf->Cell(160,12,utf8_decode($row['tipo_licor']),1,0,'C');
-	$pdf->Cell(90,12,utf8_decode($row['problemas_con_bebidas']),1,1,'C');
+	$pdf->Cell(70,12,utf8_decode($row['exfumadoranios']),1,0,'C');
+	$pdf->Cell(65,12,utf8_decode($row['cigarrillosdiarios']),1,0,'C');
+	$pdf->Cell(75,12,utf8_decode($row['bebidahabitual']),1,0,'C');
+	$pdf->Cell(58,12,utf8_decode($row['aniosbebedor']),1,0,'C');
+	$pdf->Cell(60,12,utf8_decode($row['frecuenciabebida']),1,0,'C');
+	$pdf->Cell(160,12,utf8_decode($row['tipolicor']),1,0,'C');
+	$pdf->Cell(90,12,utf8_decode($row['problemadebebida']),1,1,'C');
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->Cell(330,12,'Cuales Bebidas?',1,0,'C',1);
@@ -558,11 +438,11 @@
 	$pdf->Cell(335,12,'Otros habitos toxicos',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',7);//
-	$pdf->Cell(330,12,utf8_decode($row['cuales_bebidas_problemas']),1,0,'C');
+	$pdf->Cell(330,12,utf8_decode($row['cualbebidaproblema']),1,0,'C');
 	$pdf->Cell(45,12,utf8_decode($row['exbebedor']),1,0,'C');
-	$pdf->Cell(40,12,utf8_decode($row['anos_exbebedor']),1,0,'C');
-	$pdf->Cell(335,12,utf8_decode($row['cuales_habitos_tox']),1,1,'C');
-
+	$pdf->Cell(40,12,utf8_decode($row['aniosexbebedor']),1,0,'C');
+	$pdf->Cell(335,12,utf8_decode($row['otrohabitotoxico']),1,1,'C');
+//falto habito toxico
 	$pdf->SetFont('Arial','',8);//
 	$pdf->Cell(100,12,'Medicamento regularmente',1,0,'C',1);
 	$pdf->Cell(277,12,'Cuales medicamentos:',1,0,'C',1);
@@ -571,10 +451,10 @@
 
 
 	$pdf->SetFont('Arial','',7);//
-	$pdf->Cell(100,12,utf8_decode($row['medicamento_regularmente']),1,0,'C');
-	$pdf->Cell(277,12,utf8_decode($row['cuales_medicamentos']),1,0,'C');
-	$pdf->Cell(97,12,utf8_decode($row['cirugias_en_eps']),1,0,'C');
-	$pdf->Cell(276,12,utf8_decode($row['cuales_cirugias']),1,1,'C');
+	$pdf->Cell(100,12,utf8_decode($row['medicamentoregular']),1,0,'C');
+	$pdf->Cell(277,12,utf8_decode($row['cualmedicamento']),1,0,'C');
+	$pdf->Cell(97,12,utf8_decode($row['cirugiaeps']),1,0,'C');
+	$pdf->Cell(276,12,utf8_decode($row['cualcirugia']),1,1,'C');
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->Cell(85,12,'Tratamiento pendiente',1,0,'C',1);
@@ -583,10 +463,10 @@
 	$pdf->Cell(284,12,'Motivo de incapacidad',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',7);//
-	$pdf->Cell(85,12,utf8_decode($row['tratamiento_pendiente']),1,0,'C');
-	$pdf->Cell(276,12,utf8_decode($row['cuales_tratamientos']),1,0,'C');
-	$pdf->Cell(105,12,utf8_decode($row['incapacidad_ultimos_meses']),1,0,'C');
-	$pdf->Cell(284,12,utf8_decode($row['motivo_incapacidad']),1,1,'C');
+	$pdf->Cell(85,12,utf8_decode($row['tratamientopendiente']),1,0,'C');
+	$pdf->Cell(276,12,utf8_decode($row['cualtratamiento']),1,0,'C');
+	$pdf->Cell(105,12,utf8_decode($row['ultimaincapacidad']),1,0,'C');
+	$pdf->Cell(284,12,utf8_decode($row['motivoincapacidad']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFont('Arial','B',9);//
@@ -604,19 +484,19 @@
 	$pdf->Cell(153,12,'Diagnostico de peso',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',7);//
-	$pdf->Cell(130,12,utf8_decode($row['mano_habil']),1,0,'C');
+	$pdf->Cell(130,12,utf8_decode($row['extremidadhabil']),1,0,'C');
 	$pdf->Cell(50,12,utf8_decode($row['cicatrices']),1,0,'C');
 	$pdf->Cell(50,12,utf8_decode($row['tatuajes']),1,0,'C');
-	$pdf->Cell(62,12,utf8_decode($row['tension_arterial']),1,0,'C');
-	$pdf->Cell(85,12,utf8_decode($row['frecuencia_cardiaca']),1,0,'C');
-	$pdf->Cell(100,12,utf8_decode($row['frecuencia_respiratoria']),1,0,'C');
+	$pdf->Cell(62,12,utf8_decode($row['tensionarterial']),1,0,'C');
+	$pdf->Cell(85,12,utf8_decode($row['frecuenciacardiaca']),1,0,'C');
+	$pdf->Cell(100,12,utf8_decode($row['frecuenciarespiratoria']),1,0,'C');
 	$pdf->Cell(60,12,utf8_decode($row['talla']),1,0,'C');
 	$pdf->Cell(60,12,utf8_decode($row['peso']),1,0,'C');
-	$pdf->Cell(153,12,utf8_decode($row['peso_diagnostico']),1,1,'C');
+	$pdf->Cell(153,12,utf8_decode($row['pesodiagnostico']),1,1,'C');
 	$pdf->Ln(20);
-
+	//add perimetro abdominal - torax y otras
 	$pdf->SetFont('Arial','B',9);//
-	$pdf->Cell(750,12,'EXPOSICION A FACTORES DE RIESGO SUMINISTRADOS POR LA EMPRESA ( '.utf8_decode($row['riesgos_suministrados']).' )',1,1,'C',1);
+	$pdf->Cell(750,12,'EXPOSICION A FACTORES DE RIESGO SUMINISTRADOS POR LA EMPRESA ( '.utf8_decode($row['riesgosuministrado']).' )',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->Cell(35,12,'Fisico',1,0,'C',1);
@@ -629,20 +509,20 @@
 	$pdf->Cell(443,12,'Otros',1,1,'C',1);
 
 	//$pdf->SetFont('Arial','',7);//
-	$pdf->Cell(35,12,utf8_decode($row['suministrado_fisico']),1,0,'C');
-	$pdf->Cell(38,12,utf8_decode($row['suministrado_mecanico']),1,0,'C');
-	$pdf->Cell(45,12,utf8_decode($row['suministrado_quimico']),1,0,'C');
-	$pdf->Cell(52,12,utf8_decode($row['suministrado_psicosocial']),1,0,'C');
-	$pdf->Cell(45,12,utf8_decode($row['suministrado_biologico']),1,0,'C');
-	$pdf->Cell(50,12,utf8_decode($row['suministrado_electrico']),1,0,'C');
-	$pdf->Cell(42,12,utf8_decode($row['suministrado_ergonomico']),1,0,'C');
+	$pdf->Cell(35,12,utf8_decode($row['fisico']),1,0,'C');
+	$pdf->Cell(38,12,utf8_decode($row['mecanico']),1,0,'C');
+	$pdf->Cell(45,12,utf8_decode($row['quimico']),1,0,'C');
+	$pdf->Cell(52,12,utf8_decode($row['psicosocial']),1,0,'C');
+	$pdf->Cell(45,12,utf8_decode($row['biologico']),1,0,'C');
+	$pdf->Cell(50,12,utf8_decode($row['electrico']),1,0,'C');
+	$pdf->Cell(42,12,utf8_decode($row['ergonomico']),1,0,'C');
 	$pdf->SetFont('Arial','',7);//
-	$pdf->Cell(443,12,utf8_decode($row['suministrado_otro']),1,1,'C');
+	$pdf->Cell(443,12,utf8_decode($row['otrosriesgo']),1,1,'C');
 }
 
 	$query3 = "SELECT * FROM datos_basicos AS db
-		JOIN audiometria_resultado_der  ON db.id_historia = audiometria_resultado_der.paciente_audiometria
-    	JOIN audiometria_resultado_izq ON audiometria_resultado_izq.id_audiometria_paciente = audiometria_resultado_der.id 
+	JOIN audiometria_oidoderecho AS aod ON db.id_historia = aod.paciente_audiometria
+  	JOIN audiometria_oidoizquierdo AS aoi ON aoi.id_audiometria_paciente = aod.id 
 	WHERE db.id_historia = '$historia'";
 	$resultado3 = mysqli_query($conexion,$query3);
 	while($row3 = $resultado3->fetch_assoc()){
@@ -665,8 +545,8 @@
 
 	$pdf->SetFont('Arial','',7);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->Cell(42,12,utf8_decode($row3['pasa_otoscopia']),1,0,'C');
-	$pdf->MultiCell(708,12,utf8_decode($row3['hallazgo_der']),1,1,'C');
+	$pdf->Cell(42,12,utf8_decode($row3['otoscopia_od']),1,0,'C');
+	$pdf->MultiCell(708,12,utf8_decode($row3['hallazgo_od']),1,1,'C');
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(232,232,232);
@@ -675,8 +555,8 @@
 
 	$pdf->SetFont('Arial','',7);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->Cell(42,12,utf8_decode($row3['pasa_otoscopia_izq']),1,0,'C');
-	$pdf->MultiCell(708,12,utf8_decode($row3['hallazgo_izq']),1,1,'C');
+	$pdf->Cell(42,12,utf8_decode($row3['otoscopia_oi']),1,0,'C');
+	$pdf->MultiCell(708,12,utf8_decode($row3['hallazgo_oi']),1,1,'C');
 
 	$pdf->SetFont('Arial','B',9);//
 	$pdf->SetFillColor(232,232,232);
@@ -709,7 +589,7 @@
 	$pdf->Cell(40,12,utf8_decode($row3['2000']),1,0,'C');
 	$pdf->Cell(40,12,utf8_decode($row3['4000']),1,0,'C');
 	$pdf->Cell(40,12,utf8_decode($row3['8000']),1,0,'C');
-	$pdf->Cell(135,12,utf8_decode($row3['resultado_promedio']),1,0,'C');
+	$pdf->Cell(135,12,utf8_decode($row3['promedio_od']),1,0,'C');
 
 	$pdf->Cell(40,12,utf8_decode($row3['250_izq']),1,0,'C');
 	$pdf->Cell(40,12,utf8_decode($row3['500_izq']),1,0,'C');
@@ -717,7 +597,7 @@
 	$pdf->Cell(40,12,utf8_decode($row3['2000_izq']),1,0,'C');
 	$pdf->Cell(40,12,utf8_decode($row3['4000_izq']),1,0,'C');
 	$pdf->Cell(40,12,utf8_decode($row3['8000_izq']),1,0,'C');
-	$pdf->Cell(135,12,utf8_decode($row3['resultado_promedio_izq']),1,1,'C');
+	$pdf->Cell(135,12,utf8_decode($row3['promedio_oi']),1,1,'C');
 
 	$pdf->SetFont('Arial','B',9);//
 	$pdf->SetFillColor(232,232,232);
@@ -733,17 +613,17 @@
 
 	$pdf->SetFont('Arial','',8);//
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row3['evaluacion_diagnostica']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row3['evaluaciondiagnostica']),1,1,'C');
 
 	$pdf->Ln(10);
 
 }
 	//Visiometria
 	$query4 = "SELECT * FROM datos_basicos AS db
-    JOIN visiometria_campo_visual AS vcv ON db.id_historia = vcv.paciente_visiometria 
-    JOIN visiometria_vision_lejana AS vvl ON vcv.id = vvl.id_campo_visual
-    JOIN visiometria_vision_proxima AS vvp ON vvl.id = vvp.id_vision_lejana
-    JOIN visiometria_percepciones_y_forias AS vpf ON vvp.id = vpf.id_vision_proxima
+    JOIN visiometria_campovisual AS vcv ON db.id_historia = vcv.paciente_visiometria 
+    JOIN visiometria_visionlejana AS vvl ON vcv.id = vvl.id_campo_visual
+    JOIN visiometria_visionproxima AS vvp ON vvl.id = vvp.id_vision_lejana
+    JOIN visiometria_percepcionforia AS vpf ON vvp.id = vpf.id_vision_proxima
 	WHERE db.id_historia = '$historia'";
 	$resultado4 = mysqli_query($conexion,$query4);
 	while($row4 = $resultado4->fetch_assoc()){
@@ -792,11 +672,11 @@
 
 	$pdf->Ln(10);
 }
-	$query5 = "SELECT * FROM datos_basicos AS db
+	/*$query5 = "SELECT * FROM datos_basicos AS db
 	JOIN psicologia_examen_estado_mental ON psicologia_examen_estado_mental.paciente_psicologia = db.id_historia
 	WHERE db.id_historia = '$historia'";
 	$resultado5 = mysqli_query($conexion,$query5);
-	while($row5 = $resultado5->fetch_assoc()){
+	while($row5 = $resultado5->fetch_assoc()){*/
 
 
 	$pdf->SetFillColor(232,232,232);
@@ -811,9 +691,9 @@
 	$pdf->MultiCell(750,12,utf8_decode(''/*$row5['concepto']*/),1,1,'C');
 	$pdf->Ln(10);
 
-}
+//}
 	$query6 = "SELECT * FROM datos_basicos AS db
-	JOIN psicologia_examen_estado_mental ON psicologia_examen_estado_mental.paciente_psicologia = db.id_historia
+	JOIN psicologia_estadomental AS pem ON pem.paciente_psicologia = db.id_historia
 	WHERE db.id_historia = '$historia'";
 	$resultado6 = mysqli_query($conexion,$query6);
 	while($row6 = $resultado6->fetch_assoc()){
@@ -833,12 +713,9 @@
 }
 //test
     $data_remision = "SELECT * FROM datos_basicos AS db
-
-    JOIN medico_examen_fisico AS mef ON mef.paciente_medico = db.id_historia
+    JOIN medico_examenfisico AS mef ON db.id_historia = mef.paciente_medico
     JOIN medico_paraclinicos AS mp ON mef.id = mp.id_examen_fisico
-    /*LEFT JOIN medico_remision as mr ON (mp.id = mr.id_paraclinico)*/
     JOIN medico_remision AS mr ON mp.id = mr.id_paraclinico
-    /*JOIN medico_concepto_aptitud_laboral AS mcal ON mr.id = mcal.id_remision*/
     WHERE db.id_historia = '$historia'";
     $query = mysqli_query($conexion,$data_remision);
 
@@ -870,14 +747,12 @@ $pdf->Ln(10);
 //test
 	//Medico
 	$query2 = "SELECT * FROM datos_basicos AS db
-    JOIN historia_laboral AS hl ON db.id_historia = hl.paciente_enfermeria 
-    JOIN medico_examen_fisico AS mef ON db.id_historia = mef.paciente_medico
+    JOIN medico_examenfisico AS mef ON db.id_historia = mef.paciente_medico
     JOIN medico_paraclinicos AS mp ON mef.id = mp.id_examen_fisico
     JOIN medico_remision AS mr ON mp.id = mr.id_paraclinico
-    JOIN medico_concepto_aptitud_laboral AS mcal ON mr.id = mcal.id_remision
-    JOIN medico_recomendaciones_y_restricciones AS mrr ON mcal.id = mrr.id_aptitud_laboral
-    JOIN medico_pve AS pve ON mrr.id = pve.fk_recomendaciones
-
+    JOIN medico_cal AS mcal ON mr.id = mcal.id_remision
+    JOIN medico_recomendacion AS mre ON mcal.id = mre.id_aptitud_laboral
+    JOIN medico_pve AS mpve ON mre.id = mpve.fk_recomendaciones
 	WHERE db.id_historia = '$historia'";
 	$resultado2 = mysqli_query($conexion,$query2);
 	while($row2 = $resultado2->fetch_assoc()){
@@ -1200,7 +1075,7 @@ $pdf->Ln(10);
 	$pdf->Ln(480);
 
 	$pdf->SetFont('Arial','B',9);//
-	$pdf->Cell(1,0, $pdf->Image("images/firmas/medicfirma".'.png', 88,733,100),1,0,'C');
+	$pdf->Cell(1,0, $pdf->Image("images/firmas/medicfirma".'.png', 88,533,100),1,0,'C');
 	$pdf->Cell(200,12, 'Nombre, Firma y LSO',0,0,'C');
 
 	$pdf->Cell(300,12, '',0,0,'C');

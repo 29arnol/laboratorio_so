@@ -8,12 +8,12 @@
 	$query = "SELECT * FROM datos_basicos AS db
 	JOIN datos_complementarios AS dc ON db.fk_d_complementario = dc.id
 	JOIN datos_basicos_tipo_documento AS dbtd ON dbtd.idtd = dc.fk_tipo_documento
-    JOIN medico_examen_fisico AS mef ON db.id_historia = mef.paciente_medico
+    JOIN medico_examenfisico AS mef ON db.id_historia = mef.paciente_medico
     JOIN medico_paraclinicos AS mp ON mef.id = mp.id_examen_fisico
     JOIN medico_remision AS mr ON mp.id = mr.id_paraclinico
-    JOIN medico_concepto_aptitud_laboral AS mcal ON mr.id = mcal.id_remision
-    JOIN medico_recomendaciones_y_restricciones AS mrr ON mcal.id = mrr.id_aptitud_laboral
-    JOIN medico_pve AS pve ON mrr.id = pve.fk_recomendaciones
+    JOIN medico_cal AS mcal ON mr.id = mcal.id_remision
+    JOIN medico_recomendacion AS mre ON mcal.id = mre.id_aptitud_laboral
+    JOIN medico_pve AS mpve ON mre.id = mpve.fk_recomendaciones
 	WHERE db.id_historia = '$historia'";
 	$resultado = mysqli_query($conexion,$query);
 

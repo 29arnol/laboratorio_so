@@ -78,12 +78,9 @@ $("#btn").on("click", function()
 
                password: {required:'Este campo es requerido', minlength: 'El mínimo permitido son 8 caracteres', maxlength: 'El máximo permitido son 15 caracteres', equalTo: 'Las contraseñas no coinciden'},
 
-
              },
-
          });
    });
-
 });
 </script>
 
@@ -102,10 +99,8 @@ $("#btn").on("click", function()
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-       
         <a class="navbar-brand" href="index.php" style="margin-top: 14px; color: #fff;"><img src="images/ico.png" style="margin-top:-22px;"><!--<p style="color: ; font-size: 8px;  margin-top:-4px; left: -30px; ">Servicio en Seguridad y Salud en el Trabajo</p>--></a>
       </div>
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div style="position: relative; z-index: 100;">
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >

@@ -8,15 +8,14 @@
 	$query = "SELECT * FROM datos_basicos AS db
 	JOIN datos_complementarios AS dc ON db.fk_d_complementario = dc.id
 	JOIN datos_basicos_tipo_documento AS dbtd ON dbtd.idtd = dc.fk_tipo_documento
-	JOIN medico_examen_fisico AS mef ON  mef.paciente_medico =  db.id_historia
-
-	JOIN medico_paraclinicos AS mep ON mef.id = mep.id_examen_fisico
-    JOIN medico_remision AS mer ON mep.id = mer.id_paraclinico
-    JOIN medico_concepto_aptitud_laboral AS mcal ON mer.id = mcal.id_remision
-    JOIN medico_recomendaciones_y_restricciones AS mrr ON mcal.id = mrr.id_aptitud_laboral
-    JOIN medico_pve AS pve ON mrr.id = pve.fk_recomendaciones
-    JOIN signos_vitales_enf AS sve
-    JOIN enfermeria_riesgos_suministrados AS ers on sve.id = ers.id_signos_vitales
+	JOIN medico_examenfisico AS mef ON db.id_historia = mef.paciente_medico
+    JOIN medico_paraclinicos AS mp ON mef.id = mp.id_examen_fisico
+    JOIN medico_remision AS mr ON mp.id = mr.id_paraclinico
+    JOIN medico_cal AS mcal ON mr.id = mcal.id_remision
+    JOIN medico_recomendacion AS mre ON mcal.id = mre.id_aptitud_laboral
+    JOIN medico_pve AS mpve ON mre.id = mpve.fk_recomendaciones
+    /*JOIN signos_vitales_enf AS sve
+    JOIN enfermeria_riesgos_suministrados AS ers on sve.id = ers.id_signos_vitales*/
 
 	 WHERE db.id_historia = '$historia'";
 	$resultado = mysqli_query($conexion,$query);
@@ -59,7 +58,7 @@
 
 	//$pdf->Ln(2);
 	$pdf->SetFont('Arial','B',9);//
-	$pdf->Cell(622,12,'DATOS DEL TRABAJADOR',1,1,'C',1);
+	$pdf->Cell(622,12,'                                                        DATOS DEL TRABAJADOR',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',9);//
 	$pdf->Cell(210,12,'Nombres y Apellidos',1,0,'C',1);
@@ -83,7 +82,7 @@
 	//$pdf->Ln(2);
 
 	$pdf->SetFont('Arial','B',9);//
-	$pdf->Cell(622,12,'TIPO DE EXAMEN MEDICO - OCUPACIONAL:',1,1,'C',1);
+	$pdf->Cell(622,12,'                                                 TIPO DE EXAMEN MEDICO - OCUPACIONAL:',1,1,'C',1);
 
 	$pdf->SetFont('Arial','',9);//
 	$pdf->Cell(622,12,utf8_decode($row['motivo_evaluacion']),1,1,'C');
@@ -91,7 +90,7 @@
 	//$pdf->Ln(2);
 
 	$pdf->SetFont('Arial','B',9);//
-	$pdf->Cell(622,12,'EXAMEN MEDICO CON ENFASIS EN:',1,1,'C',1);
+	$pdf->Cell(622,12,'                                                      EXAMEN MEDICO CON ENFASIS EN:',1,1,'C',1);
 	//$pdf->Cell(1,12,'',1,0,'C',1);
 
 	//$pdf->Cell(188,1,'',0,1,'C',0);
@@ -179,7 +178,7 @@
 	//$pdf->Ln(2);
 
 	$pdf->SetFont('Arial','B',9);//
-	$pdf->Cell(750,12,'INFORMACION SUMINISTRADA POR LA EMPRESA SOBRE EXPOSICION A RIESGOS LABORALES: ( '.utf8_decode($row['riesgos_suministrados']).' )',1,1,'C',1);
+	$pdf->Cell(750,12,'INFORMACION SUMINISTRADA POR LA EMPRESA SOBRE EXPOSICION A RIESGOS LABORALES:'  /*utf8_decode($row['riesgos_suministrados'])*/ ,1,1,'C',1);
 	$pdf->Cell(188,1,'',0,1,'C',0);
 
 	$pdf->SetFont('Arial','',8);//
@@ -192,14 +191,14 @@
 	$pdf->Cell(45,12,'Mecanico:',1,0,'C',1);
 	$pdf->Cell(445,12,'Otro:',1,1,'C',1);
 
-	$pdf->Cell(55,12,utf8_decode($row['suministrado_ergonomico']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['suministrado_fisico']),1,0,'C');
-	$pdf->Cell(35,12,utf8_decode($row['suministrado_quimico']),1,0,'C');
-	$pdf->Cell(40,12,utf8_decode($row['suministrado_biologico']),1,0,'C');
-	$pdf->Cell(50,12,utf8_decode($row['suministrado_psicosocial']),1,0,'C');
-	$pdf->Cell(45,12,utf8_decode($row['suministrado_electrico']),1,0,'C');
-	$pdf->Cell(45,12,utf8_decode($row['suministrado_mecanico']),1,0,'C');
-	$pdf->Cell(445,12,utf8_decode($row['suministrado_otro']),1,1,'C');
+	$pdf->Cell(55,12,''/*utf8_decode($row['ergonomico'])*/,1,0,'C');
+	$pdf->Cell(35,12,''/*utf8_decode($row['fisico'])*/,1,0,'C');
+	$pdf->Cell(35,12,''/*utf8_decode($row['quimico'])*/,1,0,'C');
+	$pdf->Cell(40,12,''/*utf8_decode($row['biologico'])*/,1,0,'C');
+	$pdf->Cell(50,12,''/*utf8_decode($row['psicosocial'])*/,1,0,'C');
+	$pdf->Cell(45,12,''/*utf8_decode($row['electrico'])*/,1,0,'C');
+	$pdf->Cell(45,12,''/*utf8_decode($row['mecanico'])*/,1,0,'C');
+	$pdf->Cell(445,12,''/*utf8_decode($row['otrosriesgo'])*/,1,1,'C');
 
 	$pdf->SetFont('Arial','B',9);//
 	$pdf->Cell(750,12,'APTITUD OCUPACIONAL ( '.utf8_decode($row['motivo_evaluacion']).' )',1,1,'C',1);
@@ -359,7 +358,7 @@
 	$pdf->Cell(200,12, 'Nombre, Firma y LSO',0,0,'C');
 
 	$pdf->Cell(300,12, '',0,0,'C');
-	$pdf->Cell(1,0, $pdf->Image("images/firmas/medicfirma".'.png', 88,855,100),1,0,'C');
+	$pdf->Cell(1,0, $pdf->Image("images/firmas/medicfirma".'.png', 88,848,100),1,0,'C');
 	$pdf->Cell(200,12, 'Nombre o Firma del Trabajador',0,1,'C');
 	$pdf->Ln();
 

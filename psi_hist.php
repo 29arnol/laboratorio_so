@@ -8,7 +8,7 @@
 	$query = "SELECT * FROM datos_basicos AS db
 	JOIN datos_complementarios AS dc ON db.fk_d_complementario = dc.id
 	JOIN datos_basicos_tipo_documento AS dbtd ON dbtd.idtd = dc.fk_tipo_documento
-	JOIN psicologia_examen_estado_mental AS peem ON peem.paciente_psicologia = db.id_historia
+	JOIN psicologia_estadomental AS pem ON pem.paciente_psicologia = db.id_historia
 	WHERE db.id_historia = '$historia'";
 	$resultado = mysqli_query($conexion,$query);
 	while($row = $resultado->fetch_assoc()){
@@ -91,15 +91,15 @@
 	//$pdf->Cell(62,12,,1,0,'C');
 	//$pdf->Cell(750,12,'HALLAZGOS',1,1,'C',1);
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['orientacion_hallazgo']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row['orientacionhallazgo']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFillColor(232,232,232);
-	$pdf->Cell(750,12,'ATENCION - CONCENTRACION ( '.utf8_decode($row['atencion_concentracion']).' )',1,1,'C',1);
+	$pdf->Cell(750,12,'ATENCION - CONCENTRACION ( '.utf8_decode($row['atencionconcentracion']).' )',1,1,'C',1);
 	//$pdf->Cell(62,12,,1,0,'C');
 	//$pdf->Cell(750,12,'HALLAZGOS',1,1,'C',1);
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['atencion_concentracion_hallazgo']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row['concentracionhallazgo']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFillColor(232,232,232);
@@ -107,7 +107,7 @@
 	//$pdf->Cell(62,12,,1,0,'C');
 	//$pdf->Cell(750,12,'HALLAZGOS',1,1,'C',1);
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['sensopercepcion_hallazgo']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row['sensopercepcionhallazgo']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFillColor(232,232,232);
@@ -115,7 +115,7 @@
 	//$pdf->Cell(62,12,,1,0,'C');
 	//$pdf->Cell(750,12,'HALLAZGOS',1,1,'C',1);
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['memoria_hallazgo']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row['memoriahallazgo']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFillColor(232,232,232);
@@ -123,7 +123,7 @@
 	//$pdf->Cell(62,12,,1,0,'C');
 	//$pdf->Cell(750,12,'HALLAZGOS',1,1,'C',1);
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['pensamiento_hallazgo']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row['pensamientohallazgo']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFillColor(232,232,232);
@@ -131,7 +131,7 @@
 	//$pdf->Cell(62,12,,1,0,'C');
 	//$pdf->Cell(750,12,'HALLAZGOS',1,1,'C',1);
 	$pdf->SetFillColor(255,255,255);
-	$pdf->MultiCell(750,12,utf8_decode($row['lenguaje_hallazgo']),1,1,'C');
+	$pdf->MultiCell(750,12,utf8_decode($row['lenguajehallazgo']),1,1,'C');
 	$pdf->Ln(1);
 
 	$pdf->SetFillColor(232,232,232);
